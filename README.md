@@ -1,0 +1,1 @@
+# flutter_malaria_app
