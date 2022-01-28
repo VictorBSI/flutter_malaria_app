@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "174703612920",
+    "project_id": "malaria-b6c23",
+    "storage_bucket": "malaria-b6c23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174703612920:android:32f5380b76e087c740bc0d",
+        "android_client_info": {
+          "package_name": "com.example.flutter_crud_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "174703612920-0h1bd6pansu6d3u4pfcg15t9qpldqla4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7j2N_cXBL0gRC7axdPsMdq2tCdi84W8s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "174703612920-0h1bd6pansu6d3u4pfcg15t9qpldqla4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
