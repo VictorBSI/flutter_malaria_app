@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/provider/users.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
@@ -8,23 +11,35 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_crud_1/views/user_residencia.dart';
 import 'package:provider/provider.dart';
 
+class UserTratamento extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _UserTratamento();
+}
 
-class UserRegistro extends StatelessWidget {
+
+class _UserTratamento extends State<UserTratamento> {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 
-  CollectionReference usuario = FirebaseFirestore.instance.collection('usuario');
+  CollectionReference user_tratamento = FirebaseFirestore.instance.collection('tratamento');
   final _formKey = GlobalKey<FormState>();
-  UserRegistro({Key? key}) : super(key: key);
-  String nome = '';
-  var sexo = '';
-  var endereco = '';
-  var codigo = '';
-  var _groupValue = 0;
-  var caminho = '';
-  DateTime data_nascimento = DateTime.now();
+  //UserTratamento({Key? key}) : super(key: key);
+  String tratamento = '';
+  String tipo = '';
+  int idade = 0;
+  int peso = 0;
+  List<String> _tipos = ['falciparum', 'malarae', 'mista', 'vivax_ovale'];
+  List<String> vivax_ovale = ['Opção 1', 'Opção 2'];
+  List<String> falciparum = ['Opção 1', 'Opção 2'];
+  List<String> mista = ['Opção 1', 'Opção 2'];
+  String malarae = 'Opção 1';
+  String _selectedTipos = 'Selecione';
+  String _selectedTrat = 'Selecione';
+  String opcao = '';
+  bool checkboxValue = false;
 
   @override
   Widget build(BuildContext context){
+    //final TestText text = new TestText();
     return MultiProvider(
       key: _formKey,
       providers: [
@@ -48,6 +63,29 @@ class UserRegistro extends StatelessWidget {
                   padding: EdgeInsets.only(top: 40, left: 20, right: 20),
                   child: ListView(
                     children: <Widget>[
+                      Text('Tipo de Malária', maxLines: 2,),
+                      DropdownButton<String>(
+                          hint: Text(_selectedTipos),
+                          onChanged: (newValue){
+                            setState(() {
+                              _selectedTipos = newValue!;
+                            });
+                            tipo = newValue!;
+                          //text.update();
+                        },
+                        items: _tipos.map((tipo) {
+                          return DropdownMenuItem(
+                            child: new Text(tipo),
+                            value: tipo,
+                          );
+                        }).toList(),
+                          /*items: <String>['falciparum', 'malarae', 'mista', 'vivax_ovale'].map((String value){
+                            return DropdownMenuItem(
+                              value: value,
+                              child: Text(value),);
+                          }).toList(),*/
+                      ),
+                      /*
                       TextFormField(
                         decoration: InputDecoration(labelText: 'Tipo de Malária'),
                         onChanged: (value) {
@@ -59,80 +97,61 @@ class UserRegistro extends StatelessWidget {
                           }
                           return null;
                         },
-                      ),
+                      ),*/
                       TextFormField(
                         decoration: InputDecoration(
                             labelText: 'Tratamento'),
                         onChanged: (value){
-                          codigo = value;
+                          tratamento = value;
                         },
                       ),
-                      Container(
-                        padding: EdgeInsets.only(top: 20),
-                        child: Text('Sexo'),
-                      ),
-                      Container(
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Flexible(
-                                    flex: 1,
-                                    child: Row(
-                                      children: [
-                                        Radio(value: 1,
-                                          onChanged: (value) {
-                                            sexo = 'Masculino';
-                                            _groupValue = 1;
-                                          },
-                                          groupValue: 1,
+                      Text('Tratamento', maxLines: 2,),
 
-                                        ),
-                                        Expanded(
-                                            child: Text(
-                                              'Masculino', maxLines: 2,))
-                                      ],
-                                    )
-                                ),
-                                Flexible(
-                                    flex: 1,
-                                    child: Row(
-                                      children: [
-                                        Radio(value: 1,
-                                          groupValue: _groupValue,
-                                          onChanged: (value) {
-                                            sexo = 'Feminino';
-                                            _groupValue = 1;
-                                          },),
-                                        Expanded(
-                                            child: Text('Feminino', maxLines: 2,))
-                                      ],
-                                    )
-                                ),
-                              ],
-                            ),
-                          ],
-
-                        ),
+                      DropdownButton<String>(
+                        hint: Text(_selectedTrat),
+                        onChanged: (newValue){
+                          setState(() {
+                            _selectedTrat = newValue!;
+                          });
+                          opcao = newValue!;
+                          //text.update();
+                        },
+                        items: _tipos.map((tipo) {
+                          return DropdownMenuItem(
+                            child: new Text(tipo),
+                            value: tipo,
+                          );
+                        }).toList(),
                       ),
-                      Container(
-                        child: Text('Data de nascimento'),
-                      ),
-                      Container(
-                        height: 200,
-                        child: CupertinoDatePicker(
-                          mode: CupertinoDatePickerMode.date,
-                          initialDateTime: DateTime(1980, 1, 1),
-                          onDateTimeChanged: (DateTime newDateTime) {
-                            data_nascimento = newDateTime;
-                          },
-                        ),
-                      ),
-                      TextFormField(
-                        decoration: InputDecoration(labelText: 'Endereço'),
+                      TextField(
+                        decoration: InputDecoration(labelText: 'Idade'),
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                         onChanged: (value){
-                          endereco = value;
+                          int v = int.parse(value);
+                          idade = v;
                         },
+                      ),
+                      TextField(
+                        decoration: InputDecoration(labelText: 'Peso'),
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                        onChanged: (value){
+                          int v = int.parse(value);
+                          peso = v;
+                        },
+                      ),
+                      CheckboxListTile(
+                        value: checkboxValue,
+                        onChanged: (val) {
+                          setState(() => checkboxValue = val!);
+                        },
+                        title: new Text(
+                          'Gestante',
+                          style: TextStyle(fontSize: 14.0),
+                        ),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        activeColor: Colors.blue,
                       ),
                       ElevatedButton.icon(
 
@@ -151,17 +170,22 @@ class UserRegistro extends StatelessWidget {
                                 }
                               }*/
                           onPressed: () async{
-                            await usuario.add({
-                              'nome': nome,
-                              'codigo': codigo,
-                              'sexo': sexo,
-                              'data_nascimento': data_nascimento,
-                              'endereco': endereco,
+                            await user_tratamento.add({
+                              'tipo': tipo,
+                              'tratamento': tratamento,
+                              'idade': idade,
+                              'peso': peso,
                             }
-                            ).then((value) => print('User added'));
-                            //Navigator.pushNamed(context, AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo});
+                            ).then((value) => print('Added'));
                             Navigator.of(context).pushNamed(
-                                AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo});
+                                AppRoutes.USER_RESIDENCIA,
+                                arguments: {
+                                  "tipo": tipo,
+                                  "tratamento": tratamento,
+                                  "idade": idade,
+                                  "peso": peso,
+                                  "gestante": checkboxValue,
+                                });
                           }, //AppRoutes.USER_RESIDENCIA
                           icon: Icon(Icons.arrow_forward),
                           label: Text('Próximo'))
@@ -184,3 +208,31 @@ class UserRegistro extends StatelessWidget {
   }
 }
 
+/*
+class TestText extends StatefulWidget {
+
+  final _TestTextState state = new _TestTextState();
+
+  void update() {
+    state.change();
+  }
+
+  @override
+  _TestTextState createState() => state;
+}
+
+class _TestTextState extends State<TestText> {
+
+  String text = "Selecione";
+
+  void change() {
+    setState(() {
+      this.text = this.text == "falciparum" ? "falciparum" : "original";
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Text(this.text);
+  }
+}*/

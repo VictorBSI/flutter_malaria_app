@@ -39,7 +39,7 @@ class UserHome extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: (){
-                          Navigator.of(context).pushNamed(AppRoutes.USER_REGISTRO);
+                          Navigator.of(context).pushNamed(AppRoutes.USER_TRAT);
                         },
                         child: ListTile(
                           title: Text('Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),

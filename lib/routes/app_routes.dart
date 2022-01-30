@@ -28,4 +28,5 @@ class AppRoutes {
   static const USER_PESSOAS = '/user-pessoas';
   static const USER_RENDA = '/user-renda';
   static const USER_HOME = '/user-home';
+  static const USER_TRAT = '/user-tratamento';
 }
