@@ -4,6 +4,7 @@ import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:flutter_crud_1/views/login_page.dart';
 import 'package:flutter_crud_1/views/sign_up_page.dart';
 import 'package:flutter_crud_1/views/trat_registro.dart';
+import 'package:flutter_crud_1/views/trat_vivax_ovale.dart';
 import 'package:flutter_crud_1/views/user_agentes.dart';
 import 'package:flutter_crud_1/views/user_bem.dart';
 import 'package:flutter_crud_1/views/user_casa.dart';
@@ -99,6 +100,7 @@ class MyApp extends StatelessWidget {
                     AppRoutes.USER_RENDA: (_) => UserRenda(),
                     AppRoutes.USER_HOME: (_) => UserHome(),
                     AppRoutes.USER_TRAT: (_) => UserTratamento(),
+                    AppRoutes.TRAT_VIVAX_OVALE: (_) => vivaxOvale(),
                   },
                 );
               } else {

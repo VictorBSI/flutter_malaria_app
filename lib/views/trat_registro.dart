@@ -26,14 +26,17 @@ class _UserTratamento extends State<UserTratamento> {
   String tratamento = '';
   String tipo = '';
   int idade = 0;
+  List<String> tipoIdade = ['Anos', 'Meses'];
   int peso = 0;
   List<String> _tipos = ['falciparum', 'malarae', 'mista', 'vivax_ovale'];
   List<String> vivax_ovale = ['Opção 1', 'Opção 2'];
   List<String> falciparum = ['Opção 1', 'Opção 2'];
   List<String> mista = ['Opção 1', 'Opção 2'];
-  String malarae = 'Opção 1';
+  List<String> malarae = ['Opção 1'];
   String _selectedTipos = 'Selecione';
   String _selectedTrat = 'Selecione';
+  String _selectedIdade = 'Tipo';
+  String anomes = '';
   String opcao = '';
   bool checkboxValue = false;
 
@@ -98,13 +101,13 @@ class _UserTratamento extends State<UserTratamento> {
                           return null;
                         },
                       ),*/
-                      TextFormField(
+                     /* TextFormField(
                         decoration: InputDecoration(
                             labelText: 'Tratamento'),
                         onChanged: (value){
                           tratamento = value;
                         },
-                      ),
+                      ),*/
                       Text('Tratamento', maxLines: 2,),
 
                       DropdownButton<String>(
@@ -116,21 +119,63 @@ class _UserTratamento extends State<UserTratamento> {
                           opcao = newValue!;
                           //text.update();
                         },
-                        items: _tipos.map((tipo) {
+                        items:_selectedTipos == 'falciparum'?falciparum.map((opcao) {
                           return DropdownMenuItem(
-                            child: new Text(tipo),
-                            value: tipo,
+                            child: new Text(opcao),
+                            value: opcao,
                           );
-                        }).toList(),
+                        }).toList():_selectedTipos == 'malarae'?malarae.map((opcao) {
+                          return DropdownMenuItem(
+                            child: new Text(opcao),
+                            value: opcao,
+                          );
+                        }).toList():_selectedTipos == 'mista'?mista.map((opcao) {
+                          return DropdownMenuItem(
+                            child: new Text(opcao),
+                            value: opcao,
+                          );
+                        }).toList():vivax_ovale.map((opcao) {
+                          return DropdownMenuItem(
+                            child: new Text(opcao),
+                            value: opcao,
+                          );
+                        }).toList()
                       ),
-                      TextField(
-                        decoration: InputDecoration(labelText: 'Idade'),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                        onChanged: (value){
-                          int v = int.parse(value);
-                          idade = v;
-                        },
+                      Row(
+                        children:[
+                                Expanded(
+                                    child: TextField(
+                                      decoration: InputDecoration(labelText: 'Idade'),
+                                      keyboardType: TextInputType.number,
+                                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                                      onChanged: (value){
+                                        int v = int.parse(value);
+                                        idade = v;
+                                      },
+                                    )
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Expanded(
+                                    child:DropdownButton<String>(
+                                        hint: Text(_selectedIdade),
+                                        onChanged: (newValue){
+                                          setState(() {
+                                            _selectedIdade = newValue!;
+                                          });
+                                          anomes = newValue!;
+                                          //text.update();
+                                        },
+                                        items: tipoIdade.map((anomes) {
+                                          return DropdownMenuItem(
+                                            child: new Text(anomes),
+                                            value: anomes,
+                                          );
+                                        }).toList(),
+                                    ),
+                                )
+                        ]
                       ),
                       TextField(
                         decoration: InputDecoration(labelText: 'Peso'),
@@ -178,7 +223,7 @@ class _UserTratamento extends State<UserTratamento> {
                             }
                             ).then((value) => print('Added'));
                             Navigator.of(context).pushNamed(
-                                AppRoutes.USER_RESIDENCIA,
+                                AppRoutes.TRAT_VIVAX_OVALE,
                                 arguments: {
                                   "tipo": tipo,
                                   "tratamento": tratamento,

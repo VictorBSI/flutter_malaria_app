@@ -29,4 +29,5 @@ class AppRoutes {
   static const USER_RENDA = '/user-renda';
   static const USER_HOME = '/user-home';
   static const USER_TRAT = '/user-tratamento';
+  static const TRAT_VIVAX_OVALE = '/trat_vivax_ovale';
 }
