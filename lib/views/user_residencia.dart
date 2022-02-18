@@ -15,24 +15,51 @@ class UserResidencia extends StatelessWidget{
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('Dados Sociodemográficos'),
+          title: Text('Dados Sociodemográficos',),
           centerTitle: true,
+          backgroundColor: Colors.teal[200],
         ),
         body: Center(
             child:Padding(
               padding: EdgeInsets.only(top: 5,),
               child: ListView(
                 children: [
-                  Text(
-                    'Há quantos anos mora nesta residência?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold, height: 5, fontSize: 20),
+                  Container(
+                    child: Text(
+                      'Há quantos anos mora nesta residência?',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          //height: 5,
+                          fontSize: 30,
+                          color: Colors.black54,
+                      ),
+                    ), padding: EdgeInsets.only(top: 25, bottom: 25),
                   ),
                   Container(
-                    margin: const EdgeInsets.all(25),
+                    width: double.infinity,
+                    height: 75,
+                    margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                      //borderRadius: BorderRadius.circular(30.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: () async{
@@ -42,14 +69,38 @@ class UserResidencia extends StatelessWidget{
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
-                        child: ListTile(
-                          title: Text('De 0 a 2', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-                        )),),
+                        child: Center(
+                          child: ListTile(
+                            title: Text('De 0 a 2', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                          )
+                        )
+                    ),
+                  ),
                   Container(
-                    margin: const EdgeInsets.all(25),
+                    height: 75,
+                    width: double.infinity,
+                    margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                      //borderRadius: BorderRadius.circular(30.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
+
                     ),
                     child: GestureDetector(
                         onTap: () async{
@@ -59,14 +110,35 @@ class UserResidencia extends StatelessWidget{
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
-                        child: ListTile(
-                          title: Text('De 3 a 7', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-                        )),),
+                        child: Center(
+                            child: ListTile(
+                            title: Text('De 3 a 7', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                        ))
+                    ),),
                   Container(
-                    margin: const EdgeInsets.all(25),
+                    height: 75,
+                    width: double.infinity,
+                    margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                      //borderRadius: BorderRadius.circular(30.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: const Offset(
+                            5.0,
+                            5.0,
+                          ),
+                          blurRadius: 10.0,
+                          spreadRadius: 2.0,
+                        ), //BoxShadow
+                        BoxShadow(
+                          color: Colors.white,
+                          offset: const Offset(0.0, 0.0),
+                          blurRadius: 0.0,
+                          spreadRadius: 0.0,
+                        ), //BoxShadow
+                      ],
                     ),
                     child: GestureDetector(
                         onTap: () async{
@@ -76,14 +148,36 @@ class UserResidencia extends StatelessWidget{
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
-                        child: ListTile(
-                          title: Text('De 8 a 10', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-                        )),),
+                        child:
+                          Center(
+                            child: ListTile(
+                              title: Text('De 8 a 10', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                            )
+                          )
+                    ),),
                   Container(
-                    margin: const EdgeInsets.all(25),
+                    height: 75,
+                    margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
+                      //borderRadius: BorderRadius.circular(30.0),
                     ),
                     child: GestureDetector(
                         onTap: () async{
@@ -93,9 +187,13 @@ class UserResidencia extends StatelessWidget{
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
-                        child: ListTile(
-                          title: Text('Mais de 10', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-                        )),),
+                        child:
+                          Center(
+                            child: ListTile(
+                              title: Text('Mais de 10', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                            )
+                          )
+                    ),),
                 ],
               ),
             )

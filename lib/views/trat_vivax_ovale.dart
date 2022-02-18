@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sticky_headers/sticky_headers.dart';
 
 
 class vivaxOvale extends StatelessWidget {
@@ -11,8 +12,8 @@ class vivaxOvale extends StatelessWidget {
     return MaterialApp(
       title: _title,
       home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: Center(heightFactor: 1.0,child: const MyStatelessWidget(),)  ,
+        appBar: AppBar(title: const Text(_title), backgroundColor: Colors.teal[200],),
+        body: Center(heightFactor: 1.0,child: MyStatelessWidget(),)  ,
       ),
     );
   }
@@ -23,7 +24,9 @@ class MyStatelessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
+    return StickyHeader(
+        header: Container(child: Text('Teste')),
+        content: GridView.count (
       primary: false,
       padding: const EdgeInsets.all(20),
       crossAxisSpacing: 10,
@@ -61,6 +64,10 @@ class MyStatelessWidget extends StatelessWidget {
           color: Colors.teal[600],
         ),
       ],
-    );
+    ));
+
+
+      //prototypeItem:
+
   }
 }
