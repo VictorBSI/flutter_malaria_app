@@ -220,9 +220,10 @@ class _UserTratamento extends State<UserTratamento> {
                               'tratamento': tratamento,
                               'idade': idade,
                               'peso': peso,
+                              'gestante': checkboxValue? 'gestante': 'não gestante',
                             }
                             ).then((value) => print('Added'));
-                            Navigator.of(context).pushNamed(
+                            tipo == 'vivax_ovale'? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_VIVAX_OVALE,
                                 arguments: {
                                   "tipo": tipo,
@@ -230,7 +231,8 @@ class _UserTratamento extends State<UserTratamento> {
                                   "idade": idade,
                                   "peso": peso,
                                   "gestante": checkboxValue,
-                                });
+                                  "tipo_idade": anomes,
+                                }):Navigator.of(context).pushNamed(AppRoutes.LOGIN);
                           }, //AppRoutes.USER_RESIDENCIA
                           icon: Icon(Icons.arrow_forward),
                           label: Text('Próximo'))

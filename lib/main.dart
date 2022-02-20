@@ -100,7 +100,7 @@ class MyApp extends StatelessWidget {
                     AppRoutes.USER_RENDA: (_) => UserRenda(),
                     AppRoutes.USER_HOME: (_) => UserHome(),
                     AppRoutes.USER_TRAT: (_) => UserTratamento(),
-                    AppRoutes.TRAT_VIVAX_OVALE: (_) => vivaxOvale(),
+                    AppRoutes.TRAT_VIVAX_OVALE: (_) => VivaxOvale(),
                   },
                 );
               } else {

@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
             end: Alignment.bottomCenter,
             colors: [
               Colors.white,
-              Colors.blue,
+              Colors.teal,
             ],
           ),
         ),
@@ -150,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                         this._obscurePassword = newValue!;
                       });
                     },
-                    activeColor: Colors.blue,
+                    activeColor: Colors.teal,
                   ),
                   Text(
                     "Mostrar senha",
@@ -173,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                    Colors.blue,
+                    Colors.teal,
                   ),
                   shape: MaterialStateProperty.all<OutlinedBorder>(
                     RoundedRectangleBorder(
@@ -206,7 +206,7 @@ class _LoginPageState extends State<LoginPage> {
                     );
                   },
                   child: Text("Cadastre-se", style: TextStyle(color: Colors.white)),
-                  color: Colors.blue,
+                  color: Colors.teal,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
                   ),

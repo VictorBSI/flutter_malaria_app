@@ -33,7 +33,7 @@ class _SignUpPageState extends State<SignUpPage>{
             end: Alignment.bottomCenter,
             colors: [
               Colors.white,
-              Colors.blue,
+              Colors.teal,
             ],
           ),
         ),
@@ -45,7 +45,7 @@ class _SignUpPageState extends State<SignUpPage>{
                 "Cadastro",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.grey.shade600,
+                  color: Colors.teal,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
@@ -199,7 +199,7 @@ class _SignUpPageState extends State<SignUpPage>{
                               this.showPassword = newValue!;
                             });
                           },
-                          activeColor: Colors.blue,
+                          activeColor: Colors.teal,
                         ),
                         Text(
                           "Mostrar senha",
@@ -218,11 +218,12 @@ class _SignUpPageState extends State<SignUpPage>{
                   _doSignUp();
                   Navigator.of(context).pushNamed(AppRoutes.LOGIN);
                 },
-                child: Text("Casdastrar"),
+                child: Text("Casdastrar", style: TextStyle(color: Colors.white),),
                 //color: CustomColors().getActiveSecondaryButton(),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
+                color: Colors.teal,
               ),
             ],
           ),
