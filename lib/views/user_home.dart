@@ -10,6 +10,7 @@ class UserHome extends StatelessWidget{
         appBar: AppBar(
           title: Text('Início'),
           centerTitle: true,
+          backgroundColor: Colors.teal[200],
         ),
         body: Center(
             child:Padding(
@@ -20,29 +21,63 @@ class UserHome extends StatelessWidget{
                     margin: const EdgeInsets.all(10),
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      /*color: Colors.teal,
+                      borderRadius: BorderRadius.circular(30.0),*/
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: (){
                           Navigator.of(context).pushNamed(AppRoutes.USER_REGISTRO);
                         },
                         child: ListTile(
-                          title: Text('Pesquisa', textAlign: TextAlign.center, style: TextStyle(color: Colors.white),),
+                          title: Text('Pesquisa', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      /*color: Colors.teal,
+                      borderRadius: BorderRadius.circular(30.0),*/
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: (){
                           Navigator.of(context).pushNamed(AppRoutes.USER_TRAT);
                         },
                         child: ListTile(
-                          title: Text('Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold)),
                         )),),
                 ],
               ),

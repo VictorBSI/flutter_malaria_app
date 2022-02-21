@@ -43,23 +43,23 @@ class UserResidencia extends StatelessWidget{
                     decoration: BoxDecoration(
                       color: Colors.white,
                       //borderRadius: BorderRadius.circular(30.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            offset: const Offset(
-                              5.0,
-                              5.0,
-                            ),
-                            blurRadius: 10.0,
-                            spreadRadius: 2.0,
-                          ), //BoxShadow
-                          BoxShadow(
-                            color: Colors.white,
-                            offset: const Offset(0.0, 0.0),
-                            blurRadius: 0.0,
-                            spreadRadius: 0.0,
-                          ), //BoxShadow
-                        ]
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: const Offset(
+                            5.0,
+                            5.0,
+                          ),
+                          blurRadius: 10.0,
+                          spreadRadius: 2.0,
+                        ), //BoxShadow
+                        BoxShadow(
+                          color: Colors.white,
+                          offset: const Offset(0.0, 0.0),
+                          blurRadius: 0.0,
+                          spreadRadius: 0.0,
+                        ), //BoxShadow
+                      ]
                     ),
                     child: GestureDetector(
                         onTap: () async{

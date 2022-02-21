@@ -42,6 +42,7 @@ class UserRegistro extends StatelessWidget {
                   appBar: AppBar(
                     title: Text('Dados Sóciodemográficos'),
                     centerTitle: true,
+                    backgroundColor: Colors.teal[200],
                   ),
                   body: Center(
                     child: Padding(
@@ -157,14 +158,16 @@ class UserRegistro extends StatelessWidget {
                                   'sexo': sexo,
                                   'data_nascimento': data_nascimento,
                                   'endereco': endereco,
-                                }
+                                },
                                 ).then((value) => print('User added'));
                                 //Navigator.pushNamed(context, AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo});
                                 Navigator.of(context).pushNamed(
                                   AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo});
                               }, //AppRoutes.USER_RESIDENCIA
                               icon: Icon(Icons.arrow_forward),
-                              label: Text('Próximo'))
+                              label: Text('Próximo',),
+                              style: ElevatedButton.styleFrom(primary: Colors.teal)
+                          ),
                         ],
                       ),
                     ),
