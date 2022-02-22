@@ -28,7 +28,7 @@ class _UserTratamento extends State<UserTratamento> {
   int idade = 0;
   List<String> tipoIdade = ['Anos', 'Meses'];
   int peso = 0;
-  List<String> _tipos = ['falciparum', 'malarae', 'mista', 'vivax_ovale'];
+  List<String> _tipos = ['falciparum', 'malariae', 'mista', 'vivax_ovale'];
   List<String> vivax_ovale = ['Opção 1', 'Opção 2'];
   List<String> falciparum = ['Opção 1', 'Opção 2'];
   List<String> mista = ['Opção 1', 'Opção 2'];
@@ -60,6 +60,7 @@ class _UserTratamento extends State<UserTratamento> {
               appBar: AppBar(
                 title: Text('Dados Iniciais'),
                 centerTitle: true,
+                backgroundColor: Colors.cyan,
               ),
               body: Center(
                 child: Padding(
@@ -196,7 +197,7 @@ class _UserTratamento extends State<UserTratamento> {
                           style: TextStyle(fontSize: 14.0),
                         ),
                         controlAffinity: ListTileControlAffinity.leading,
-                        activeColor: Colors.blue,
+                        activeColor: Colors.cyan,
                       ),
                       ElevatedButton.icon(
 
@@ -223,7 +224,7 @@ class _UserTratamento extends State<UserTratamento> {
                               'gestante': checkboxValue? 'gestante': 'não gestante',
                             }
                             ).then((value) => print('Added'));
-                            tipo == 'vivax_ovale'? Navigator.of(context).pushNamed(
+                            tipo == 'vivax_ovale' && checkboxValue == false? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_VIVAX_OVALE,
                                 arguments: {
                                   "tipo": tipo,
@@ -232,10 +233,30 @@ class _UserTratamento extends State<UserTratamento> {
                                   "peso": peso,
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
-                                }):Navigator.of(context).pushNamed(AppRoutes.LOGIN);
+                                }): tipo == 'vivax_ovale' && checkboxValue == true? Navigator.of(context).pushNamed(
+                                AppRoutes.TRAT_VIVAX_OVALE_GESTANTE,
+                                arguments: {
+                                  "tipo": tipo,
+                                  "tratamento": tratamento,
+                                  "idade": idade,
+                                  "peso": peso,
+                                  "gestante": checkboxValue,
+                                  "tipo_idade": anomes,
+                                }): tipo == 'malariae'? Navigator.of(context).pushNamed(
+                                AppRoutes.TRAT_MALARAE,
+                                arguments: {
+                                  "tipo": tipo,
+                                  "tratamento": tratamento,
+                                  "idade": idade,
+                                  "peso": peso,
+                                  "gestante": checkboxValue,
+                                  "tipo_idade": anomes,
+                                }): Navigator.of(context).pushNamed(AppRoutes.LOGIN);
                           }, //AppRoutes.USER_RESIDENCIA
                           icon: Icon(Icons.arrow_forward),
-                          label: Text('Próximo'))
+                          label: Text('Próximo'),
+                          style: ElevatedButton.styleFrom(primary: Colors.cyan)),
+
                     ],
                   ),
                 ),

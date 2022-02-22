@@ -42,7 +42,7 @@ class UserRegistro extends StatelessWidget {
                   appBar: AppBar(
                     title: Text('Dados Sóciodemográficos'),
                     centerTitle: true,
-                    backgroundColor: Colors.teal[200],
+                    backgroundColor: Colors.cyan,
                   ),
                   body: Center(
                     child: Padding(
@@ -166,7 +166,7 @@ class UserRegistro extends StatelessWidget {
                               }, //AppRoutes.USER_RESIDENCIA
                               icon: Icon(Icons.arrow_forward),
                               label: Text('Próximo',),
-                              style: ElevatedButton.styleFrom(primary: Colors.teal)
+                              style: ElevatedButton.styleFrom(primary: Colors.cyan)
                           ),
                         ],
                       ),

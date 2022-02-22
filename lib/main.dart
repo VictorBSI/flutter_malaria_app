@@ -3,8 +3,10 @@ import 'package:flutter_crud_1/provider/users.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:flutter_crud_1/views/login_page.dart';
 import 'package:flutter_crud_1/views/sign_up_page.dart';
+import 'package:flutter_crud_1/views/trat_malarae.dart';
 import 'package:flutter_crud_1/views/trat_registro.dart';
 import 'package:flutter_crud_1/views/trat_vivax_ovale.dart';
+import 'package:flutter_crud_1/views/trat_vivax_ovale_gestante.dart';
 import 'package:flutter_crud_1/views/user_agentes.dart';
 import 'package:flutter_crud_1/views/user_bem.dart';
 import 'package:flutter_crud_1/views/user_casa.dart';
@@ -101,6 +103,8 @@ class MyApp extends StatelessWidget {
                     AppRoutes.USER_HOME: (_) => UserHome(),
                     AppRoutes.USER_TRAT: (_) => UserTratamento(),
                     AppRoutes.TRAT_VIVAX_OVALE: (_) => VivaxOvale(),
+                    AppRoutes.TRAT_VIVAX_OVALE_GESTANTE: (_) => VivaxOvaleGestante(),
+                    AppRoutes.TRAT_MALARAE: (_) => Malarae(),
                   },
                 );
               } else {

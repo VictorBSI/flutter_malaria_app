@@ -10,7 +10,7 @@ class UserHome extends StatelessWidget{
         appBar: AppBar(
           title: Text('Início'),
           centerTitle: true,
-          backgroundColor: Colors.teal[200],
+          backgroundColor: Colors.cyan,
         ),
         body: Center(
             child:Padding(
@@ -19,9 +19,9 @@ class UserHome extends StatelessWidget{
                 children: [
                   Container(
                     margin: const EdgeInsets.all(10),
-                    height: 50,
+                    height: 60,
                     decoration: BoxDecoration(
-                      /*color: Colors.teal,
+                      /*color: Colors.cyan,
                       borderRadius: BorderRadius.circular(30.0),*/
                         boxShadow: [
                           BoxShadow(
@@ -46,13 +46,13 @@ class UserHome extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_REGISTRO);
                         },
                         child: ListTile(
-                          title: Text('Pesquisa', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),),
+                          title: Text('Pesquisa', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20),),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
-                    height: 50,
+                    height: 60,
                     decoration: BoxDecoration(
-                      /*color: Colors.teal,
+                      /*color: Colors.cyan,
                       borderRadius: BorderRadius.circular(30.0),*/
                         boxShadow: [
                           BoxShadow(
@@ -77,7 +77,7 @@ class UserHome extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_TRAT);
                         },
                         child: ListTile(
-                          title: Text('Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold)),
+                          title: Text('Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
                         )),),
                 ],
               ),

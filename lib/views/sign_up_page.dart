@@ -33,7 +33,7 @@ class _SignUpPageState extends State<SignUpPage>{
             end: Alignment.bottomCenter,
             colors: [
               Colors.white,
-              Colors.teal,
+              Colors.cyan,
             ],
           ),
         ),
@@ -45,7 +45,7 @@ class _SignUpPageState extends State<SignUpPage>{
                 "Cadastro",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.teal,
+                  color: Colors.cyan,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
@@ -199,7 +199,7 @@ class _SignUpPageState extends State<SignUpPage>{
                               this.showPassword = newValue!;
                             });
                           },
-                          activeColor: Colors.teal,
+                          activeColor: Colors.cyan,
                         ),
                         Text(
                           "Mostrar senha",
@@ -223,7 +223,7 @@ class _SignUpPageState extends State<SignUpPage>{
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
-                color: Colors.teal,
+                color: Colors.cyan,
               ),
             ],
           ),

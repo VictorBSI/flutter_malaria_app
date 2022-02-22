@@ -13,7 +13,7 @@ class UserPessoas extends StatelessWidget{
         appBar: AppBar(
           title: Text('Dados Sociodemográficos'),
           centerTitle: true,
-          backgroundColor: Colors.teal[200],
+          backgroundColor: Colors.cyan,
         ),
         body: Center(
             child:Padding(

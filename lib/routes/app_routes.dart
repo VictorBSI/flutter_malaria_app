@@ -30,4 +30,6 @@ class AppRoutes {
   static const USER_HOME = '/user-home';
   static const USER_TRAT = '/user-tratamento';
   static const TRAT_VIVAX_OVALE = '/trat_vivax_ovale';
+  static const TRAT_VIVAX_OVALE_GESTANTE = '/trat_vivax_ovale_gestante';
+  static const TRAT_MALARAE = '/trat_malarae';
 }

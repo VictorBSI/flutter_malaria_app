@@ -8,7 +8,7 @@ class VivaxOvale extends StatelessWidget {
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: rcvdData['tratamento'] == 'Opção 1'? const Text('P.vivax ou P.ovale - Opção 1'): const Text('P.vivax ou P.ovale - Opção 2'), backgroundColor: Colors.teal[200],),
+        appBar: AppBar(title: rcvdData['tratamento'] == 'Opção 1'? const Text('P.vivax ou P.ovale - Opção 1'): const Text('P.vivax ou P.ovale - Opção 2'), backgroundColor: Colors.cyan,),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Container(
@@ -46,7 +46,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -77,7 +77,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -106,7 +106,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -145,7 +145,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -182,7 +182,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -217,7 +217,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -246,7 +246,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -275,7 +275,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -304,7 +304,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -333,7 +333,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -372,7 +372,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -409,7 +409,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -444,7 +444,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -473,7 +473,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -502,7 +502,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -531,7 +531,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -560,7 +560,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -599,7 +599,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -636,7 +636,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -671,7 +671,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -700,7 +700,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -729,7 +729,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -758,7 +758,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -787,7 +787,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -826,7 +826,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -863,7 +863,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -898,7 +898,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -927,7 +927,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -956,7 +956,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -985,7 +985,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1014,7 +1014,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -1053,7 +1053,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -1090,7 +1090,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1125,7 +1125,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1154,7 +1154,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1183,7 +1183,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1212,7 +1212,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1241,7 +1241,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -1280,7 +1280,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -1317,7 +1317,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1352,7 +1352,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1381,7 +1381,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1410,7 +1410,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1439,7 +1439,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1468,7 +1468,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -1507,7 +1507,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -1544,7 +1544,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1579,7 +1579,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1608,7 +1608,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1637,7 +1637,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1666,7 +1666,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1695,7 +1695,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -1734,7 +1734,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -1771,7 +1771,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1806,7 +1806,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1835,7 +1835,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1864,7 +1864,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1893,7 +1893,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -1922,7 +1922,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -1960,7 +1960,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -1997,7 +1997,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2032,7 +2032,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2061,7 +2061,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2090,7 +2090,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2119,7 +2119,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2148,7 +2148,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -2184,7 +2184,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -2215,7 +2215,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2244,7 +2244,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -2283,7 +2283,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -2320,7 +2320,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2355,7 +2355,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2384,7 +2384,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2413,7 +2413,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2442,7 +2442,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2471,7 +2471,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -2510,7 +2510,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -2547,7 +2547,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2582,7 +2582,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2611,7 +2611,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2640,7 +2640,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2669,7 +2669,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2698,7 +2698,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -2737,7 +2737,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -2774,7 +2774,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2809,7 +2809,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2838,7 +2838,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2867,7 +2867,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2896,7 +2896,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -2925,7 +2925,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -2964,7 +2964,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -3001,7 +3001,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3036,7 +3036,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3065,7 +3065,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3094,7 +3094,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3123,7 +3123,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3152,7 +3152,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -3191,7 +3191,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -3228,7 +3228,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3263,7 +3263,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3292,7 +3292,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3321,7 +3321,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3350,7 +3350,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3379,7 +3379,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -3418,7 +3418,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -3455,7 +3455,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3490,7 +3490,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3519,7 +3519,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3548,7 +3548,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3577,7 +3577,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3606,7 +3606,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -3645,7 +3645,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -3682,7 +3682,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3717,7 +3717,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3746,7 +3746,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3775,7 +3775,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3804,7 +3804,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3833,7 +3833,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -3872,7 +3872,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -3909,7 +3909,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3944,7 +3944,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -3973,7 +3973,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -4002,7 +4002,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -4031,7 +4031,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -4060,7 +4060,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
@@ -4098,7 +4098,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[100]
+                              color: Colors.cyan
                           ),
                         )
 
@@ -4135,7 +4135,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[200]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -4170,7 +4170,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -4199,7 +4199,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -4228,7 +4228,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -4257,7 +4257,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                         Container(
@@ -4286,7 +4286,7 @@ class VivaxOvale extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              color: Colors.teal[300]
+                              color: Colors.cyan
                           ),
                         ),
                       ],
