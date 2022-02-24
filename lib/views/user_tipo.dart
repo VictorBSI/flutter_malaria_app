@@ -11,6 +11,7 @@ class UserTipo extends StatelessWidget{
         appBar: AppBar(
           title: Text('Antecedentes Sobre a Malária'),
           centerTitle: true,
+          backgroundColor: Colors.cyan,
         ),
         body: Center(
             child:Padding(

@@ -14,16 +14,22 @@ class UserEvitar extends StatelessWidget{
       appBar: AppBar(
         title: Text('Orientações Terapêuticas'),
         centerTitle: true,
+          backgroundColor: Colors.cyan,
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.only(top: 160, left: 20, right: 20),
+          padding: EdgeInsets.only(top: 80, left: 20, right: 20),
           child: ListView(
             children: <Widget>[
               Container(
                 padding: EdgeInsets.only(top: 20),
                 child: Text('Recebeu orientações para evitar o consumo de bebida alcoólica durante o tratamento?',
-                  style: TextStyle(fontWeight: FontWeight.bold)),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    //height: 5,
+                    fontSize: 24,
+                    color: Colors.black54,),
+                  textAlign: TextAlign.justify,),
               ),
               Container(
                 child: Column(
@@ -37,10 +43,11 @@ class UserEvitar extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                     orientacoes= 'Sim';
                                 },),
-                                Expanded(child: Text('Sim', maxLines: 2,))
+                                Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black54),))
                               ],
                             )
                         ),
+                        Padding(padding: EdgeInsets.all(40)),
                         Flexible(
                             flex: 1,
                             child: Row(
@@ -48,7 +55,7 @@ class UserEvitar extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                     orientacoes= 'Não';
                                 },),
-                                Expanded(child: Text('Não', maxLines: 2,))
+                                Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black54)))
                               ],
                             )
                         ),
@@ -60,7 +67,12 @@ class UserEvitar extends StatelessWidget{
               Container(
                 padding: EdgeInsets.only(top: 20),
                 child: Text('Recebeu outras informações sobre a malária, além das orientações sobre o tratamento?',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    //height: 5,
+                    fontSize: 24,
+                    color: Colors.black54,),
+                  textAlign: TextAlign.justify,),
               ),
               Container(
                 child: Column(
@@ -74,10 +86,11 @@ class UserEvitar extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                     informacoes= 'Sim';
                                 },),
-                                Expanded(child: Text('Sim', maxLines: 2,))
+                                Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black54)))
                               ],
                             )
                         ),
+                        Padding(padding: EdgeInsets.all(40)),
                         Flexible(
                             flex: 1,
                             child: Row(
@@ -85,7 +98,7 @@ class UserEvitar extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                     informacoes= 'Não';
                                 },),
-                                Expanded(child: Text('Não', maxLines: 2,))
+                                Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black54)))
                               ],
                             )
                         ),
@@ -94,6 +107,7 @@ class UserEvitar extends StatelessWidget{
                   ],
                 ),
               ),
+              Padding(padding: EdgeInsets.all(10)),
               ElevatedButton.icon(
                   onPressed: ()async{
                     await user_evitar.add({
@@ -104,7 +118,9 @@ class UserEvitar extends StatelessWidget{
                     Navigator.of(context).pushNamed(AppRoutes.USER_CURA, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),
-                  label: Text('Próximo'))
+                  label: Text('Próximo'),
+                  style: ElevatedButton.styleFrom(primary: Colors.cyan)
+              ),
             ],
           ),
         ),

@@ -125,7 +125,7 @@ class _UserTratamento extends State<UserTratamento> {
                             child: new Text(opcao),
                             value: opcao,
                           );
-                        }).toList():_selectedTipos == 'malarae'?malarae.map((opcao) {
+                        }).toList():_selectedTipos == 'malariae'?malarae.map((opcao) {
                           return DropdownMenuItem(
                             child: new Text(opcao),
                             value: opcao,

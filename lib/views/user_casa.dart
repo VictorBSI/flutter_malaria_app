@@ -11,22 +11,46 @@ class UserCasa extends StatelessWidget{
         appBar: AppBar(
           title: Text('Dados Sociodemográficos'),
           centerTitle: true,
+          backgroundColor: Colors.cyan,
         ),
         body: Center(
             child:Padding(
               padding: EdgeInsets.only(top: 65,),
               child: ListView(
                 children: [
-                  Text(
+                  Container(
+                    child:Text(
                     'A casa onde você mora é?',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold, height: 5, fontSize: 24),
+                    style: TextStyle(fontWeight: FontWeight.bold,
+                      //height: 5,
+                      fontSize: 30,
+                      color: Colors.black54,),
+                    ),
+                    padding: EdgeInsets.only(bottom: 40),
                   ),
                   Container(
                     margin: const EdgeInsets.all(25),
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                        color: Colors.white,
+                        //borderRadius: BorderRadius.circular(30.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -37,13 +61,30 @@ class UserCasa extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_LOCALIZADA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('Própria', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Própria', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(25),
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                        color: Colors.white,
+                        //borderRadius: BorderRadius.circular(30.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -54,13 +95,30 @@ class UserCasa extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_LOCALIZADA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('Alugada', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Alugada', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(25),
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                        color: Colors.white,
+                        //borderRadius: BorderRadius.circular(30.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -71,7 +129,7 @@ class UserCasa extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_LOCALIZADA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('Cedida', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Cedida', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                 ],
               ),

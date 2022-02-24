@@ -11,6 +11,7 @@ class UserMal extends StatelessWidget{
         appBar: AppBar(
           title: Text('Adesão ao tratamento'),
           centerTitle: true,
+          backgroundColor: Colors.cyan,
         ),
         body: Center(
             child:Padding(

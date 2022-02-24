@@ -11,7 +11,7 @@ class Database {
   }
 
 
-  Future<void> create(String nome, Bool sexo, String endereco,
+  Future<void> create(String nome, sexo, String endereco,
       Timestamp data_nascimento) async {
     try {
       await firestore.collection("usuario").add({

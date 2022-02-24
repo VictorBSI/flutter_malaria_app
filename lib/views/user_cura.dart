@@ -15,6 +15,7 @@ class UserCura extends StatelessWidget{
       appBar: AppBar(
         title: Text('Orientações Terapêuticas'),
         centerTitle: true,
+          backgroundColor: Colors.cyan,
       ),
       body: Center(
         child: Padding(

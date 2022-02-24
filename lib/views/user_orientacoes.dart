@@ -12,16 +12,25 @@ class UserOrientacoes extends StatelessWidget{
         appBar: AppBar(
           title: Text('Orientações Terapêuticas'),
           centerTitle: true,
+          backgroundColor: Colors.cyan,
         ),
         body: Center(
             child:Padding(
-              padding: EdgeInsets.only(top: 200,),
+              padding: EdgeInsets.only(top: 180, right: 10, left: 10),
               child: ListView(
                 children: [
-                  Text(
-                    'Quais orientações recebeu em relação ao tratamento?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold, height: 5, fontSize: 14),
+                  Container(
+                    child: Text(
+                      'Quais orientações recebeu em relação ao tratamento?',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        //height: 5,
+                        fontSize: 30,
+                        color: Colors.black54,
+                      ),
+                    ),
+                    padding: EdgeInsets.only(bottom: 25),
                   ),
                   TextFormField(
                     decoration: InputDecoration(labelText: 'Descreva como vai tomar os remédios',
@@ -41,6 +50,7 @@ class UserOrientacoes extends StatelessWidget{
                               },
                             icon: Icon(Icons.arrow_forward),
                             label: Text('Próximo'),
+                            style: ElevatedButton.styleFrom(primary: Colors.cyan)
                   ),
                 )
                 ],
