@@ -18,16 +18,35 @@ class UserBem extends StatelessWidget{
               padding: EdgeInsets.only(top: 30,),
               child: ListView(
                 children: [
-                  Text('Quando se sente bem, para de tomar os remédios?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold, height: 5, fontSize: 14),
+                  Container(
+                    child: Text('Quando se sente bem, para de tomar os remédios?',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),
+                    ),
+                    padding: EdgeInsets.only(bottom: 25),
                   ),
                   Container(
                     margin: const EdgeInsets.all(10),
-                    height: 50,
+                    height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -38,14 +57,30 @@ class UserBem extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_MAL, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('Nunca', textAlign: TextAlign.center, style: TextStyle(color: Colors.white),),
+                          title: Text('Nunca', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),minVerticalPadding: 20,
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
-                    height: 50,
+                    height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -56,14 +91,30 @@ class UserBem extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_MAL, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Raramente', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Raramente', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),minVerticalPadding: 20,
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
-                    height: 50,
+                    height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -74,14 +125,30 @@ class UserBem extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_MAL, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Às vezes', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Às vezes', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),minVerticalPadding: 20,
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
-                    height: 50,
+                    height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -92,14 +159,30 @@ class UserBem extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_MAL, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Frequentemente', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Frequentemente', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),minVerticalPadding: 20,
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
-                    height: 50,
+                    height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -110,7 +193,7 @@ class UserBem extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_MAL, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Sempre', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Sempre', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),minVerticalPadding: 20,
                         )),),
                 ],
               ),

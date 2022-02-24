@@ -15,19 +15,38 @@ class UserSobraram extends StatelessWidget{
         ),
         body: Center(
             child:Padding(
-              padding: EdgeInsets.only(top: 30,),
+              padding: EdgeInsets.only(top: 25),
               child: ListView(
                 children: [
-                  Text('O que fez com os comprimidos que sobraram?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold, height: 5, fontSize: 14),
+                  Container(
+                    child: Text('O que fez com os comprimidos que sobraram?',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),
+                    ),
+                    padding: EdgeInsets.only(bottom: 10),
                   ),
                   Container(
-                    margin: const EdgeInsets.all(10),
-                    height: 50,
+                    margin: const EdgeInsets.all(5),
+                    height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -38,14 +57,30 @@ class UserSobraram extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('Jogou fora', textAlign: TextAlign.center, style: TextStyle(color: Colors.white),),
+                          title: Text('Jogou fora', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),minVerticalPadding: 20,
                         )),),
                   Container(
-                    margin: const EdgeInsets.all(10),
-                    height: 50,
+                    margin: const EdgeInsets.all(5),
+                    height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -56,14 +91,30 @@ class UserSobraram extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Guardou para tomar na próxima malária', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Guardou para tomar na próxima malária', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
-                    margin: const EdgeInsets.all(10),
-                    height: 50,
+                    margin: const EdgeInsets.all(5),
+                    height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -74,14 +125,30 @@ class UserSobraram extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Deu para outra pessoa com suspeita de malária', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Deu para outra pessoa com suspeita de malária', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
-                    margin: const EdgeInsets.all(10),
-                    height: 50,
+                    margin: const EdgeInsets.all(5),
+                    height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -92,14 +159,30 @@ class UserSobraram extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Devolveu à unidade de saúde', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Devolveu à unidade de saúde', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),minVerticalPadding: 20,
                         )),),
                   Container(
-                    margin: const EdgeInsets.all(10),
-                    height: 50,
+                    margin: const EdgeInsets.all(5),
+                    height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -110,14 +193,30 @@ class UserSobraram extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Desconheço', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Desconheço', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),minVerticalPadding: 20,
                         )),),
                   Container(
-                    margin: const EdgeInsets.all(10),
-                    height: 50,
+                    margin: const EdgeInsets.all(5),
+                    height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
                     ),
                     child: GestureDetector(
                         onTap: ()async{
@@ -128,7 +227,7 @@ class UserSobraram extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Prefiro não responder', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Prefiro não responder', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),minVerticalPadding: 20,
                         )),),
                 ],
               ),
