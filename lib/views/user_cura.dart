@@ -15,17 +15,23 @@ class UserCura extends StatelessWidget{
       appBar: AppBar(
         title: Text('Orientações Terapêuticas'),
         centerTitle: true,
-          backgroundColor: Colors.cyan,
+        backgroundColor: Colors.cyan,
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.only(top: 60, left: 20, right: 20),
+          padding: EdgeInsets.only(top: 0, left: 20, right: 20),
           child: ListView(
             children: <Widget>[
               Container(
                 padding: EdgeInsets.only(top: 20),
                 child: Text('O dia para o seu retorno foi previamente agendado para a realização das lâminas de controle de cura?',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      //height: 5,
+                      fontSize: 22,
+                      color: Colors.black54,
+                    ), textAlign: TextAlign.justify,
+                ),
               ),
               Container(
                 child: Column(
@@ -39,10 +45,11 @@ class UserCura extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                     retorno = 'Sim';
                                 },),
-                                Expanded(child: Text('Sim', maxLines: 2,))
+                                Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
                             )
                         ),
+                        Padding(padding: EdgeInsets.all(10)),
                         Flexible(
                             flex: 1,
                             child: Row(
@@ -50,7 +57,7 @@ class UserCura extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                   retorno = 'Não';
                                 },),
-                                Expanded(child: Text('Não', maxLines: 2,))
+                                Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
                             )
                         ),
@@ -59,9 +66,11 @@ class UserCura extends StatelessWidget{
                   ],
                 ),
               ),
+              Padding(padding: EdgeInsets.all(5)),
               Container(
-                child: Text('Data', style: TextStyle(fontWeight: FontWeight.bold)),
+                child: Text('Data', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black54)),
               ),
+              //Padding(padding: EdgeInsets.all(5)),
               Container(
                 height: 200,
                 child: CupertinoDatePicker(
@@ -75,7 +84,12 @@ class UserCura extends StatelessWidget{
               Container(
                 padding: EdgeInsets.only(top: 20),
                 child: Text('Você foi informado por que é feito esse controle de verificação de cura?',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: TextStyle(fontWeight: FontWeight.bold,
+                      //height: 5,
+                      fontSize: 22,
+                      color: Colors.black54,
+                    ), textAlign: TextAlign.justify,
+                ),
               ),
               Container(
                 child: Column(
@@ -89,10 +103,11 @@ class UserCura extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                     informado= 'Sim';
                                 },),
-                                Expanded(child: Text('Sim', maxLines: 2,))
+                                Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
                             )
                         ),
+                        Padding(padding: EdgeInsets.all(10)),
                         Flexible(
                             flex: 1,
                             child: Row(
@@ -100,7 +115,7 @@ class UserCura extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                     informado= 'Não';
                                 },),
-                                Expanded(child: Text('Não', maxLines: 2,))
+                                Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
                             )
                         ),
@@ -109,6 +124,7 @@ class UserCura extends StatelessWidget{
                   ],
                 ),
               ),
+              //Padding(padding: EdgeInsets.all(10)),
               ElevatedButton.icon(
                   onPressed: ()async{
                     await user_cura.add({
@@ -120,7 +136,8 @@ class UserCura extends StatelessWidget{
                     Navigator.of(context).pushNamed(AppRoutes.USER_VEZES, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),
-                  label: Text('Próximo'))
+                  label: Text('Próximo'),
+                  style: ElevatedButton.styleFrom(primary: Colors.cyan))
             ],
           ),
         ),

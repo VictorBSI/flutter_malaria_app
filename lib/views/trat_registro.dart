@@ -223,12 +223,12 @@ class _UserTratamento extends State<UserTratamento> {
                               'peso': peso,
                               'gestante': checkboxValue? 'gestante': 'não gestante',
                             }
-                            ).then((value) => print('Added'));
+                            ).then((value) => print(opcao));
                             tipo == 'vivax_ovale' && checkboxValue == false? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_VIVAX_OVALE,
                                 arguments: {
                                   "tipo": tipo,
-                                  "tratamento": tratamento,
+                                  "tratamento": opcao,
                                   "idade": idade,
                                   "peso": peso,
                                   "gestante": checkboxValue,
@@ -237,7 +237,7 @@ class _UserTratamento extends State<UserTratamento> {
                                 AppRoutes.TRAT_VIVAX_OVALE_GESTANTE,
                                 arguments: {
                                   "tipo": tipo,
-                                  "tratamento": tratamento,
+                                  "tratamento": opcao,
                                   "idade": idade,
                                   "peso": peso,
                                   "gestante": checkboxValue,
@@ -246,7 +246,7 @@ class _UserTratamento extends State<UserTratamento> {
                                 AppRoutes.TRAT_MALARAE,
                                 arguments: {
                                   "tipo": tipo,
-                                  "tratamento": tratamento,
+                                  "tratamento": opcao,
                                   "idade": idade,
                                   "peso": peso,
                                   "gestante": checkboxValue,

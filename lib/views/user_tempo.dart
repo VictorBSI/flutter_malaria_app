@@ -20,11 +20,11 @@ class UserTempo extends StatelessWidget{
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.only(top: 120, left: 20, right: 20),
+          padding: EdgeInsets.only(top: 20, left: 20, right: 20),
           child: ListView(
             children: <Widget>[
               Container(
-                child: Text('Quanto tempo faz desde a última malária?', style: TextStyle(fontWeight: FontWeight.bold)),
+                child: Text('Quanto tempo faz desde a última malária?', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
               ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'meses',
@@ -36,7 +36,7 @@ class UserTempo extends StatelessWidget{
               Container(
                 padding: EdgeInsets.only(top: 20),
                 child: Text('Você costuma informar ao profissional de saúde quando alguém do seu convívio está com suspeita de malária?',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24,), textAlign: TextAlign.justify,),
               ),
               Container(
                 child: Column(
@@ -50,10 +50,11 @@ class UserTempo extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                     informar= 'Sim';
                                 },),
-                                Expanded(child: Text('Sim', maxLines: 2,))
+                                Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black54)))
                               ],
                             )
                         ),
+                        Padding(padding: EdgeInsets.only(right: 30),),
                         Flexible(
                             flex: 1,
                             child: Row(
@@ -61,7 +62,7 @@ class UserTempo extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                     informar= 'Não';
                                 },),
-                                Expanded(child: Text('Não', maxLines: 2,))
+                                Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black54)))
                               ],
                             )
                         ),
@@ -73,7 +74,7 @@ class UserTempo extends StatelessWidget{
               Container(
                 padding: EdgeInsets.only(top: 20),
                 child: Text('Além de você, tem alguém com malária na sua família neste momento?',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
               ),
               Container(
                 child: Column(
@@ -87,10 +88,11 @@ class UserTempo extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                     momento= 'Sim';
                                 },),
-                                Expanded(child: Text('Sim', maxLines: 2,))
+                                Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black54)))
                               ],
                             )
                         ),
+                        Padding(padding: EdgeInsets.only(right: 30),),
                         Flexible(
                             flex: 1,
                             child: Row(
@@ -98,7 +100,7 @@ class UserTempo extends StatelessWidget{
                                 Radio(value: 1, groupValue: '', onChanged: (_){
                                     momento= 'Não';
                                 },),
-                                Expanded(child: Text('Não', maxLines: 2,))
+                                Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black54)))
                               ],
                             )
                         ),
@@ -126,7 +128,8 @@ class UserTempo extends StatelessWidget{
                     Navigator.of(context).pushNamed(AppRoutes.USER_COMPRIMIDOS, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),
-                  label: Text('Próximo'))
+                  label: Text('Próximo'),
+                  style: ElevatedButton.styleFrom(primary: Colors.cyan))
             ],
           ),
         ),

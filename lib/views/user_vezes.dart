@@ -18,17 +18,39 @@ class UserVezes extends StatelessWidget{
               padding: EdgeInsets.only(top: 0,),
               child: ListView(
                 children: [
-                  Text('Quantas vezes você já teve malária?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold, height: 5, fontSize: 18),
+                  Container(
+                    child: Text('Quantas vezes você já teve malária?',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        //height: 5,
+                        fontSize: 30,
+                        color: Colors.black54,),
+                    ),
+                    padding: EdgeInsets.only(top: 25, bottom: 25),
                   ),
                   Container(
                     margin: const EdgeInsets.all(10),
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ],),
                     child: GestureDetector(
                         onTap: ()async{
                           await user_vezes.add({
@@ -38,15 +60,30 @@ class UserVezes extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('1 vez', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('1 vez', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ],),
                     child: GestureDetector(
                         onTap: ()async{
                           await user_vezes.add({
@@ -56,15 +93,30 @@ class UserVezes extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('2 vezes', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('2 vezes', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ],),
                     child: GestureDetector(
                         onTap: ()async{
                           await user_vezes.add({
@@ -74,15 +126,30 @@ class UserVezes extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('3 vezes', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('3 vezes', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ],),
                     child: GestureDetector(
                         onTap: ()async{
                           await user_vezes.add({
@@ -92,15 +159,30 @@ class UserVezes extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('4 vezes', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('4 vezes', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ],),
                     child: GestureDetector(
                         onTap: ()async{
                           await user_vezes.add({
@@ -110,15 +192,30 @@ class UserVezes extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('Mais de 4 vezes', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                          title: Text('Mais de 4 vezes', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
+                      color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ],),
                     child: GestureDetector(
                         onTap: ()async{
                           await user_vezes.add({
@@ -128,7 +225,7 @@ class UserVezes extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('Prefiro não responder', textAlign: TextAlign.center, style: TextStyle(color: Colors.white),),
+                          title: Text('Prefiro não responder', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),
                         )),),
                 ],
               ),

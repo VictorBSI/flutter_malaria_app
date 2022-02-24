@@ -22,7 +22,7 @@ class UserComprimidos extends StatelessWidget{
               Container(
                 padding: EdgeInsets.only(top: 20),
                 child: Text('Quando teve malária, tomou os comprimidos do jeito que o profissional de saúde lhe orientou?',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24), textAlign: TextAlign.justify,),
               ),
               Container(
                 child: Column(
@@ -39,10 +39,11 @@ class UserComprimidos extends StatelessWidget{
                                     'usuario': rcvdData['codigo'],
                                   });
                                 },),
-                                Expanded(child: Text('Sim', maxLines: 2,))
+                                Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
                             )
                         ),
+                        Padding(padding: EdgeInsets.only(right: 30)),
                         Flexible(
                             flex: 1,
                             child: Row(
@@ -53,7 +54,7 @@ class UserComprimidos extends StatelessWidget{
                                     'usuario': rcvdData['codigo'],
                                   });
                                 },),
-                                Expanded(child: Text('Não', maxLines: 2,))
+                                Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
                             )
                         ),
@@ -71,7 +72,8 @@ class UserComprimidos extends StatelessWidget{
                     Navigator.of(context).pushNamed(AppRoutes.USER_MOTIVO, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),
-                  label: Text('Próximo'))
+                  label: Text('Próximo'),
+                  style: ElevatedButton.styleFrom(primary: Colors.cyan))
             ],
           ),
         ),
