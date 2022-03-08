@@ -34,4 +34,5 @@ class AppRoutes {
   static const TRAT_MALARAE = '/trat_malarae';
   static const TRAT_FALCIPARUM = '/trat_falciparum';
   static const TRAT_MISTA = '/trat_mista';
+  static const DOCUMENTS = '/documents_screen';
 }

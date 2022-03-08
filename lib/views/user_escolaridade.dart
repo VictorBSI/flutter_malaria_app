@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
 class UserEscolaridade extends StatelessWidget{
-  CollectionReference user_escolaridade = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_escolaridade/');
+  CollectionReference user_escolaridade = FirebaseFirestore.instance.collection('usuario/resposta/user_escolaridade/');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;

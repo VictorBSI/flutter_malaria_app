@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/provider/users.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
+import 'package:flutter_crud_1/views/documents.dart';
 import 'package:flutter_crud_1/views/login_page.dart';
 import 'package:flutter_crud_1/views/sign_up_page.dart';
 import 'package:flutter_crud_1/views/trat_falciparum.dart';
@@ -109,6 +110,7 @@ class MyApp extends StatelessWidget {
                     AppRoutes.TRAT_MALARAE: (_) => Malarae(),
                     AppRoutes.TRAT_FALCIPARUM: (_) => Falciparum(),
                     AppRoutes.TRAT_MISTA: (_) => Mista(),
+                    AppRoutes.DOCUMENTS: (_) => DocumentScreen(),
                   },
                 );
               } else {

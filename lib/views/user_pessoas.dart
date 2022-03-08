@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
 class UserPessoas extends StatelessWidget{
-  CollectionReference user_pessoas = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_pessoas/');
+  CollectionReference user_pessoas = FirebaseFirestore.instance.collection('usuario/resposta/user_pessoas/');
 
 
   @override

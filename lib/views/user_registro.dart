@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 class UserRegistro extends StatelessWidget {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 
-  CollectionReference usuario = FirebaseFirestore.instance.collection('usuario');
+  CollectionReference usuario = FirebaseFirestore.instance.collection('usuario/registro/registro_usuario/');
   final _formKey = GlobalKey<FormState>();
   UserRegistro({Key? key}) : super(key: key);
   String nome = '';

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
 class UserTempo extends StatelessWidget{
-  CollectionReference user_tempo = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_tempo/');
+  CollectionReference user_tempo = FirebaseFirestore.instance.collection('usuario/resposta/user_tempo/');
   String informar = '';
   String momento = '';
   String meses = '';

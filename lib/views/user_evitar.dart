@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
 class UserEvitar extends StatelessWidget{
-  CollectionReference user_evitar = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_evitar/');
+  CollectionReference user_evitar = FirebaseFirestore.instance.collection('usuario/resposta/user_evitar/');
   String orientacoes = '';
   String informacoes = '';
   @override

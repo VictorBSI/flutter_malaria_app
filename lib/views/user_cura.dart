@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
 class UserCura extends StatelessWidget{
-  CollectionReference user_cura = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_cura/');
+  CollectionReference user_cura = FirebaseFirestore.instance.collection('usuario/resposta/user_cura/');
   String retorno = '';
   String informado = '';
   DateTime data = DateTime.now();

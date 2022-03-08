@@ -6,7 +6,7 @@ import 'package:flutter_crud_1/views/user_registro.dart';
 
 
 class UserResidencia extends StatelessWidget{
-  CollectionReference user_residencia = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_residencia/');
+  CollectionReference user_residencia = FirebaseFirestore.instance.collection('usuario/resposta/user_residencia/');
 
   @override
   Widget build(BuildContext context){

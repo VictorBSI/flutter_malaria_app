@@ -20,7 +20,7 @@ class UserTratamento extends StatefulWidget {
 class _UserTratamento extends State<UserTratamento> {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 
-  CollectionReference user_tratamento = FirebaseFirestore.instance.collection('tratamento');
+  CollectionReference user_tratamento = FirebaseFirestore.instance.collection('usuario/tratamento/user_tratamento/');
   final _formKey = GlobalKey<FormState>();
   //UserTratamento({Key? key}) : super(key: key);
   String tratamento = '';
