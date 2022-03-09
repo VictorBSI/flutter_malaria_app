@@ -21,6 +21,7 @@ class UserRegistro extends StatelessWidget {
   var codigo = '';
   var _groupValue = 0;
   var caminho = '';
+  String UId = '';
   DateTime data_nascimento = DateTime.now();
 
   @override
@@ -159,10 +160,10 @@ class UserRegistro extends StatelessWidget {
                                   'data_nascimento': data_nascimento,
                                   'endereco': endereco,
                                 },
-                                ).then((value) => print('User added'));
+                                ).then((value) => UId = value.id);
                                 //Navigator.pushNamed(context, AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo});
                                 Navigator.of(context).pushNamed(
-                                  AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo});
+                                  AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo, "UId": UId});
                               }, //AppRoutes.USER_RESIDENCIA
                               icon: Icon(Icons.arrow_forward),
                               label: Text('Próximo',),

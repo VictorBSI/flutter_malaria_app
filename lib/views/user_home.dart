@@ -11,37 +11,40 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:flutter_crud_1/mobile.dart';
 
 class UserHome extends StatelessWidget{
+
+  String aux = '';
   CollectionReference _collectionRef =
-  FirebaseFirestore.instance.collection('usuario');
+  FirebaseFirestore.instance.collection('/usuario/registro/registro_usuario');
 
    Future<String> getData() async {
     Completer<String> completer = Completer();
     List<String> list = [];
     // Get docs from collection reference
-    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection("usuario").get();
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection("/usuario/registro/registro_usuario").get();
 
 
-    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+    final allData = await querySnapshot.docs.map((doc) => doc.data()).toList();
     for(int i = 0; i < querySnapshot.size; i++){
       var a = querySnapshot.docs[i];
       print(allData[i]);
+      Text(allData[i].toString());
       Container(
           child: ListTile(
             title: Text(allData[i].toString()),
           )
       );
-      list.add(allData[i].toString());
+     list.add(allData[i].toString());
     }
     completer.complete(list.toString());
-    return completer.future;
+    return await completer.future;
   }
 
 
   @override
   Widget build(BuildContext context){
 
-
-    getData();
+    print(getData().then((value) => aux = value));
+    print(aux);
     return
       /*Scaffold(
           appBar: AppBar(
@@ -101,6 +104,7 @@ class UserHome extends StatelessWidget{
             },
           )
       );*/
+
       Scaffold(
         appBar: AppBar(
           title: Text('Início'),
@@ -205,7 +209,10 @@ class UserHome extends StatelessWidget{
                         child: ListTile(
                           title: Text('Documents', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
                         )),),
-                    /*child: ElevatedButton(
+                  Container(
+                    child: Text(aux),
+                  )
+        /*child: ElevatedButton(
                         onPressed: _createPDF,
                         child: ListTile(
                           title: Text('Gerar PDF', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
