@@ -20,19 +20,26 @@ class UserHome extends StatelessWidget{
     Completer<String> completer = Completer();
     List<String> list = [];
     // Get docs from collection reference
-    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection("/usuario/registro/registro_usuario").get();
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore.instance.collection("/usuario/registro/registro_usuario").get();
+    QuerySnapshot<Map<String, dynamic>> querySnapshot1 = await FirebaseFirestore.instance.collection("/resposta/GjPewnIdUJUpJzVrHYZB/user_residencia").get();
 
 
     final allData = await querySnapshot.docs.map((doc) => doc.data()).toList();
+    final allData1 = await querySnapshot1.docs.map((doc) => doc.data()).toList();
     for(int i = 0; i < querySnapshot.size; i++){
-      var a = querySnapshot.docs[i];
-      print(allData[i]);
-      Text(allData[i].toString());
-      Container(
-          child: ListTile(
-            title: Text(allData[i].toString()),
-          )
-      );
+      for(int j = 0; j < querySnapshot1.size -1; j++) {
+        var a = querySnapshot.docs[i];
+        if(allData[i]['codigo'] == allData1[j]['usuario']){
+          print(allData[i]);
+          print(allData1[j]);
+        }
+        Text(allData[i].toString());
+        Container(
+            child: ListTile(
+              title: Text(allData[i].toString()),
+            )
+        );
+      }
      list.add(allData[i].toString());
     }
     completer.complete(list.toString());
