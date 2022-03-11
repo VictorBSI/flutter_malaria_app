@@ -3,7 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
-class UserEvitar extends StatelessWidget{
+class UserEvitar extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _UserEvitar();
+}
+
+class _UserEvitar extends State<UserEvitar>{
+  int _value = 1;
+  int _value1 = 1;
   CollectionReference user_evitar = FirebaseFirestore.instance.collection('usuario/resposta/user_evitar/');
   String orientacoes = '';
   String informacoes = '';
@@ -40,8 +47,14 @@ class UserEvitar extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
-                                    orientacoes= 'Sim';
+                                Radio(
+                                  value: 1,
+                                  groupValue: _value,
+                                  onChanged: (value){
+                                    setState(() {
+                                      orientacoes= 'Sim';
+                                      _value = int.parse(value.toString());
+                                    });
                                 },),
                                 Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black54),))
                               ],
@@ -52,8 +65,14 @@ class UserEvitar extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
+                                Radio(
+                                  value: 0,
+                                  groupValue: _value,
+                                  onChanged: (value){
+                                  setState(() {
                                     orientacoes= 'Não';
+                                    _value = int.parse(value.toString());
+                                  });
                                 },),
                                 Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black54)))
                               ],
@@ -83,9 +102,15 @@ class UserEvitar extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
-                                    informacoes= 'Sim';
-                                },),
+                                Radio(
+                                  value: 1,
+                                  groupValue: _value1,
+                                  onChanged: (value){
+                                    setState(() {
+                                      informacoes = 'Sim';
+                                      _value1 = int.parse(value.toString());
+                                    });
+                                  },),
                                 Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black54)))
                               ],
                             )
@@ -95,9 +120,15 @@ class UserEvitar extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
-                                    informacoes= 'Não';
-                                },),
+                                Radio(
+                                  value: 0,
+                                  groupValue: _value1,
+                                  onChanged: (value){
+                                    setState(() {
+                                      informacoes = 'Não';
+                                      _value1 = int.parse(value.toString());
+                                    });
+                                  },),
                                 Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black54)))
                               ],
                             )

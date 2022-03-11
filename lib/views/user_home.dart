@@ -50,8 +50,8 @@ class UserHome extends StatelessWidget{
   @override
   Widget build(BuildContext context){
 
-    print(getData().then((value) => aux = value));
-    print(aux);
+    //print(getData().then((value) => aux = value));
+    //print(aux);
     return
       /*Scaffold(
           appBar: AppBar(
@@ -180,10 +180,10 @@ class UserHome extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: (){
-                          Navigator.of(context).pushNamed(AppRoutes.USER_TRAT);
+                          //Navigator.of(context).pushNamed(AppRoutes.USER_TRAT);
                         },
                         child: ListTile(
-                          title: Text('Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
+                          title: Text('Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 20)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
@@ -211,10 +211,10 @@ class UserHome extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: (){
-                          Navigator.of(context).pushNamed(AppRoutes.DOCUMENTS);
+                          //Navigator.of(context).pushNamed(AppRoutes.DOCUMENTS);
                         },
                         child: ListTile(
-                          title: Text('Documents', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
+                          title: Text('Documents', textAlign: TextAlign.center, style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 20)),
                         )),),
                   Container(
                     child: Text(aux),

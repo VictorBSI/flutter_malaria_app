@@ -3,11 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
-class UserCura extends StatelessWidget{
+class UserCura extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _UserCura();
+}
+
+class _UserCura extends State<UserCura>{
   CollectionReference user_cura = FirebaseFirestore.instance.collection('usuario/resposta/user_cura/');
   String retorno = '';
   String informado = '';
   DateTime data = DateTime.now();
+  int _value = 1;
+  int _value1 = 1;
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -42,9 +49,15 @@ class UserCura extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
-                                    retorno = 'Sim';
-                                },),
+                                Radio(
+                                  value: 1,
+                                  groupValue: _value,
+                                  onChanged: (value){
+                                    setState(() {
+                                      retorno = 'Sim';
+                                      _value = int.parse(value.toString());
+                                    });
+                                  },),
                                 Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
                             )
@@ -54,9 +67,15 @@ class UserCura extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
-                                  retorno = 'Não';
-                                },),
+                                Radio(
+                                  value: 0,
+                                  groupValue: _value,
+                                  onChanged: (value){
+                                    setState(() {
+                                      retorno = 'Não';
+                                      _value = int.parse(value.toString());
+                                    });
+                                  },),
                                 Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
                             )
@@ -100,9 +119,15 @@ class UserCura extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
-                                    informado= 'Sim';
-                                },),
+                                Radio(
+                                  value: 1,
+                                  groupValue: _value1,
+                                  onChanged: (value){
+                                    setState(() {
+                                      informado = 'Sim';
+                                      _value1 = int.parse(value.toString());
+                                    });
+                                  },),
                                 Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
                             )
@@ -112,9 +137,15 @@ class UserCura extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
-                                    informado= 'Não';
-                                },),
+                                Radio(
+                                  value: 0,
+                                  groupValue: _value1,
+                                  onChanged: (value){
+                                    setState(() {
+                                      informado = 'Não';
+                                      _value1 = int.parse(value.toString());
+                                    });
+                                  },),
                                 Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
                             )

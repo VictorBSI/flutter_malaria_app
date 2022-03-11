@@ -3,12 +3,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
-class UserTempo extends StatelessWidget{
+class UserTempo extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _UserTempo();
+}
+
+class _UserTempo extends State<UserTempo>{
   CollectionReference user_tempo = FirebaseFirestore.instance.collection('usuario/resposta/user_tempo/');
   String informar = '';
   String momento = '';
   String meses = '';
   String quem = '';
+  int _value = 1;
+  int _value1 = 1;
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -47,9 +54,15 @@ class UserTempo extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
-                                    informar= 'Sim';
-                                },),
+                                Radio(
+                                  value: 1,
+                                  groupValue: _value,
+                                  onChanged: (value){
+                                    setState(() {
+                                      informar = 'Sim';
+                                      _value = int.parse(value.toString());
+                                    });
+                                  },),
                                 Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black54)))
                               ],
                             )
@@ -59,9 +72,15 @@ class UserTempo extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
-                                    informar= 'Não';
-                                },),
+                                Radio(
+                                  value: 0,
+                                  groupValue: _value,
+                                  onChanged: (value){
+                                    setState(() {
+                                      informar = 'Não';
+                                      _value = int.parse(value.toString());
+                                    });
+                                  },),
                                 Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black54)))
                               ],
                             )
@@ -85,9 +104,15 @@ class UserTempo extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
-                                    momento= 'Sim';
-                                },),
+                                Radio(
+                                  value: 1,
+                                  groupValue: _value1,
+                                  onChanged: (value){
+                                    setState(() {
+                                      momento = 'Sim';
+                                      _value1 = int.parse(value.toString());
+                                    });
+                                  },),
                                 Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black54)))
                               ],
                             )
@@ -97,9 +122,15 @@ class UserTempo extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_){
-                                    momento= 'Não';
-                                },),
+                                Radio(
+                                  value: 0,
+                                  groupValue: _value1,
+                                  onChanged: (value){
+                                    setState(() {
+                                      momento = 'Não';
+                                      _value1 = int.parse(value.toString());
+                                    });
+                                  },),
                                 Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black54)))
                               ],
                             )

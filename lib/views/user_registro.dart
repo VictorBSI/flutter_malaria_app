@@ -9,12 +9,17 @@ import 'package:flutter_crud_1/views/user_residencia.dart';
 import 'package:provider/provider.dart';
 
 
-class UserRegistro extends StatelessWidget {
+class UserRegistro extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _UserRegistro();
+}
+
+class _UserRegistro extends State<UserRegistro> {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 
   CollectionReference usuario = FirebaseFirestore.instance.collection('usuario/registro/registro_usuario/');
   final _formKey = GlobalKey<FormState>();
-  UserRegistro({Key? key}) : super(key: key);
+  //UserRegistro({Key? key}) : super(key: key);
   String nome = '';
   var sexo = '';
   var endereco = '';
@@ -23,6 +28,7 @@ class UserRegistro extends StatelessWidget {
   var caminho = '';
   String UId = '';
   DateTime data_nascimento = DateTime.now();
+  int _value = 1;
 
   @override
   Widget build(BuildContext context){
@@ -82,12 +88,17 @@ class UserRegistro extends StatelessWidget {
                                         flex: 1,
                                         child: Row(
                                           children: [
-                                            Radio(value: 1,
+                                            Radio(
+                                              value: 1,
+                                              groupValue: _value,
                                               onChanged: (value) {
-                                                sexo = 'Masculino';
-                                                _groupValue = 1;
+                                                setState(() {
+                                                  sexo = 'Masculino';
+                                                  _value = int.parse(value.toString());
+                                                });
+
                                               },
-                                              groupValue: 1,
+
 
                                             ),
                                             Expanded(
@@ -100,11 +111,13 @@ class UserRegistro extends StatelessWidget {
                                         flex: 1,
                                         child: Row(
                                           children: [
-                                            Radio(value: 1,
-                                              groupValue: _groupValue,
+                                            Radio(value: 0,
+                                              groupValue: _value,
                                               onChanged: (value) {
+                                              setState(() {
                                                 sexo = 'Feminino';
-                                                _groupValue = 1;
+                                                _value = int.parse(value.toString());
+                                              });
                                               },),
                                             Expanded(
                                                 child: Text('Feminino', maxLines: 2,))

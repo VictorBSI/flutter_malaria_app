@@ -3,7 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
-class UserComprimidos extends StatelessWidget{
+class UserComprimidos extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _UserComprimidos();
+}
+
+class _UserComprimidos extends State<UserComprimidos>{
+  int _value = 1;
   CollectionReference user_comprimidos = FirebaseFirestore.instance.collection('usuario/resposta/user_comprimidos/');
   @override
   Widget build(BuildContext context){
@@ -33,7 +39,13 @@ class UserComprimidos extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_)async{
+                                Radio(
+                                  value: 1,
+                                  groupValue: _value,
+                                  onChanged: (value)async{
+                                    setState(() {
+                                      _value = int.parse(value.toString());
+                                    });
                                   await user_comprimidos.add({
                                     'resposta': 'Sim',
                                     'usuario': rcvdData['codigo'],
@@ -48,7 +60,13 @@ class UserComprimidos extends StatelessWidget{
                             flex: 1,
                             child: Row(
                               children: [
-                                Radio(value: 1, groupValue: '', onChanged: (_)async{
+                                Radio(
+                                  value: 0,
+                                  groupValue: _value,
+                                  onChanged: (value)async{
+                                    setState(() {
+                                      _value = int.parse(value.toString());
+                                    });
                                   await user_comprimidos.add({
                                     'resposta': 'Não',
                                     'usuario': rcvdData['codigo'],
