@@ -58,7 +58,7 @@ class UserNaoseguir extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_REMEDIO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('Orientações sobre comprimidos', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),minVerticalPadding: 20
+                          title: Text('Orientações sobre comprimidos', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),/*minVerticalPadding: 20*/
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
@@ -92,7 +92,7 @@ class UserNaoseguir extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_REMEDIO, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Sobre mudança de hábitos', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),minVerticalPadding: 20
+                          title: Text('Sobre mudança de hábitos', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),/*minVerticalPadding: 20*/
                         )),),
                 ],
               ),

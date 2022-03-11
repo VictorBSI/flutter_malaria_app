@@ -122,7 +122,7 @@ class UserMotivo extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_SOBRARAM, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Teve melhora depois de 3 dias', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),minVerticalPadding: 20,
+                          title: Text('Teve melhora depois de 3 dias', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24))/*,minVerticalPadding: 20*/,
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
@@ -156,7 +156,7 @@ class UserMotivo extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_SOBRARAM, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
-                          title: Text('Quis consumir bebida alcoólica', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),minVerticalPadding: 20,
+                          title: Text('Quis consumir bebida alcoólica', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24))/*,minVerticalPadding: 20*/,
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
