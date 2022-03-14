@@ -12,7 +12,7 @@ class UserResidencia extends StatelessWidget{
   Widget build(BuildContext context){
 
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
-    CollectionReference user_residencia = FirebaseFirestore.instance.collection('usuario/registro/registro_usuario/'+rcvdData['UId'].toString()+'/user_residencia');
+    CollectionReference user_residencia = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_residencia');
     return Scaffold(
         appBar: AppBar(
           title: Text('Dados Sociodemográficos',),
@@ -65,7 +65,7 @@ class UserResidencia extends StatelessWidget{
                         onTap: () async{
                           await user_residencia.add({
                             'resposta': 'De 0 a 2',
-                            'codigo': rcvdData['codigo'],
+                            'usuario': rcvdData['codigo'],
                           }).then((value) => print(value.id));
                           Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
@@ -106,7 +106,7 @@ class UserResidencia extends StatelessWidget{
                         onTap: () async{
                           await user_residencia.add({
                             'resposta': 'De 3 a 7',
-                            'codigo': rcvdData['codigo'],
+                            'usuario': rcvdData['codigo'],
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
@@ -144,7 +144,7 @@ class UserResidencia extends StatelessWidget{
                         onTap: () async{
                           await user_residencia.add({
                             'resposta': 'De 8 a 10',
-                            'codigo': rcvdData['codigo'],
+                            'usuario': rcvdData['codigo'],
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
@@ -183,7 +183,7 @@ class UserResidencia extends StatelessWidget{
                         onTap: () async{
                           await user_residencia.add({
                             'resposta': 'Mais de 10',
-                            'codigo': rcvdData['codigo'],
+                            'usuario': rcvdData['codigo'],
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
