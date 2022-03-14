@@ -9,7 +9,7 @@ class UserTempo extends StatefulWidget{
 }
 
 class _UserTempo extends State<UserTempo>{
-  CollectionReference user_tempo = FirebaseFirestore.instance.collection('usuario/resposta/user_tempo/');
+  CollectionReference user_tempo = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_tempo');
   String informar = '';
   String momento = '';
   String meses = '';

@@ -5,7 +5,7 @@ import 'package:flutter_crud_1/routes/app_routes.dart';
 
 
 class UserOrientacoes extends StatelessWidget{
-  CollectionReference user_orientacoes = FirebaseFirestore.instance.collection('usuario/resposta/user_orientacoes/');
+  CollectionReference user_orientacoes = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_orientacoes');
   String resposta = '';
   @override
   Widget build(BuildContext context){

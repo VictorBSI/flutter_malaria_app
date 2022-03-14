@@ -11,7 +11,7 @@ class UserEvitar extends StatefulWidget{
 class _UserEvitar extends State<UserEvitar>{
   int _value = 1;
   int _value1 = 1;
-  CollectionReference user_evitar = FirebaseFirestore.instance.collection('usuario/resposta/user_evitar/');
+  CollectionReference user_evitar = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_evitar');
   String orientacoes = '';
   String informacoes = '';
   @override

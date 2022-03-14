@@ -10,7 +10,7 @@ class UserComprimidos extends StatefulWidget{
 
 class _UserComprimidos extends State<UserComprimidos>{
   int _value = 1;
-  CollectionReference user_comprimidos = FirebaseFirestore.instance.collection('usuario/resposta/user_comprimidos/');
+  CollectionReference user_comprimidos = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_comprimidos');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;

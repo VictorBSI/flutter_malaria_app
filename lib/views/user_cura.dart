@@ -9,7 +9,7 @@ class UserCura extends StatefulWidget{
 }
 
 class _UserCura extends State<UserCura>{
-  CollectionReference user_cura = FirebaseFirestore.instance.collection('usuario/resposta/user_cura/');
+  CollectionReference user_cura = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_cura');
   String retorno = '';
   String informado = '';
   DateTime data = DateTime.now();
