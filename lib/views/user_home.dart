@@ -180,7 +180,7 @@ class UserHome extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: (){
-                          //Navigator.of(context).pushNamed(AppRoutes.USER_TRAT);
+                          Navigator.of(context).pushNamed(AppRoutes.USER_TRAT);
                         },
                         child: ListTile(
                           title: Text('Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 20)),
@@ -211,7 +211,7 @@ class UserHome extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: (){
-                          //Navigator.of(context).pushNamed(AppRoutes.DOCUMENTS);
+                          Navigator.of(context).pushNamed(AppRoutes.DOCUMENTS);
                         },
                         child: ListTile(
                           title: Text('Documents', textAlign: TextAlign.center, style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 20)),

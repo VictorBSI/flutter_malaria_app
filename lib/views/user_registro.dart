@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/database.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/provider/users.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,7 +18,7 @@ class UserRegistro extends StatefulWidget{
 class _UserRegistro extends State<UserRegistro> {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 
-  CollectionReference usuario = FirebaseFirestore.instance.collection('usuario/registro/registro_usuario/');
+  CollectionReference usuario = FirebaseFirestore.instance.collection('usuario');
   final _formKey = GlobalKey<FormState>();
   //UserRegistro({Key? key}) : super(key: key);
   String nome = '';
@@ -29,6 +30,8 @@ class _UserRegistro extends State<UserRegistro> {
   String UId = '';
   DateTime data_nascimento = DateTime.now();
   int _value = 1;
+
+  var db = Mysql();
 
   @override
   Widget build(BuildContext context){
@@ -166,14 +169,18 @@ class _UserRegistro extends State<UserRegistro> {
                                 }
                               }*/
                               onPressed: () async{
-                                await usuario.add({
+                                await db.getConnection().then((value) {
+                                    value.query('insert into teste.usuario (codigo, nome, data_nascimento, endereco, sexo) values (?, ?, ?, ?, ?)',
+                                        [codigo, nome, data_nascimento.toUtc(), endereco, sexo]);
+                                  });
+                                  /*usuario.add({
                                   'nome': nome,
                                   'codigo': codigo,
                                   'sexo': sexo,
                                   'data_nascimento': data_nascimento,
                                   'endereco': endereco,
                                 },
-                                ).then((value) => UId = value.id);
+                                );*/
                                 //Navigator.pushNamed(context, AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo});
                                 Navigator.of(context).pushNamed(
                                   AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo, "UId": UId});

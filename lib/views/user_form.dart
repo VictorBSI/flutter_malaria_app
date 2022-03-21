@@ -11,8 +11,8 @@ class UserForm extends StatelessWidget{
       if(user != null) {
         _formData['id'] = user.id;
         _formData['name'] = user.name;
-        _formData['email'] = user.email;
-        _formData['avatarUrl'] = user.avatarUrl;
+        _formData['email'] = user.codigo;
+        //_formData['avatarUrl'] = user.avatarUrl;
       }
   }
 
