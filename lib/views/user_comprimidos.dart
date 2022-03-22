@@ -17,7 +17,7 @@ class UserComprimidos extends StatefulWidget{
 
 class _UserComprimidos extends State<UserComprimidos>{
   int _value = 1;
-  String tomou = '';
+  String tomou = 'Sim';
   String explique = '';
   @override
   Widget build(BuildContext context){

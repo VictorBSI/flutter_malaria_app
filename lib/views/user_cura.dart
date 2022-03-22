@@ -17,8 +17,8 @@ class UserCura extends StatefulWidget{
 }
 
 class _UserCura extends State<UserCura>{
-  String retorno = '';
-  String informado = '';
+  String retorno = 'Sim';
+  String informado = 'Sim';
   DateTime data = DateTime.now();
   int _value = 1;
   int _value1 = 1;

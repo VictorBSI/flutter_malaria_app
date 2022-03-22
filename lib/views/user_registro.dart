@@ -1,12 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/provider/users.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_crud_1/views/user_residencia.dart';
 import 'package:provider/provider.dart';
 
 
@@ -18,11 +15,10 @@ class UserRegistro extends StatefulWidget{
 class _UserRegistro extends State<UserRegistro> {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 
-  CollectionReference usuario = FirebaseFirestore.instance.collection('usuario');
   final _formKey = GlobalKey<FormState>();
   //UserRegistro({Key? key}) : super(key: key);
   String nome = '';
-  var sexo = '';
+  var sexo = 'Masculino';
   var endereco = '';
   var codigo = '';
   var _groupValue = 0;

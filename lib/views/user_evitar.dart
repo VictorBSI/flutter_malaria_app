@@ -6,7 +6,7 @@ import 'package:flutter_crud_1/routes/app_routes.dart';
 Future<void> addSQLData(String resposta_1, String resposta_2, String usuario) async {
   var db = Mysql();
   return await db.getConnection().then((result){
-    result.query('insert into malaria.user_agentes (resposta_1, resposta_2, usuario) values (?, ?, ?)', [resposta_1, resposta_2, usuario]);
+    result.query('insert into malaria.user_evitar (resposta_1, resposta_2, usuario) values (?, ?, ?)', [resposta_1, resposta_2, usuario]);
   });
 }
 
@@ -18,8 +18,8 @@ class UserEvitar extends StatefulWidget{
 class _UserEvitar extends State<UserEvitar>{
   int _value = 1;
   int _value1 = 1;
-  String orientacoes = '';
-  String informacoes = '';
+  String orientacoes = 'Sim';
+  String informacoes = 'Sim';
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;

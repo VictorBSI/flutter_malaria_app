@@ -16,8 +16,8 @@ class UserTempo extends StatefulWidget{
 }
 
 class _UserTempo extends State<UserTempo>{
-  String informar = '';
-  String momento = '';
+  String informar = 'Sim';
+  String momento = 'Sim';
   String meses = '';
   String quem = '';
   int _value = 1;
