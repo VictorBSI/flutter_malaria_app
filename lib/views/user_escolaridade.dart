@@ -1,9 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_escolaridade (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
+
 class UserEscolaridade extends StatelessWidget{
-  CollectionReference user_escolaridade = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_escolaridade');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -54,10 +61,7 @@ class UserEscolaridade extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_escolaridade.add({
-                            'resposta': 'Fundamental',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Fundamental', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -88,10 +92,7 @@ class UserEscolaridade extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_escolaridade.add({
-                            'resposta': 'Médio',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Médio', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -122,10 +123,7 @@ class UserEscolaridade extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_escolaridade.add({
-                            'resposta': 'Superior',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Superior', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -156,10 +154,7 @@ class UserEscolaridade extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_escolaridade.add({
-                            'resposta': 'Pós-graduação',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Pós-graduação', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -190,10 +185,7 @@ class UserEscolaridade extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_escolaridade.add({
-                            'resposta': 'Não estudou',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Não estudou', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -224,10 +216,7 @@ class UserEscolaridade extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_escolaridade.add({
-                            'resposta': 'Não sabe informar',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Não sabe informar', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(

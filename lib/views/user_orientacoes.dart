@@ -1,11 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
-
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_orientacao (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
 
 class UserOrientacoes extends StatelessWidget{
-  CollectionReference user_orientacoes = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_orientacoes');
   String resposta = '';
   @override
   Widget build(BuildContext context){
@@ -44,10 +48,7 @@ class UserOrientacoes extends StatelessWidget{
                   Padding(padding: new EdgeInsets.only(top: 200, left: 10, right: 10),
                     child: ElevatedButton.icon(
                             onPressed: () async{
-                              await user_orientacoes.add({
-                                'resposta': resposta,
-                                'usuario': rcvdData['codigo'],
-                              });
+                              await addSQLData(resposta, rcvdData['codigo'].toString());
                               Navigator.of(context).pushNamed(AppRoutes.USER_AGENTES, arguments: {"codigo": rcvdData['codigo'].toString()});
                               },
                             icon: Icon(Icons.arrow_forward),

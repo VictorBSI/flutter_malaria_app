@@ -1,7 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
+
+Future<void> addSQLData(String resposta, String usuario, String explique) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_comprimidos (resposta, usuario, explique) values (?, ?, ?)', [resposta, usuario, explique]);
+  });
+}
 
 class UserComprimidos extends StatefulWidget{
   @override
@@ -10,7 +17,8 @@ class UserComprimidos extends StatefulWidget{
 
 class _UserComprimidos extends State<UserComprimidos>{
   int _value = 1;
-  CollectionReference user_comprimidos = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_comprimidos');
+  String tomou = '';
+  String explique = '';
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -44,12 +52,9 @@ class _UserComprimidos extends State<UserComprimidos>{
                                   groupValue: _value,
                                   onChanged: (value)async{
                                     setState(() {
+                                      tomou = 'Sim';
                                       _value = int.parse(value.toString());
                                     });
-                                  await user_comprimidos.add({
-                                    'resposta': 'Sim',
-                                    'usuario': rcvdData['codigo'],
-                                  });
                                 },),
                                 Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
@@ -65,12 +70,9 @@ class _UserComprimidos extends State<UserComprimidos>{
                                   groupValue: _value,
                                   onChanged: (value)async{
                                     setState(() {
+                                      tomou = 'Não';
                                       _value = int.parse(value.toString());
                                     });
-                                  await user_comprimidos.add({
-                                    'resposta': 'Não',
-                                    'usuario': rcvdData['codigo'],
-                                  });
                                 },),
                                 Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black54)))
                               ],
@@ -84,9 +86,13 @@ class _UserComprimidos extends State<UserComprimidos>{
               TextFormField(
                 decoration: InputDecoration(labelText: 'Explique',
                   contentPadding: new EdgeInsets.fromLTRB(0, 10, 10, 0),),
+                onChanged: (value)async{
+                  explique = value;
+                },
               ),
               ElevatedButton.icon(
-                  onPressed: (){
+                  onPressed: () async {
+                    await addSQLData(tomou, rcvdData['codigo'].toString(), explique);
                     Navigator.of(context).pushNamed(AppRoutes.USER_MOTIVO, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),

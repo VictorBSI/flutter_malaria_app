@@ -1,9 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_sobraram (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
+
 class UserSobraram extends StatelessWidget{
-  CollectionReference user_sobraram = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_sobraram');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -50,10 +56,7 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_sobraram.add({
-                            'resposta': 'Jogou fora',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Jogou fora', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -84,10 +87,7 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_sobraram.add({
-                            'resposta': 'Guardou para tomar na próxima malária',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Guardou para tomar na próxima malária', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -118,10 +118,7 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_sobraram.add({
-                            'resposta': 'Deu para outra pessoa com suspeita de malária',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Deu para outra pessoa com suspeita de malária', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -152,10 +149,7 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_sobraram.add({
-                            'resposta': 'Devolveu à unidade de saúde',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Devolveu à unidade de saúde', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -186,10 +180,7 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_sobraram.add({
-                            'resposta': 'Desconheço',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Desconheço', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -220,10 +211,7 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_sobraram.add({
-                            'resposta': 'Prefiro não responder',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Prefiro não responder', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(

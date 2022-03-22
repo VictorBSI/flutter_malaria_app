@@ -170,7 +170,7 @@ class _UserRegistro extends State<UserRegistro> {
                               }*/
                               onPressed: () async{
                                 await db.getConnection().then((value) {
-                                    value.query('insert into teste.usuario (codigo, nome, data_nascimento, endereco, sexo) values (?, ?, ?, ?, ?)',
+                                    value.query('insert into malaria.usuario (codigo, nome, data_nascimento, endereco, sexo) values (?, ?, ?, ?, ?)',
                                         [codigo, nome, data_nascimento.toUtc(), endereco, sexo]);
                                   });
                                   /*usuario.add({

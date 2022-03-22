@@ -1,7 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
+
+Future<void> addSQLData(String resposta_1, String resposta_2, String meses, String usuario, String quem) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_tempo (resposta_1, resposta_2, meses, usuario, quem) values (?, ?, ?, ?, ?)', [resposta_1, resposta_2, meses, usuario, quem]);
+  });
+}
 
 class UserTempo extends StatefulWidget{
   @override
@@ -9,7 +16,6 @@ class UserTempo extends StatefulWidget{
 }
 
 class _UserTempo extends State<UserTempo>{
-  CollectionReference user_tempo = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_tempo');
   String informar = '';
   String momento = '';
   String meses = '';
@@ -149,13 +155,13 @@ class _UserTempo extends State<UserTempo>{
               ),
               ElevatedButton.icon(
                   onPressed: ()async{
-                    await user_tempo.add({
+                    await addSQLData(informar, momento, meses, rcvdData['codigo'].toString(), quem);/*user_tempo.add({
                       '1': informar,
                       '2': momento,
                       'meses': meses,
                       'quem': quem,
                       'usuario': rcvdData['codigo'],
-                    });
+                    });*/
                     Navigator.of(context).pushNamed(AppRoutes.USER_COMPRIMIDOS, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),

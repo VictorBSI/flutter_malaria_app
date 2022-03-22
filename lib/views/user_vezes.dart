@@ -1,9 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_vezes (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
+
+
 class UserVezes extends StatelessWidget{
-  CollectionReference user_vezes = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_vezes');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -53,10 +60,7 @@ class UserVezes extends StatelessWidget{
                         ],),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_vezes.add({
-                            'resposta': '1 vez',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('1 vez', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -86,10 +90,7 @@ class UserVezes extends StatelessWidget{
                         ],),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_vezes.add({
-                            'resposta': '2 vezes',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('2 vezes', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -119,10 +120,7 @@ class UserVezes extends StatelessWidget{
                         ],),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_vezes.add({
-                            'resposta': '3 vezes',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('3 vezes', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -152,10 +150,7 @@ class UserVezes extends StatelessWidget{
                         ],),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_vezes.add({
-                            'resposta': '4 vezes',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('4 vezes', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -185,10 +180,7 @@ class UserVezes extends StatelessWidget{
                         ],),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_vezes.add({
-                            'resposta': 'Mais de 4 vezes',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Mais de 4 vezes', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -218,10 +210,7 @@ class UserVezes extends StatelessWidget{
                         ],),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_vezes.add({
-                            'resposta': 'Prefiro não responder',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Prefiro não responder', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TIPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(

@@ -1,9 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_casa (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
+
 class UserCasa extends StatelessWidget{
-  CollectionReference user_casa = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_bem');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -54,10 +61,7 @@ class UserCasa extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_casa.add({
-                            'resposta': 'Própria',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Própria', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_LOCALIZADA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -88,10 +92,7 @@ class UserCasa extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_casa.add({
-                            'resposta': 'Alugada',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Alugada', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_LOCALIZADA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -122,10 +123,7 @@ class UserCasa extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_casa.add({
-                            'resposta': 'Cedida',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Cedida', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_LOCALIZADA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(

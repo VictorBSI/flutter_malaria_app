@@ -1,9 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_bem (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
+
 class UserBem extends StatelessWidget{
-  CollectionReference user_bem = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_bem');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -50,10 +56,7 @@ class UserBem extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_bem.add({
-                            'resposta': 'Nunca',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Nunca', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_MAL, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -84,10 +87,7 @@ class UserBem extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_bem.add({
-                            'resposta': 'Raramente',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Raramente', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_MAL, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -118,10 +118,7 @@ class UserBem extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_bem.add({
-                            'resposta': 'Às vezes',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Às vezes', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_MAL, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -152,10 +149,7 @@ class UserBem extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_bem.add({
-                            'resposta': 'Frequentemente',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Frequentemente', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_MAL, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -186,10 +180,7 @@ class UserBem extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_bem.add({
-                            'resposta': 'Sempre',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Sempre', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_MAL, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(

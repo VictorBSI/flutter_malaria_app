@@ -1,9 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_tipo (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
+
 class UserTipo extends StatelessWidget{
-  CollectionReference user_tipo = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_tipo');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -54,10 +60,7 @@ class UserTipo extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_tipo.add({
-                            'resposta': 'P. vivax',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('P. vivax', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TEMPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -88,14 +91,11 @@ class UserTipo extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_tipo.add({
-                            'resposta': 'Plasmodium faliparum',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Plasmodium falciparum', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TEMPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
-                          title: Text('Plasmodium faliparum', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                          title: Text('Plasmodium falciparum', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
@@ -122,10 +122,7 @@ class UserTipo extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_tipo.add({
-                            'resposta': 'P.malaria',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('P.malariae', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TEMPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -156,10 +153,7 @@ class UserTipo extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_tipo.add({
-                            'resposta': 'Mista',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Mista', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TEMPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -190,10 +184,7 @@ class UserTipo extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_tipo.add({
-                            'resposta': 'Desconheço',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Desconheço', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TEMPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -224,10 +215,7 @@ class UserTipo extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_tipo.add({
-                            'resposta': 'Prefiro não responder',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Prefiro não responder', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_TEMPO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(

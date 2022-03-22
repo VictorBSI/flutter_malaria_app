@@ -1,10 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
-class UserRenda extends StatelessWidget{
-  CollectionReference user_renda = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_renda');
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_renda (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
 
+class UserRenda extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -54,10 +60,7 @@ class UserRenda extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_renda.add({
-                            'resposta': r'Até 1 salário mínimo (até R$1.100,00)',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData(r'Até 1 salário mínimo (até R$1.100,00)', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -89,10 +92,7 @@ class UserRenda extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_renda.add({
-                            'resposta': r'1 a 3 salários mínimos (R$ 1.100,00 a 3.300,00)',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData(r'1 a 3 salários mínimos (R$ 1.100,00 a 3.300,00)', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -124,10 +124,7 @@ class UserRenda extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_renda.add({
-                            'resposta': r'3 a 6 salários mínimos (R$ 3.300,00 a 6.600,00)',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData(r'3 a 6 salários mínimos (R$ 3.300,00 a 6.600,00)', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -159,10 +156,7 @@ class UserRenda extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_renda.add({
-                            'resposta': r'Mais de 6 salários mínimos (mais de 6.600,00)',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData(r'Mais de 6 salários mínimos (mais de 6.600,00)', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(

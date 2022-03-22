@@ -1,9 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_localizada (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
+
 class UserLocalizada extends StatelessWidget{
-  CollectionReference user_localizada = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_localizada');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -54,10 +60,7 @@ class UserLocalizada extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_localizada.add({
-                            'resposta': 'Zona rural',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Zona rural', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -88,10 +91,7 @@ class UserLocalizada extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_localizada.add({
-                            'resposta': 'Zona urbana',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Zona urbana', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -122,10 +122,7 @@ class UserLocalizada extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_localizada.add({
-                            'resposta': 'Comunidade indígena',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Comunidade indígena', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -156,10 +153,7 @@ class UserLocalizada extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_localizada.add({
-                            'resposta': 'Comunidade quilombola',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Comunidade quilombola', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -190,10 +184,7 @@ class UserLocalizada extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_localizada.add({
-                            'resposta': 'Área de garimpo',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Área de garimpo', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -224,10 +215,7 @@ class UserLocalizada extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_localizada.add({
-                            'resposta': 'Assentamento',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Assentamento', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -258,10 +246,7 @@ class UserLocalizada extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_localizada.add({
-                            'resposta': 'Fronteiras intermunicipais',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Fronteiras intermunicipais', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(

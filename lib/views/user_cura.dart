@@ -1,7 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
+
+Future<void> addSQLData(String resposta_1, String resposta_2, String data, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_cura (resposta_1, resposta_2, data, usuario) values (?, ?, ?, ?)', [resposta_1, resposta_2, data, usuario]);
+  });
+}
 
 class UserCura extends StatefulWidget{
   @override
@@ -9,7 +17,6 @@ class UserCura extends StatefulWidget{
 }
 
 class _UserCura extends State<UserCura>{
-  CollectionReference user_cura = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_cura');
   String retorno = '';
   String informado = '';
   DateTime data = DateTime.now();
@@ -158,12 +165,13 @@ class _UserCura extends State<UserCura>{
               //Padding(padding: EdgeInsets.all(10)),
               ElevatedButton.icon(
                   onPressed: ()async{
-                    await user_cura.add({
+                    await addSQLData(retorno, informado, data.toUtc().toString(), rcvdData['codigo'].toString());
+                    /*user_cura.add({
                       '1': retorno,
                       '2': informado,
                       'data': data,
                       'usuario': rcvdData['codigo'],
-                    });
+                    });*/
                     Navigator.of(context).pushNamed(AppRoutes.USER_VEZES, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),

@@ -1,7 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
+
+Future<void> addSQLData(String resposta_1, String resposta_2, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_agentes (resposta_1, resposta_2, usuario) values (?, ?, ?)', [resposta_1, resposta_2, usuario]);
+  });
+}
 
 class UserEvitar extends StatefulWidget{
   @override
@@ -11,7 +18,6 @@ class UserEvitar extends StatefulWidget{
 class _UserEvitar extends State<UserEvitar>{
   int _value = 1;
   int _value1 = 1;
-  CollectionReference user_evitar = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_evitar');
   String orientacoes = '';
   String informacoes = '';
   @override
@@ -141,11 +147,7 @@ class _UserEvitar extends State<UserEvitar>{
               Padding(padding: EdgeInsets.all(10)),
               ElevatedButton.icon(
                   onPressed: ()async{
-                    await user_evitar.add({
-                      '1': orientacoes,
-                      '2': informacoes,
-                      'usuario': rcvdData['codigo'],
-                    });
+                    await addSQLData(orientacoes, informacoes, rcvdData['codigo'].toString());
                     Navigator.of(context).pushNamed(AppRoutes.USER_CURA, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),

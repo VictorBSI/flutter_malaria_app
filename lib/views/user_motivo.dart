@@ -1,9 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_motivo (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
+
 class UserMotivo extends StatelessWidget{
-  CollectionReference user_motivo = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_motivo');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -47,10 +53,7 @@ class UserMotivo extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_motivo.add({
-                            'resposta': 'Não compreendeu as orientações',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Não compreendeu as orientações', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_SOBRARAM, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -81,10 +84,7 @@ class UserMotivo extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_motivo.add({
-                            'resposta': 'Sentiu mal-estar após tomar os comprimidos',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Sentiu mal-estar após tomar os comprimidos', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_SOBRARAM, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -115,10 +115,7 @@ class UserMotivo extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_motivo.add({
-                            'resposta': 'Teve melhora depois de 3 dias',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Teve melhora depois de 3 dias', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_SOBRARAM, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -149,10 +146,7 @@ class UserMotivo extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_motivo.add({
-                            'resposta': 'Quis consumir bebida alcoólica',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Quis consumir bebida alcoólica', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_SOBRARAM, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -183,10 +177,7 @@ class UserMotivo extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_motivo.add({
-                            'resposta': 'Outros',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Outros', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_SOBRARAM, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(

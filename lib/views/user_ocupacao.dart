@@ -1,9 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_ocupacao (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
+
 class UserOcupacao extends StatelessWidget{
-  CollectionReference user_ocupacao = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_ocupacao');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -54,10 +61,7 @@ class UserOcupacao extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_ocupacao.add({
-                            'resposta': 'Agricultura/Pesca',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Agricultura/Pesca', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_ESCOLARIDADE, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -88,10 +92,7 @@ class UserOcupacao extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_ocupacao.add({
-                            'resposta': 'Indústria',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Indústria', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_ESCOLARIDADE, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -122,10 +123,7 @@ class UserOcupacao extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_ocupacao.add({
-                            'resposta': 'Comércio',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Comércio', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_ESCOLARIDADE, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -156,10 +154,7 @@ class UserOcupacao extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_ocupacao.add({
-                            'resposta': 'Funcionário público',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Funcionário público', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_ESCOLARIDADE, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -190,10 +185,7 @@ class UserOcupacao extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_ocupacao.add({
-                            'resposta': 'Autônomo',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Autônomo', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_ESCOLARIDADE, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -224,10 +216,7 @@ class UserOcupacao extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_ocupacao.add({
-                            'resposta': 'Doméstico',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Doméstico', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_ESCOLARIDADE, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -258,10 +247,7 @@ class UserOcupacao extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_ocupacao.add({
-                            'resposta': 'Outro',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Outro', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_ESCOLARIDADE, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -292,10 +278,7 @@ class UserOcupacao extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_ocupacao.add({
-                            'resposta': 'Não trabalho',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Não trabalho', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_ESCOLARIDADE, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(

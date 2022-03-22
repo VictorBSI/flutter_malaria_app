@@ -1,9 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 
+Future<void> addSQLData(String resposta, String usuario) async {
+  var db = Mysql();
+  return await db.getConnection().then((result){
+    result.query('insert into malaria.user_naoseguir (resposta, usuario) values (?, ?)', [resposta, usuario]);
+  });
+}
+
 class UserNaoseguir extends StatelessWidget{
-  CollectionReference user_naoseguir = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_naoseguir');
   @override
   Widget build(BuildContext context){
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -51,10 +57,7 @@ class UserNaoseguir extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_naoseguir.add({
-                            'resposta': 'Orientações sobre comprimidos',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Orientações sobre comprimidos', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_REMEDIO, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -85,10 +88,7 @@ class UserNaoseguir extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await user_naoseguir.add({
-                            'resposta': 'Sobre mudança de hábitos',
-                            'usuario': rcvdData['codigo'],
-                          });
+                          await addSQLData('Sobre mudança de hábitos', rcvdData['codigo'].toString());
                           Navigator.of(context).pushNamed(AppRoutes.USER_REMEDIO, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
