@@ -2,6 +2,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/provider/users.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
@@ -21,13 +22,14 @@ class _UserRegistro extends State<UserRegistro> {
   final _formKey = GlobalKey<FormState>();
   //UserRegistro({Key? key}) : super(key: key);
   String nome = '';
+
   var sexo = 'Masculino';
   var endereco = '';
   var codigo = '';
   var _groupValue = 0;
   var caminho = '';
   String UId = '';
-  DateTime data_nascimento = DateTime.now();
+  DateTime data_nascimento = DateTime(1980, 1, 1);//DateTime.now();
   int _value = 1;
 
   var db = Mysql();
@@ -173,14 +175,13 @@ class _UserRegistro extends State<UserRegistro> {
                                         [codigo, nome, data_nascimento.toUtc(), endereco, sexo]);
                                   });*/
 
-                                  await http.post(Uri.parse("http://10.0.0.47/malaria/addRegistro.php"), body: {
+                                  await http.post(Uri.parse("http://10.10.50.11/malaria/addRegistro.php"), body: {
                                     "codigo": codigo,
                                     "nome": nome,
-                                    "data_nascimento": data_nascimento.toUtc().toString(),
+                                    "data_nascimento": data_nascimento.toString(),
                                     "endereco": endereco,
                                     "sexo": sexo,
                                   });
-                                  info.getWifiIP().then((value) => print(value));
                                   //Ipify.ipv4().then((value) => print(value));
 
                                   /*usuario.add({

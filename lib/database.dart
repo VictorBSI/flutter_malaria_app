@@ -1,4 +1,7 @@
-import 'dart:ffi';
+class DataBase {
+  final db = "10.10.50.11";
+}
+/*import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,4 +24,4 @@ class Database {
       print(e);
     }
   }
-}
+}*/
