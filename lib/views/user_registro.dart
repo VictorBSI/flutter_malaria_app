@@ -1,3 +1,4 @@
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,8 @@ import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/provider/users.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
+import 'package:network_info_plus/network_info_plus.dart';
 
 
 class UserRegistro extends StatefulWidget{
@@ -13,8 +16,8 @@ class UserRegistro extends StatefulWidget{
 }
 
 class _UserRegistro extends State<UserRegistro> {
+  final info = NetworkInfo();
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
-
   final _formKey = GlobalKey<FormState>();
   //UserRegistro({Key? key}) : super(key: key);
   String nome = '';
@@ -165,10 +168,21 @@ class _UserRegistro extends State<UserRegistro> {
                                 }
                               }*/
                               onPressed: () async{
-                                await db.getConnection().then((value) {
+                                /*await db.getConnection().then((value) {
                                     value.query('insert into malaria.usuario (codigo, nome, data_nascimento, endereco, sexo) values (?, ?, ?, ?, ?)',
                                         [codigo, nome, data_nascimento.toUtc(), endereco, sexo]);
+                                  });*/
+
+                                  await http.post(Uri.parse("http://10.0.0.47/malaria/addRegistro.php"), body: {
+                                    "codigo": codigo,
+                                    "nome": nome,
+                                    "data_nascimento": data_nascimento.toUtc().toString(),
+                                    "endereco": endereco,
+                                    "sexo": sexo,
                                   });
+                                  info.getWifiIP().then((value) => print(value));
+                                  //Ipify.ipv4().then((value) => print(value));
+
                                   /*usuario.add({
                                   'nome': nome,
                                   'codigo': codigo,
