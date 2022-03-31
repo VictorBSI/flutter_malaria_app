@@ -9,7 +9,6 @@ import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:network_info_plus/network_info_plus.dart';
-import 'package:flutter_crud_1/database.dart';
 
 
 class UserRegistro extends StatefulWidget{
@@ -21,13 +20,11 @@ class _UserRegistro extends State<UserRegistro> {
   final info = NetworkInfo();
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
   final _formKey = GlobalKey<FormState>();
-  //UserRegistro({Key? key}) : super(key: key);
   String nome = '';
   DataBase dado = new DataBase();
   var sexo = 'Masculino';
   var endereco = '';
   var codigo = '';
-  var _groupValue = 0;
   var caminho = '';
   String UId = '';
   DateTime data_nascimento = DateTime(1980, 1, 1);//DateTime.now();
@@ -156,28 +153,13 @@ class _UserRegistro extends State<UserRegistro> {
                             },
                           ),
                           ElevatedButton.icon(
-
-                              /*onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          'Sending Data to Cloud Firestore'),
-                                    ),);
-                                  usuario.add({'nome': nome}).then((value) =>
-                                      print('User added')).catchError((error) =>
-                                      print('Falied to add user: $error'));
-                                  Navigator.of(context).pushNamed(
-                                    AppRoutes.USER_RESIDENCIA,);
-                                }
-                              }*/
                               onPressed: () async{
                                 /*await db.getConnection().then((value) {
                                     value.query('insert into malaria.usuario (codigo, nome, data_nascimento, endereco, sexo) values (?, ?, ?, ?, ?)',
                                         [codigo, nome, data_nascimento.toUtc(), endereco, sexo]);
                                   });*/
 
-                                  await http.post(Uri.parse("http://.$fonte./malaria/addRegistro.php"), body: {
+                                  await http.post(Uri.parse("http://$fonte/malaria/addRegistro.php"), body: {
                                     "codigo": codigo,
                                     "nome": nome,
                                     "data_nascimento": data_nascimento.toString(),
@@ -186,15 +168,6 @@ class _UserRegistro extends State<UserRegistro> {
                                   });
                                   //Ipify.ipv4().then((value) => print(value));
 
-                                  /*usuario.add({
-                                  'nome': nome,
-                                  'codigo': codigo,
-                                  'sexo': sexo,
-                                  'data_nascimento': data_nascimento,
-                                  'endereco': endereco,
-                                },
-                                );*/
-                                //Navigator.pushNamed(context, AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo});
                                 Navigator.of(context).pushNamed(
                                   AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo, "UId": UId});
                               }, //AppRoutes.USER_RESIDENCIA

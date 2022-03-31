@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/models/mysql.dart';
+import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-
-Future<void> addSQLData(String resposta, String usuario) async {
-  var db = Mysql();
-  return await db.getConnection().then((result){
-    result.query('insert into malaria.user_orientacao (resposta, usuario) values (?, ?)', [resposta, usuario]);
-  });
-}
+import 'package:http/http.dart' as http;
 
 class UserOrientacoes extends StatelessWidget{
+  DataBase dado = new DataBase();
   String resposta = '';
   @override
   Widget build(BuildContext context){
+    String fonte = dado.getDataBase;
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return Scaffold(
         appBar: AppBar(
@@ -48,7 +44,10 @@ class UserOrientacoes extends StatelessWidget{
                   Padding(padding: new EdgeInsets.only(top: 200, left: 10, right: 10),
                     child: ElevatedButton.icon(
                             onPressed: () async{
-                              await addSQLData(resposta, rcvdData['codigo'].toString());
+                              await http.post(Uri.parse("http://$fonte/malaria/addOrientacao.php"), body: {
+                                "resposta": resposta,
+                                "usuario": rcvdData['codigo'].toString(),
+                              });
                               Navigator.of(context).pushNamed(AppRoutes.USER_AGENTES, arguments: {"codigo": rcvdData['codigo'].toString()});
                               },
                             icon: Icon(Icons.arrow_forward),

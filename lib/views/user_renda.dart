@@ -1,18 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/models/mysql.dart';
+import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-
-Future<void> addSQLData(String resposta, String usuario) async {
-  var db = Mysql();
-  return await db.getConnection().then((result){
-    result.query('insert into malaria.user_renda (resposta, usuario) values (?, ?)', [resposta, usuario]);
-  });
-}
+import 'package:http/http.dart' as http;
 
 class UserRenda extends StatelessWidget{
+  DataBase dado = new DataBase();
   @override
   Widget build(BuildContext context){
+    String fonte = dado.getDataBase;
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return Scaffold(
         appBar: AppBar(
@@ -60,7 +55,10 @@ class UserRenda extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData(r'Até 1 salário mínimo (até R$1.100,00)', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addRenda.php"), body: {
+                            "resposta": r'Até 1 salário mínimo (até R$1.100,00)',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -92,7 +90,10 @@ class UserRenda extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData(r'1 a 3 salários mínimos (R$ 1.100,00 a 3.300,00)', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addRenda.php"), body: {
+                            "resposta": r'1 a 3 salários mínimos (R$ 1.100,00 a 3.300,00)',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -124,7 +125,10 @@ class UserRenda extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData(r'3 a 6 salários mínimos (R$ 3.300,00 a 6.600,00)', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addRenda.php"), body: {
+                            "resposta": r'3 a 6 salários mínimos (R$ 3.300,00 a 6.600,00)',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -156,7 +160,10 @@ class UserRenda extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData(r'Mais de 6 salários mínimos (mais de 6.600,00)', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addRenda.php"), body: {
+                            "resposta": r'Mais de 6 salários mínimos (mais de 6.600,00)',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(

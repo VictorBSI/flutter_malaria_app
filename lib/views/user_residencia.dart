@@ -1,27 +1,16 @@
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-import 'package:flutter_crud_1/views/user_registro.dart';
+import 'package:http/http.dart' as http;
+import '../database.dart';
 
-
-Future<void> addSQLData(String resposta, String usuario) async {
-  var db = Mysql();
-  return await db.getConnection().then((result){
-    result.query('insert into malaria.user_residencia (resposta, usuario) values (?, ?)', [resposta, usuario]);
-    //result.close();
-  });
-}
 
 class UserResidencia extends StatelessWidget{
-
+  DataBase dado = new DataBase();
 
   @override
   Widget build(BuildContext context){
-
+    String fonte = dado.getDataBase;
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
-    //CollectionReference user_residencia = FirebaseFirestore.instance.collection('/resposta/GjPewnIdUJUpJzVrHYZB/user_residencia');
     return Scaffold(
         appBar: AppBar(
           title: Text('Dados Sociodemográficos',),
@@ -72,7 +61,11 @@ class UserResidencia extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: () async{
-                          await addSQLData('De 0 a 2', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addResidencia.php"), body: {
+                            "resposta": 'De 0 a 2',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
+                          // addSQLData('De 0 a 2', rcvdData['codigo'].toString());
                           /*user_residencia.add({
                             'resposta': 'De 0 a 2',
                             'usuario': rcvdData['codigo'],
@@ -114,7 +107,11 @@ class UserResidencia extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: () async{
-                          await addSQLData('De 3 a 7', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addResidencia.php"), body: {
+                            "resposta": 'De 3 a 7',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
+                          //addSQLData('De 3 a 7', rcvdData['codigo'].toString());
                           /*user_residencia.add({
                             'resposta': 'De 3 a 7',
                             'usuario': rcvdData['codigo'],
@@ -153,7 +150,11 @@ class UserResidencia extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: () async{
-                          await addSQLData('De 8 a 10', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addResidencia.php"), body: {
+                            "resposta": 'De 8 a 10',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
+                          //addSQLData('De 8 a 10', rcvdData['codigo'].toString());
                           /*user_residencia.add({
                             'resposta': 'De 8 a 10',
                             'usuario': rcvdData['codigo'],
@@ -193,7 +194,10 @@ class UserResidencia extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: () async{
-                          await addSQLData('Mais de 10', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addResidencia.php"), body: {
+                            "resposta": 'Mais de 10',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           /*user_residencia.add({
                             'resposta': 'Mais de 10',
                             'usuario': rcvdData['codigo'],
