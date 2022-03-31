@@ -9,6 +9,7 @@ import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:network_info_plus/network_info_plus.dart';
+import 'package:flutter_crud_1/database.dart';
 
 
 class UserRegistro extends StatefulWidget{
@@ -22,7 +23,7 @@ class _UserRegistro extends State<UserRegistro> {
   final _formKey = GlobalKey<FormState>();
   //UserRegistro({Key? key}) : super(key: key);
   String nome = '';
-
+  DataBase dado = new DataBase();
   var sexo = 'Masculino';
   var endereco = '';
   var codigo = '';
@@ -36,6 +37,7 @@ class _UserRegistro extends State<UserRegistro> {
 
   @override
   Widget build(BuildContext context){
+    String fonte = dado.getDataBase;
     return MultiProvider(
         key: _formKey,
         providers: [
@@ -175,7 +177,7 @@ class _UserRegistro extends State<UserRegistro> {
                                         [codigo, nome, data_nascimento.toUtc(), endereco, sexo]);
                                   });*/
 
-                                  await http.post(Uri.parse("http://10.10.50.11/malaria/addRegistro.php"), body: {
+                                  await http.post(Uri.parse("http://.$fonte./malaria/addRegistro.php"), body: {
                                     "codigo": codigo,
                                     "nome": nome,
                                     "data_nascimento": data_nascimento.toString(),
