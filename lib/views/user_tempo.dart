@@ -1,14 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/models/mysql.dart';
+import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-
-Future<void> addSQLData(String resposta_1, String resposta_2, String meses, String usuario, String quem) async {
-  var db = Mysql();
-  return await db.getConnection().then((result){
-    result.query('insert into malaria.user_tempo (resposta_1, resposta_2, meses, usuario, quem) values (?, ?, ?, ?, ?)', [resposta_1, resposta_2, meses, usuario, quem]);
-  });
-}
+import 'package:http/http.dart' as http;
 
 class UserTempo extends StatefulWidget{
   @override
@@ -16,6 +10,7 @@ class UserTempo extends StatefulWidget{
 }
 
 class _UserTempo extends State<UserTempo>{
+  DataBase dado = new DataBase();
   String informar = 'Sim';
   String momento = 'Sim';
   String meses = '';
@@ -24,6 +19,7 @@ class _UserTempo extends State<UserTempo>{
   int _value1 = 1;
   @override
   Widget build(BuildContext context){
+    String fonte = dado.getDataBase;
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return Scaffold(
       appBar: AppBar(
@@ -155,13 +151,13 @@ class _UserTempo extends State<UserTempo>{
               ),
               ElevatedButton.icon(
                   onPressed: ()async{
-                    await addSQLData(informar, momento, meses, rcvdData['codigo'].toString(), quem);/*user_tempo.add({
-                      '1': informar,
-                      '2': momento,
-                      'meses': meses,
-                      'quem': quem,
-                      'usuario': rcvdData['codigo'],
-                    });*/
+                    await http.post(Uri.parse("http://$fonte/malaria/addTempo.php"), body: {
+                      "resposta_1": informar,
+                      "resposta_2": momento,
+                      "meses": meses,
+                      "usuario": rcvdData['codigo'].toString(),
+                      "quem": quem
+                    });
                     Navigator.of(context).pushNamed(AppRoutes.USER_COMPRIMIDOS, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),

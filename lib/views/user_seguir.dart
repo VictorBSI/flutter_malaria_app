@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/models/mysql.dart';
+import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
+import 'package:http/http.dart' as http;
 
-Future<void> addSQLData(String resposta, String usuario) async {
-  var db = Mysql();
-  return await db.getConnection().then((result){
-    result.query('insert into malaria.user_seguir (resposta, usuario) values (?, ?)', [resposta, usuario]);
-  });
-}
 
 class UserSeguir extends StatelessWidget{
+  DataBase dado = new DataBase();
   @override
   Widget build(BuildContext context){
+    String fonte = dado.getDataBase;
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return Scaffold(
         appBar: AppBar(
@@ -57,7 +54,10 @@ class UserSeguir extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Orientações sobre comprimidos', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addSeguir.php"), body: {
+                            "resposta": 'Orientações sobre comprimidos',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_NAOSEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -88,7 +88,10 @@ class UserSeguir extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Sobre mudança de hábitos', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addSeguir.php"), body: {
+                            "resposta": 'Sobre mudança de hábitos',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_NAOSEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(

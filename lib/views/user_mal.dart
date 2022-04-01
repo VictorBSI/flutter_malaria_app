@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/models/mysql.dart';
+import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
+import 'package:http/http.dart' as http;
 
-Future<void> addSQLData(String resposta, String usuario) async {
-  var db = Mysql();
-  return await db.getConnection().then((result){
-    result.query('insert into malaria.user_mal (resposta, usuario) values (?, ?)', [resposta, usuario]);
-  });
-}
 
 class UserMal extends StatelessWidget{
+  DataBase dado = new DataBase();
   @override
   Widget build(BuildContext context){
+    String fonte = dado.getDataBase;
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return Scaffold(
         appBar: AppBar(
@@ -56,7 +53,10 @@ class UserMal extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Nunca', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addMal.php"), body: {
+                            "resposta": 'Nunca',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -87,7 +87,10 @@ class UserMal extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Raramente', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addMal.php"), body: {
+                            "resposta": 'Raramente',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -118,7 +121,10 @@ class UserMal extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Às vezes', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addMal.php"), body: {
+                            "resposta": 'Às vezes',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -149,7 +155,10 @@ class UserMal extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Frequentemente', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addMal.php"), body: {
+                            "resposta": 'Frequentemente',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -180,7 +189,10 @@ class UserMal extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Sempre', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addMal.php"), body: {
+                            "resposta": 'Sempre',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(

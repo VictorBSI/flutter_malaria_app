@@ -1,15 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/models/mysql.dart';
+import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-
-Future<void> addSQLData(String resposta_1, String resposta_2, String data, String usuario) async {
-  var db = Mysql();
-  return await db.getConnection().then((result){
-    result.query('insert into malaria.user_cura (resposta_1, resposta_2, data, usuario) values (?, ?, ?, ?)', [resposta_1, resposta_2, data, usuario]);
-  });
-}
+import 'package:http/http.dart' as http;
 
 class UserCura extends StatefulWidget{
   @override
@@ -17,6 +10,7 @@ class UserCura extends StatefulWidget{
 }
 
 class _UserCura extends State<UserCura>{
+  DataBase dado = new DataBase();
   String retorno = 'Sim';
   String informado = 'Sim';
   DateTime data = DateTime.now();
@@ -24,6 +18,7 @@ class _UserCura extends State<UserCura>{
   int _value1 = 1;
   @override
   Widget build(BuildContext context){
+    String fonte = dado.getDataBase;
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return Scaffold(
       appBar: AppBar(
@@ -165,13 +160,12 @@ class _UserCura extends State<UserCura>{
               //Padding(padding: EdgeInsets.all(10)),
               ElevatedButton.icon(
                   onPressed: ()async{
-                    await addSQLData(retorno, informado, data.toUtc().toString(), rcvdData['codigo'].toString());
-                    /*user_cura.add({
-                      '1': retorno,
-                      '2': informado,
-                      'data': data,
-                      'usuario': rcvdData['codigo'],
-                    });*/
+                    await http.post(Uri.parse("http://$fonte/malaria/addCura.php"), body: {
+                      "resposta_1": retorno,
+                      "resposta_2": informado,
+                      "data": data.toString(),
+                      "usuario": rcvdData['codigo'].toString(),
+                    });
                     Navigator.of(context).pushNamed(AppRoutes.USER_VEZES, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),

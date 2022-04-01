@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/models/mysql.dart';
+import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-
-Future<void> addSQLData(String resposta, String usuario) async {
-  var db = Mysql();
-  return await db.getConnection().then((result){
-    result.query('insert into malaria.user_sobraram (resposta, usuario) values (?, ?)', [resposta, usuario]);
-  });
-}
+import 'package:http/http.dart' as http;
 
 class UserSobraram extends StatelessWidget{
+  DataBase dado = new DataBase();
   @override
   Widget build(BuildContext context){
+    String fonte = dado.getDataBase;
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return Scaffold(
         appBar: AppBar(
@@ -56,7 +52,10 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Jogou fora', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addSobraram.php"), body: {
+                            "resposta": 'Jogou fora',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
@@ -87,7 +86,10 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Guardou para tomar na próxima malária', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addSobraram.php"), body: {
+                            "resposta": 'Guardou para tomar na próxima malária',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -118,7 +120,10 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Deu para outra pessoa com suspeita de malária', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addSobraram.php"), body: {
+                            "resposta": 'Deu para outra pessoa com suspeita de malária',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -149,7 +154,10 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Devolveu à unidade de saúde', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addSobraram.php"), body: {
+                            "resposta": 'Devolveu à unidade de saúde',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -180,7 +188,10 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Desconheço', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addSobraram.php"), body: {
+                            "resposta": 'Desconheço',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
@@ -211,7 +222,10 @@ class UserSobraram extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: ()async{
-                          await addSQLData('Prefiro não responder', rcvdData['codigo'].toString());
+                          await http.post(Uri.parse("http://$fonte/malaria/addSobraram.php"), body: {
+                            "resposta": 'Prefiro não responder',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_SEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(

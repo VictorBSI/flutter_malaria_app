@@ -1,14 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/models/mysql.dart';
+import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-
-Future<void> addSQLData(String resposta, String usuario, String explique) async {
-  var db = Mysql();
-  return await db.getConnection().then((result){
-    result.query('insert into malaria.user_comprimidos (resposta, usuario, explique) values (?, ?, ?)', [resposta, usuario, explique]);
-  });
-}
+import 'package:http/http.dart' as http;
 
 class UserComprimidos extends StatefulWidget{
   @override
@@ -16,11 +10,13 @@ class UserComprimidos extends StatefulWidget{
 }
 
 class _UserComprimidos extends State<UserComprimidos>{
+  DataBase dado = new DataBase();
   int _value = 1;
   String tomou = 'Sim';
   String explique = '';
   @override
   Widget build(BuildContext context){
+    String fonte = dado.getDataBase;
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return Scaffold(
       appBar: AppBar(
@@ -92,7 +88,11 @@ class _UserComprimidos extends State<UserComprimidos>{
               ),
               ElevatedButton.icon(
                   onPressed: () async {
-                    await addSQLData(tomou, rcvdData['codigo'].toString(), explique);
+                    await http.post(Uri.parse("http://$fonte/malaria/addComprimidos.php"), body: {
+                      "resposta": tomou,
+                      "usuario": rcvdData['codigo'].toString(),
+                      "explique": explique
+                    });
                     Navigator.of(context).pushNamed(AppRoutes.USER_MOTIVO, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),

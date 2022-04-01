@@ -1,14 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/models/mysql.dart';
+import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-
-Future<void> addSQLData(String resposta_1, String resposta_2, String usuario) async {
-  var db = Mysql();
-  return await db.getConnection().then((result){
-    result.query('insert into malaria.user_evitar (resposta_1, resposta_2, usuario) values (?, ?, ?)', [resposta_1, resposta_2, usuario]);
-  });
-}
+import 'package:http/http.dart' as http;
 
 class UserEvitar extends StatefulWidget{
   @override
@@ -16,12 +10,14 @@ class UserEvitar extends StatefulWidget{
 }
 
 class _UserEvitar extends State<UserEvitar>{
+  DataBase dado = new DataBase();
   int _value = 1;
   int _value1 = 1;
   String orientacoes = 'Sim';
   String informacoes = 'Sim';
   @override
   Widget build(BuildContext context){
+    String fonte = dado.getDataBase;
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return Scaffold(
       appBar: AppBar(
@@ -147,7 +143,11 @@ class _UserEvitar extends State<UserEvitar>{
               Padding(padding: EdgeInsets.all(10)),
               ElevatedButton.icon(
                   onPressed: ()async{
-                    await addSQLData(orientacoes, informacoes, rcvdData['codigo'].toString());
+                    await http.post(Uri.parse("http://$fonte/malaria/addEvitar.php"), body: {
+                      "resposta_1": orientacoes,
+                      "resposta_2": informacoes,
+                      "usuario": rcvdData['codigo'].toString(),
+                    });
                     Navigator.of(context).pushNamed(AppRoutes.USER_CURA, arguments: {"codigo": rcvdData['codigo'].toString()});
                     },
                   icon: Icon(Icons.arrow_forward),
