@@ -1,11 +1,349 @@
 import 'dart:collection';
+import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/models/mysql.dart';
 import 'package:flutter_crud_1/models/user.dart';
+import 'package:http/http.dart' as http;
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+
+DataBase dado = new DataBase();
+/*Future<dynamic> generateDocumentList() async{
+
+  //DocumentScreenDataSource documentScreenDataSource;
+  String fonte = dado.getDataBase;
+  var url = 'http://$fonte/malaria/getData.php';
+
+  final response = await http.get(Uri.parse(url));
+  var list = json.decode(response.body);
+  List<DocumentScreen> _documentScreens = await list.map<DocumentScreen>((json) => DocumentScreen.fromJson(json)).tolist;
+  documentScreenDataSource = DocumentScreenDataSource(_documentScreens);
+  return _documentScreens;
+}
+
+class DocumentScreenDataSource extends DataGridSource{
+
+  DocumentScreenDataSource(this.documentScreens){
+    buildDataGridRow();
+  }
+  late List<GridColumn> _columns ;
+  List<GridColumn> getColumns() {
+    return <GridColumn>[
+      GridColumn(
+          columnName: 'codigo',
+          width: 70,
+          label: Container(
+              padding: EdgeInsets.all(16.0),
+              alignment: Alignment.center,
+              child: Text(
+                'Codigo',
+              ))),
+      GridColumn(
+          columnName: 'nome',
+          width: 80,
+          label: Container(
+              padding: EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              child: Text('Nome'))),
+      GridColumn(
+          columnName: 'data_nascimento',
+          width: 120,
+          label: Container(
+              padding: EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              child: Text(
+                'Data de nascimento',
+                overflow: TextOverflow.ellipsis,
+              ))),
+      GridColumn(
+          columnName: 'endereco',
+          label: Container(
+              padding: EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              child: Text('Endereço'))),
+      GridColumn(
+          columnName: 'sexo',
+          label: Container(
+              padding: EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              child: Text('Sexo'))),
+      GridColumn(
+          columnName: 'resposta',
+          label: Container(
+              padding: EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              child: Text('Resposta'))),
+    ];
+  }
+  void buildDataGridRow(){
+    _documentDataGridRows = documentScreens.map<DataGridRow>((e) => DataGridRow(cells:[
+      DataGridCell<String>(columnName: 'codigo', value: e.codigo),
+      DataGridCell<String>(columnName: 'nome', value: e.nome),
+      DataGridCell<String>(columnName: 'data_nascimento', value: e.data_nascimento),
+      DataGridCell<String>(columnName: 'endereco', value: e.endereco),
+      DataGridCell<String>(columnName: 'sexo', value: e.sexo),
+      DataGridCell<String>(columnName: 'resposta', value: e.resposta),
+    ])).toList();
+  }
+
+  List<DocumentScreen> documentScreens = [];
+
+  List<DataGridRow> _documentDataGridRows = [];
+
+  @override
+  List<DataGridRow> get rows => _documentDataGridRows;
+
+  @override
+  DataGridRowAdapter buildRow(DataGridRow row){
+    return DataGridRowAdapter(
+        cells: row.getCells().map<Widget>((e) {
+          return Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(8.0),
+            child: Text(e.value.toString()),
+          );
+    }).toList());
+  }
+
+  void updateDataGrid() {
+    notifyListeners();
+  }
+  @override
+  Widget build(BuildContext context){
+    _columns = getColumns();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Relatório'),
+      ),
+      body: FutureBuilder<dynamic>(
+        future: generateDocumentList(),
+        builder: (context, data){
+          return data.hasData
+              ? SfDataGrid(
+              source: documentScreenDataSource,
+              columnWidthMode: ColumnWidthMode.fill,
+              columns: _columns)
+              : Center(
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              value: 8.0,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class DocumentScreen {
+  String codigo;
+  String nome;
+  String data_nascimento;
+  String endereco;
+  String sexo;
+  String resposta;
+
+  DocumentScreen({required this.codigo, required this.nome, required this.data_nascimento, required this.endereco, required this.sexo, required this.resposta});
+  factory DocumentScreen.fromJson(Map<String, dynamic> json){
+    return DocumentScreen(
+      codigo: json['codigo'] as String,
+      nome: json['nome'] as String,
+      data_nascimento: json['data_nascimento'] as String,
+      endereco: json['endereco'] as String,
+      sexo: json['sexo'] as String,
+      resposta: json['resposta'] as String,
+    );
+  }
 
 
+}*/
+
+/// The application that contains datagrid on it.
+class Relatorio extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Relatório',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: DocumentsScreen(),
+    );
+  }
+}
+
+/// The home page of the application which hosts the datagrid.
+class DocumentsScreen extends StatefulWidget {
+  /// Creates the home page.
+  DocumentsScreen({Key? key}) : super(key: key);
+
+  @override
+  _DocumentsScreenState createState() => _DocumentsScreenState();
+}
+class _DocumentsScreenState extends State<DocumentsScreen> {
+  late DocumentScreenDataSource documentScreenDataSource;
+  List<DocumentScreen> documentScreens = <DocumentScreen>[];
+  late List<GridColumn> _columns ;
+
+  Future<dynamic> generateDocumentList() async{
+
+    //DocumentScreenDataSource documentScreenDataSource;
+    String fonte = dado.getDataBase;
+    var url = 'http://$fonte/malaria/getData.php';
+
+    final response = await http.get(Uri.parse(url));
+    var list = json.decode(response.body);
+    List<DocumentScreen> _documentScreens = await list.map<DocumentScreen>((json) => DocumentScreen.fromJson(json)).toList();
+    documentScreenDataSource = DocumentScreenDataSource(_documentScreens);
+    return _documentScreens;
+  }
+
+  List<GridColumn> getColumns() {
+    return <GridColumn>[
+      GridColumn(
+          columnName: 'codigo',
+          width: 70,
+          label: Container(
+              padding: EdgeInsets.all(16.0),
+              alignment: Alignment.center,
+              child: Text(
+                'Codigo',
+              ))),
+      GridColumn(
+          columnName: 'nome',
+          width: 80,
+          label: Container(
+              padding: EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              child: Text('Nome'))),
+      GridColumn(
+          columnName: 'data_nascimento',
+          width: 120,
+          label: Container(
+              padding: EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              child: Text(
+                'Data de nascimento',
+                overflow: TextOverflow.ellipsis,
+              ))),
+      GridColumn(
+          columnName: 'endereco',
+          label: Container(
+              padding: EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              child: Text('Endereço'))),
+      GridColumn(
+          columnName: 'sexo',
+          label: Container(
+              padding: EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              child: Text('Sexo'))),
+      GridColumn(
+          columnName: 'resposta',
+          label: Container(
+              padding: EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              child: Text('Resposta'))),
+    ];
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+  }
+  @override
+  Widget build(BuildContext context){
+    _columns = getColumns();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Relatório'),
+      ),
+      body: FutureBuilder<dynamic>(
+        future: generateDocumentList(),
+        builder: (context, data){
+          return data.hasData
+              ? SfDataGrid(
+              source: documentScreenDataSource,
+              columnWidthMode: ColumnWidthMode.fill,
+              columns: _columns)
+              : Center(
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              value: 8.0,
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+
+}
+
+
+class DocumentScreenDataSource extends DataGridSource{
+
+  DocumentScreenDataSource(this.documentScreens){
+    buildDataGridRow();
+  }
+  late List<GridColumn> _columns ;
+
+  void buildDataGridRow(){
+    _documentDataGridRows = documentScreens.map<DataGridRow>((e) => DataGridRow(cells:[
+      DataGridCell<String>(columnName: 'codigo', value: e.codigo),
+      DataGridCell<String>(columnName: 'nome', value: e.nome),
+      DataGridCell<String>(columnName: 'data_nascimento', value: e.data_nascimento),
+      DataGridCell<String>(columnName: 'endereco', value: e.endereco),
+      DataGridCell<String>(columnName: 'sexo', value: e.sexo),
+      DataGridCell<String>(columnName: 'resposta', value: e.resposta),
+    ])).toList();
+  }
+
+  List<DocumentScreen> documentScreens = [];
+
+  List<DataGridRow> _documentDataGridRows = [];
+
+  @override
+  List<DataGridRow> get rows => _documentDataGridRows;
+
+  @override
+  DataGridRowAdapter buildRow(DataGridRow row){
+    return DataGridRowAdapter(
+        cells: row.getCells().map<Widget>((e) {
+          return Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(8.0),
+            child: Text(e.value.toString()),
+          );
+        }).toList());
+  }
+
+  void updateDataGrid() {
+    notifyListeners();
+  }
+
+}
+
+class DocumentScreen {
+  String codigo;
+  String nome;
+  String data_nascimento;
+  String endereco;
+  String sexo;
+  String resposta;
+
+  DocumentScreen({required this.codigo, required this.nome, required this.data_nascimento, required this.endereco, required this.sexo, required this.resposta});
+  factory DocumentScreen.fromJson(Map<String, dynamic> json){
+    return DocumentScreen(
+      codigo: json['codigo'] as String,
+      nome: json['nome'] as String,
+      data_nascimento: json['data_nascimento'] as String,
+      endereco: json['endereco'] as String,
+      sexo: json['sexo'] as String,
+      resposta: json['resposta'] as String,
+    );
+  }}
+/*
 class DocumentScreen extends StatefulWidget{
   DocumentScreen({ Key? key, required this.title}) : super(key: key);
   final String title;
@@ -88,115 +426,7 @@ class _DocumentScreenState extends State<DocumentScreen>{
         ),
       ),
     );
-
-
-    /*return Scaffold(
-      appBar: AppBar(title: Text('Teste'),),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'usuario:',
-            ),
-            *//*Text(
-             '$usuario',
-            ),*//*
-            ListTile(
-              title: Text('$usuario'),
-            )
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _getCostumer,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-    );*/
   }
 }
 
-/*class DocumentScreen extends StatelessWidget{
-
-  const DocumentScreen({Key? key}) : super(key : key);
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Read Documents"),
-      ),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-          child: StreamBuilder(
-            stream: FirebaseFirestore.instance.collection('/usuario/registro/registro_usuario').snapshots(), //
-            builder: (_, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot){
-              if(snapshot.hasData && snapshot.data != null){
-                if(snapshot.data!.docs.isNotEmpty){
-                  return ListView.separated(
-                    itemBuilder: (_, int index){
-                      Map<String, dynamic> docData = snapshot.data!.docs[index].data();
-                      Map<String, dynamic> docData2 = snapshot.data!.docs[index].data();
-
-
-                      if(docData.isEmpty){
-                        return Text("Document is Empty");
-                      }
-
-                      //String usuario = snapshot.data!.docs.elementAt(index).get("usuario");
-                      String nome = snapshot.data!.docs.elementAt(index).get("nome");
-                      String codigo = snapshot.data!.docs.elementAt(index).get("codigo");
-                      //String resposta = snapshot.data!.docs.elementAt(index).get("resposta");
-
-
-                      *//*return ListTile(
-                        title: Text(nome),
-                        subtitle: Text(codigo),
-                      );*//*
-
-                      return ListView(
-                        shrinkWrap: true,
-                        padding: const EdgeInsets.all(20.0),
-                        children: <Widget>[
-                          Text(nome),
-                          Text(codigo),
-                          //Text(resposta),
-
-                        ],
-                      );
-                    },
-                    separatorBuilder: (_,__){
-                      return const Divider();
-                    },
-                    itemCount: snapshot.data!.docs.length,
-                  );
-                }else{
-                  return Center(
-                    child: Text("Document aren't available"),
-                  );
-                }
-              }else{
-                return Center(
-                  child: Text("Getting Error"),
-                );
-              }
-            },
-          )),
-    );
-
-  }
-}
-
-Future <void> _print() async{
-  CollectionReference citiesRef = FirebaseFirestore.instance.collection("cities");
-  CollectionReference citiesRef1 = FirebaseFirestore.instance.collection("cities");
-
-  Map<String, Object> ggbData = new HashMap<String, Object>();
-  ggbData.update("resposta", (value) => "Golden Gate Bridge") ;
-  ggbData.update("codigo", (value) => "4654564") ;
-  citiesRef.doc("SF").collection("landmarks").add(ggbData);
-
-
-}*/
+*/

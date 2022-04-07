@@ -110,7 +110,7 @@ class MyApp extends StatelessWidget {
                     AppRoutes.TRAT_MALARAE: (_) => Malarae(),
                     AppRoutes.TRAT_FALCIPARUM: (_) => Falciparum(),
                     AppRoutes.TRAT_MISTA: (_) => Mista(),
-                    AppRoutes.DOCUMENTS: (_) => DocumentScreen(title: 'Teste',),
+                    AppRoutes.DOCUMENTS: (_) => Relatorio()
                   },
                 );
               } else {

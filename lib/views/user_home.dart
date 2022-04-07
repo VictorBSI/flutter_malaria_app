@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
+//import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 import 'package:flutter_crud_1/mobile.dart';
 
@@ -234,8 +234,8 @@ class UserHome extends StatelessWidget{
         )
     );
 
-  }
-
+  }}
+/*
   Future <void> _createPDF() async{
     PdfDocument document = PdfDocument();
     final page = document.pages.add();
@@ -279,7 +279,7 @@ class UserHome extends StatelessWidget{
 
     saveAndLaunchFile(bytes, 'Output.pdf');
   }
-}
+}*/
 
 /*
 Container(
