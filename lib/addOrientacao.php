@@ -4,6 +4,6 @@ include "connection.php";
         $resposta = $_POST["resposta"];
         $usuario = $_POST["usuario"];
 
-        $query = "INSERT INTO malaria.user_orientacoes (resposta, usuario) VALUES ('$resposta', '$usuario')";
+        $query = "INSERT INTO malaria.user_orientacao (resposta, usuario) VALUES ('$resposta', '$usuario')";
         $result = mysqli_query($conn, $query);
 ?>

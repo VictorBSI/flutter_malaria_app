@@ -1,163 +1,10 @@
-import 'dart:collection';
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/database.dart';
-import 'package:flutter_crud_1/models/mysql.dart';
-import 'package:flutter_crud_1/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 DataBase dado = new DataBase();
-/*Future<dynamic> generateDocumentList() async{
-
-  //DocumentScreenDataSource documentScreenDataSource;
-  String fonte = dado.getDataBase;
-  var url = 'http://$fonte/malaria/getData.php';
-
-  final response = await http.get(Uri.parse(url));
-  var list = json.decode(response.body);
-  List<DocumentScreen> _documentScreens = await list.map<DocumentScreen>((json) => DocumentScreen.fromJson(json)).tolist;
-  documentScreenDataSource = DocumentScreenDataSource(_documentScreens);
-  return _documentScreens;
-}
-
-class DocumentScreenDataSource extends DataGridSource{
-
-  DocumentScreenDataSource(this.documentScreens){
-    buildDataGridRow();
-  }
-  late List<GridColumn> _columns ;
-  List<GridColumn> getColumns() {
-    return <GridColumn>[
-      GridColumn(
-          columnName: 'codigo',
-          width: 70,
-          label: Container(
-              padding: EdgeInsets.all(16.0),
-              alignment: Alignment.center,
-              child: Text(
-                'Codigo',
-              ))),
-      GridColumn(
-          columnName: 'nome',
-          width: 80,
-          label: Container(
-              padding: EdgeInsets.all(8.0),
-              alignment: Alignment.center,
-              child: Text('Nome'))),
-      GridColumn(
-          columnName: 'data_nascimento',
-          width: 120,
-          label: Container(
-              padding: EdgeInsets.all(8.0),
-              alignment: Alignment.center,
-              child: Text(
-                'Data de nascimento',
-                overflow: TextOverflow.ellipsis,
-              ))),
-      GridColumn(
-          columnName: 'endereco',
-          label: Container(
-              padding: EdgeInsets.all(8.0),
-              alignment: Alignment.center,
-              child: Text('Endereço'))),
-      GridColumn(
-          columnName: 'sexo',
-          label: Container(
-              padding: EdgeInsets.all(8.0),
-              alignment: Alignment.center,
-              child: Text('Sexo'))),
-      GridColumn(
-          columnName: 'resposta',
-          label: Container(
-              padding: EdgeInsets.all(8.0),
-              alignment: Alignment.center,
-              child: Text('Resposta'))),
-    ];
-  }
-  void buildDataGridRow(){
-    _documentDataGridRows = documentScreens.map<DataGridRow>((e) => DataGridRow(cells:[
-      DataGridCell<String>(columnName: 'codigo', value: e.codigo),
-      DataGridCell<String>(columnName: 'nome', value: e.nome),
-      DataGridCell<String>(columnName: 'data_nascimento', value: e.data_nascimento),
-      DataGridCell<String>(columnName: 'endereco', value: e.endereco),
-      DataGridCell<String>(columnName: 'sexo', value: e.sexo),
-      DataGridCell<String>(columnName: 'resposta', value: e.resposta),
-    ])).toList();
-  }
-
-  List<DocumentScreen> documentScreens = [];
-
-  List<DataGridRow> _documentDataGridRows = [];
-
-  @override
-  List<DataGridRow> get rows => _documentDataGridRows;
-
-  @override
-  DataGridRowAdapter buildRow(DataGridRow row){
-    return DataGridRowAdapter(
-        cells: row.getCells().map<Widget>((e) {
-          return Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(8.0),
-            child: Text(e.value.toString()),
-          );
-    }).toList());
-  }
-
-  void updateDataGrid() {
-    notifyListeners();
-  }
-  @override
-  Widget build(BuildContext context){
-    _columns = getColumns();
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Relatório'),
-      ),
-      body: FutureBuilder<dynamic>(
-        future: generateDocumentList(),
-        builder: (context, data){
-          return data.hasData
-              ? SfDataGrid(
-              source: documentScreenDataSource,
-              columnWidthMode: ColumnWidthMode.fill,
-              columns: _columns)
-              : Center(
-            child: CircularProgressIndicator(
-              strokeWidth: 2,
-              value: 8.0,
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class DocumentScreen {
-  String codigo;
-  String nome;
-  String data_nascimento;
-  String endereco;
-  String sexo;
-  String resposta;
-
-  DocumentScreen({required this.codigo, required this.nome, required this.data_nascimento, required this.endereco, required this.sexo, required this.resposta});
-  factory DocumentScreen.fromJson(Map<String, dynamic> json){
-    return DocumentScreen(
-      codigo: json['codigo'] as String,
-      nome: json['nome'] as String,
-      data_nascimento: json['data_nascimento'] as String,
-      endereco: json['endereco'] as String,
-      sexo: json['sexo'] as String,
-      resposta: json['resposta'] as String,
-    );
-  }
-
-
-}*/
 
 /// The application that contains datagrid on it.
 class Relatorio extends StatelessWidget {
@@ -201,7 +48,7 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
     return <GridColumn>[
       GridColumn(
           columnName: 'codigo',
-          width: 70,
+          //width: 70,
           label: Container(
               padding: EdgeInsets.all(16.0),
               alignment: Alignment.center,
@@ -210,14 +57,14 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
               ))),
       GridColumn(
           columnName: 'nome',
-          width: 80,
+          //width: 80,
           label: Container(
               padding: EdgeInsets.all(8.0),
               alignment: Alignment.center,
               child: Text('Nome'))),
       GridColumn(
           columnName: 'data_nascimento',
-          width: 120,
+          //width: 120,
           label: Container(
               padding: EdgeInsets.all(8.0),
               alignment: Alignment.center,
@@ -264,7 +111,7 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
           return data.hasData
               ? SfDataGrid(
               source: documentScreenDataSource,
-              columnWidthMode: ColumnWidthMode.fill,
+              columnWidthMode: ColumnWidthMode.auto,
               columns: _columns)
               : Center(
             child: CircularProgressIndicator(
