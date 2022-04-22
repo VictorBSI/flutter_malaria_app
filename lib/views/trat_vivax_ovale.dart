@@ -17,7 +17,7 @@ class VivaxOvale extends StatelessWidget {
                   rcvdData['tratamento'] == 'Opção 1'?
                   Container(
                     height: 600,
-                    child: int.parse(rcvdData['idade'].toString()) < 6  && rcvdData['tipo_idade'].toString() == 'Meses' && int.parse(rcvdData['peso'].toString()) < 5?
+                    child: int.parse(rcvdData['idade'].toString()) < 6  && rcvdData['tipo_idade'].toString() == 'Meses' || int.parse(rcvdData['peso'].toString()) < 5?
                     ListView( //Idade < 6 meses && < 5Kg
                       children: <Widget>[
                         Container(
@@ -110,7 +110,7 @@ class VivaxOvale extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ): (int.parse(rcvdData['idade'].toString()) > 5 && int.parse(rcvdData['idade'].toString()) < 12)  && rcvdData['tipo_idade'].toString() == 'Meses' && (int.parse(rcvdData['peso'].toString()) > 4 && int.parse(rcvdData['peso'].toString()) < 10)?
+                    ): /*(int.parse(rcvdData['idade'].toString()) > 5 && int.parse(rcvdData['idade'].toString()) < 12)  && rcvdData['tipo_idade'].toString() == 'Meses' || */(int.parse(rcvdData['peso'].toString()) > 4 && int.parse(rcvdData['peso'].toString()) < 10)?
                     ListView(  // Idade 6-11 meses && 5-9 Kg
                       children: <Widget>[
                         Container(
@@ -337,7 +337,7 @@ class VivaxOvale extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ):(int.parse(rcvdData['idade'].toString()) > 0 && int.parse(rcvdData['idade'].toString()) < 4)  && rcvdData['tipo_idade'].toString() == 'Anos' && (int.parse(rcvdData['peso'].toString()) > 9 && int.parse(rcvdData['peso'].toString()) < 15)?
+                    ):(int.parse(rcvdData['idade'].toString()) > 0 && int.parse(rcvdData['idade'].toString()) < 4)  && rcvdData['tipo_idade'].toString() == 'Anos' || (int.parse(rcvdData['peso'].toString()) > 9 && int.parse(rcvdData['peso'].toString()) < 15)?
                     ListView(  // Idade 1-3 anos && 10-14 Kg
                       children: <Widget>[
                         Container(
@@ -564,7 +564,7 @@ class VivaxOvale extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ):(int.parse(rcvdData['idade'].toString()) > 3 && int.parse(rcvdData['idade'].toString()) < 9)  && rcvdData['tipo_idade'].toString() == 'Anos' && (int.parse(rcvdData['peso'].toString()) > 14 && int.parse(rcvdData['peso'].toString()) < 25)?
+                    ):(int.parse(rcvdData['idade'].toString()) > 3 && int.parse(rcvdData['idade'].toString()) < 9)  && rcvdData['tipo_idade'].toString() == 'Anos' || (int.parse(rcvdData['peso'].toString()) > 14 && int.parse(rcvdData['peso'].toString()) < 25)?
                     ListView(  // Idade 4-8 anos && 15-24 Kg
                       children: <Widget>[
                         Container(
@@ -791,7 +791,7 @@ class VivaxOvale extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ):(int.parse(rcvdData['idade'].toString()) > 3 && int.parse(rcvdData['idade'].toString()) < 9)  && rcvdData['tipo_idade'].toString() == 'Anos' && (int.parse(rcvdData['peso'].toString()) > 14 && int.parse(rcvdData['peso'].toString()) < 25)?
+                    ):(int.parse(rcvdData['idade'].toString()) > 3 && int.parse(rcvdData['idade'].toString()) < 9)  && rcvdData['tipo_idade'].toString() == 'Anos' || (int.parse(rcvdData['peso'].toString()) > 14 && int.parse(rcvdData['peso'].toString()) < 25)?
                     ListView(  // Idade 9-11 anos && 25-34 Kg
                       children: <Widget>[
                         Container(
@@ -1018,7 +1018,7 @@ class VivaxOvale extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ):(int.parse(rcvdData['idade'].toString()) > 11 && int.parse(rcvdData['idade'].toString()) < 15)  && rcvdData['tipo_idade'].toString() == 'Anos' && (int.parse(rcvdData['peso'].toString()) > 34 && int.parse(rcvdData['peso'].toString()) < 50)?
+                    ):(int.parse(rcvdData['idade'].toString()) > 11 && int.parse(rcvdData['idade'].toString()) < 15)  && rcvdData['tipo_idade'].toString() == 'Anos' || (int.parse(rcvdData['peso'].toString()) > 34 && int.parse(rcvdData['peso'].toString()) < 50)?
                     ListView(  // Idade 12-14 anos && 35-49 Kg
                       children: <Widget>[
                         Container(
@@ -1932,8 +1932,8 @@ class VivaxOvale extends StatelessWidget {
                             child:Padding (padding: EdgeInsets.only(top: 10, bottom: 0.0),
                                 child: Text.rich(
                                   TextSpan(
-                                    text:'DIA 1',
-                                    style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),
+                                    text:'Peso excede tabela',
+                                    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 24),
                                   ),
                                 )
                             )
@@ -1945,7 +1945,12 @@ class VivaxOvale extends StatelessWidget {
                               child: Stack(
                                 alignment: Alignment.center,
                                 children: <Widget>[
-                                  Image.asset('assets/images/Al-15.png'),
+                                  Container(
+                                      child: Center(
+                                        child: Text('Procure o seu médico', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 30),),
+                                      )
+                                  )
+                                  /*Image.asset('assets/images/Al-15.png'),
                                   Container(
                                       child: Positioned(
                                           bottom: 30,
@@ -1957,7 +1962,7 @@ class VivaxOvale extends StatelessWidget {
                                           bottom: 10,
                                           child: Text('Primaquina 15 mg', textAlign: TextAlign.center,)
                                       )
-                                  )
+                                  )*/
                                 ],
                               ),
                               color: Colors.cyan
@@ -1965,7 +1970,7 @@ class VivaxOvale extends StatelessWidget {
                         )
 
                         ,
-                        Container(
+                        /*Container(
                             child:Padding (padding: EdgeInsets.only(top: 10, bottom: 0.0),
                                 child: Text.rich(
                                   TextSpan(
@@ -2150,12 +2155,12 @@ class VivaxOvale extends StatelessWidget {
                               ),
                               color: Colors.cyan
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ):Container(
                     height: 600,
-                    child: int.parse(rcvdData['idade'].toString()) < 6  && rcvdData['tipo_idade'].toString() == 'Meses' && int.parse(rcvdData['peso'].toString()) < 5?
+                    child: int.parse(rcvdData['idade'].toString()) < 6  && rcvdData['tipo_idade'].toString() == 'Meses' || int.parse(rcvdData['peso'].toString()) < 5?
                     ListView( //Idade < 6 meses && < 5Kg
                       children: <Widget>[
                         Container(
@@ -2248,7 +2253,7 @@ class VivaxOvale extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ): (int.parse(rcvdData['idade'].toString()) > 5 && int.parse(rcvdData['idade'].toString()) < 12)  && rcvdData['tipo_idade'].toString() == 'Meses' && (int.parse(rcvdData['peso'].toString()) > 4 && int.parse(rcvdData['peso'].toString()) < 10)?
+                    ): /*(int.parse(rcvdData['idade'].toString()) > 5 && int.parse(rcvdData['idade'].toString()) < 12)  && rcvdData['tipo_idade'].toString() == 'Meses' ||*/ (int.parse(rcvdData['peso'].toString()) > 4 && int.parse(rcvdData['peso'].toString()) < 10)?
                     ListView(  // Idade 6-11 meses && 5-9 Kg
                       children: <Widget>[
                         Container(
@@ -2475,7 +2480,7 @@ class VivaxOvale extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ):(int.parse(rcvdData['idade'].toString()) > 0 && int.parse(rcvdData['idade'].toString()) < 4)  && rcvdData['tipo_idade'].toString() == 'Anos' && (int.parse(rcvdData['peso'].toString()) > 9 && int.parse(rcvdData['peso'].toString()) < 15)?
+                    ):(int.parse(rcvdData['idade'].toString()) > 0 && int.parse(rcvdData['idade'].toString()) < 4)  && rcvdData['tipo_idade'].toString() == 'Anos' || (int.parse(rcvdData['peso'].toString()) > 9 && int.parse(rcvdData['peso'].toString()) < 15)?
                     ListView(  // Idade 1-3 anos && 10-14 Kg
                       children: <Widget>[
                         Container(
@@ -2702,7 +2707,7 @@ class VivaxOvale extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ):(int.parse(rcvdData['idade'].toString()) > 3 && int.parse(rcvdData['idade'].toString()) < 9)  && rcvdData['tipo_idade'].toString() == 'Anos' && (int.parse(rcvdData['peso'].toString()) > 14 && int.parse(rcvdData['peso'].toString()) < 25)?
+                    ):(int.parse(rcvdData['idade'].toString()) > 3 && int.parse(rcvdData['idade'].toString()) < 9)  && rcvdData['tipo_idade'].toString() == 'Anos' || (int.parse(rcvdData['peso'].toString()) > 14 && int.parse(rcvdData['peso'].toString()) < 25)?
                     ListView(  // Idade 4-8 anos && 15-24 Kg
                       children: <Widget>[
                         Container(
@@ -2929,7 +2934,7 @@ class VivaxOvale extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ):(int.parse(rcvdData['idade'].toString()) > 3 && int.parse(rcvdData['idade'].toString()) < 9)  && rcvdData['tipo_idade'].toString() == 'Anos' && (int.parse(rcvdData['peso'].toString()) > 14 && int.parse(rcvdData['peso'].toString()) < 25)?
+                    ):(int.parse(rcvdData['idade'].toString()) > 3 && int.parse(rcvdData['idade'].toString()) < 9)  && rcvdData['tipo_idade'].toString() == 'Anos' || (int.parse(rcvdData['peso'].toString()) > 14 && int.parse(rcvdData['peso'].toString()) < 25)?
                     ListView(  // Idade 9-11 anos && 25-34 Kg
                       children: <Widget>[
                         Container(
@@ -3156,7 +3161,7 @@ class VivaxOvale extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ):(int.parse(rcvdData['idade'].toString()) > 11 && int.parse(rcvdData['idade'].toString()) < 15)  && rcvdData['tipo_idade'].toString() == 'Anos' && (int.parse(rcvdData['peso'].toString()) > 34 && int.parse(rcvdData['peso'].toString()) < 50)?
+                    ):(int.parse(rcvdData['idade'].toString()) > 11 && int.parse(rcvdData['idade'].toString()) < 15)  && rcvdData['tipo_idade'].toString() == 'Anos' || (int.parse(rcvdData['peso'].toString()) > 34 && int.parse(rcvdData['peso'].toString()) < 50)?
                     ListView(  // Idade 12-14 anos && 35-49 Kg
                       children: <Widget>[
                         Container(
@@ -4070,8 +4075,8 @@ class VivaxOvale extends StatelessWidget {
                             child:Padding (padding: EdgeInsets.only(top: 10, bottom: 0.0),
                                 child: Text.rich(
                                   TextSpan(
-                                    text:'DIA 1',
-                                    style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),
+                                    text: 'Peso excede tabela',//text:'DIA 1',
+                                    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 24),
                                   ),
                                 )
                             )
@@ -4083,7 +4088,12 @@ class VivaxOvale extends StatelessWidget {
                               child: Stack(
                                 alignment: Alignment.center,
                                 children: <Widget>[
-                                  Image.asset('assets/images/Al-15.png'),
+                                  Container(
+                                    child: Center(
+                                      child: Text('Procure o seu médico', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 30),),
+                                    )
+                                  )
+                                  /*Image.asset('assets/images/Al-15.png'),
                                   Container(
                                       child: Positioned(
                                           bottom: 30,
@@ -4095,14 +4105,13 @@ class VivaxOvale extends StatelessWidget {
                                           bottom: 10,
                                           child: Text('Primaquina 15 mg', textAlign: TextAlign.center,)
                                       )
-                                  )
+                                  )*/
                                 ],
                               ),
                               color: Colors.cyan
                           ),
-                        )
-
-                        ,
+                        ),
+                        /*
                         Container(
                             child:Padding (padding: EdgeInsets.only(top: 10, bottom: 0.0),
                                 child: Text.rich(
@@ -4288,7 +4297,7 @@ class VivaxOvale extends StatelessWidget {
                               ),
                               color: Colors.cyan
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),

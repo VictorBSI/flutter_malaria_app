@@ -193,7 +193,7 @@ class UserTipo extends StatelessWidget{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addTipo.php"), body: {
-                            "resposta": 'Desconheço',
+                            "resposta": 'Desconheco',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_TEMPO, arguments: {"codigo": rcvdData['codigo'].toString()});
@@ -227,7 +227,7 @@ class UserTipo extends StatelessWidget{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addTipo.php"), body: {
-                            "resposta": 'Prefiro não responder',
+                            "resposta": 'Prefiro nao responder',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_TEMPO, arguments: {"codigo": rcvdData['codigo'].toString()});
