@@ -91,7 +91,7 @@ class UserDiagnostico extends StatelessWidget{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addDiagnostico.php"), body: {
-                            "resposta": 'Plasmodium faliparum',
+                            "resposta": 'Plasmodium falciparum',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_ORIENTACOES, arguments: {"codigo": rcvdData['codigo'].toString()});
