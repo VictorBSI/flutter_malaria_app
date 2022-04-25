@@ -217,6 +217,37 @@ class UserHome extends StatelessWidget{
                           title: Text('Documents', textAlign: TextAlign.center, style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 20)),
                         )),),
                   Container(
+                    margin: const EdgeInsets.all(10),
+                    height: 60,
+                    decoration: BoxDecoration(
+                      /*color: Colors.cyan,
+                      borderRadius: BorderRadius.circular(30.0),*/
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ]
+                    ),
+                    child: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).pushNamed(AppRoutes.CLOCK);
+                        },
+                        child: ListTile(
+                          title: Text('Alarme', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
+                        )),),
+                  Container(
                     child: Text(aux),
                   )
         /*child: ElevatedButton(
