@@ -33,7 +33,9 @@ class AppRoutes {
   static const TRAT_VIVAX_OVALE_GESTANTE = '/trat_vivax_ovale_gestante';
   static const TRAT_MALARAE = '/trat_malarae';
   static const TRAT_FALCIPARUM = '/trat_falciparum';
+  static const TRAT_FALCIPARUM_GESTANTE = '/trat_falciparum_gestante';
   static const TRAT_MISTA = '/trat_mista';
   static const DOCUMENTS = '/documents_screen';
   static const CLOCK = '/clock';
+  static const TRAT_RECORRENCIA60_VIVAX = '/trat_recorrencia60_vivax';
 }

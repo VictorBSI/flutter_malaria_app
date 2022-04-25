@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // To-Do: Trocar imagens 27/02/2022
-class VivaxOvaleGestante extends StatelessWidget {
+class FalciparumGestante extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -36,11 +36,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-2.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
 
@@ -68,11 +68,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-2.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
                                   ],
@@ -97,11 +97,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-2.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
                                   ],
@@ -130,11 +130,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-3.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
                                   ],
@@ -161,11 +161,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-3.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
                                   ],
@@ -190,11 +190,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-3.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
                                   ],
@@ -223,11 +223,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-4.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
                                   ],
@@ -254,11 +254,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-3.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
                                   ],
@@ -283,11 +283,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-3.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
                                   ],
@@ -316,11 +316,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-4.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
                                   ],
@@ -347,11 +347,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-3.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
                                   ],
@@ -376,11 +376,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: <Widget>[
-                                    Image.asset('assets/images/CQ-3.png'),
+                                    Image.asset(''),
                                     Container(
                                         child: Positioned(
                                             bottom: 30,
-                                            child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                            child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                         )
                                     ),
                                   ],
@@ -409,11 +409,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                   child: Stack(
                                     alignment: Alignment.center,
                                     children: <Widget>[
-                                      Image.asset('assets/images/CQ-4.png'),
+                                      Image.asset(''),
                                       Container(
                                           child: Positioned(
                                               bottom: 30,
-                                              child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                              child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                           )
                                       ),
                                     ],
@@ -440,11 +440,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                   child: Stack(
                                     alignment: Alignment.center,
                                     children: <Widget>[
-                                      Image.asset('assets/images/CQ-3.png'),
+                                      Image.asset(''),
                                       Container(
                                           child: Positioned(
                                               bottom: 30,
-                                              child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                              child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                           )
                                       ),
                                     ],
@@ -469,11 +469,11 @@ class VivaxOvaleGestante extends StatelessWidget {
                                   child: Stack(
                                     alignment: Alignment.center,
                                     children: <Widget>[
-                                      Image.asset('assets/images/CQ-3.png'),
+                                      Image.asset(''),
                                       Container(
                                           child: Positioned(
                                               bottom: 30,
-                                              child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                                              child: Text('Artemeter 20 mg + Lumefantrina 120 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                           )
                                       ),
                                     ],

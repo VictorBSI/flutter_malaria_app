@@ -28,8 +28,9 @@ class _UserTratamento extends State<UserTratamento> {
   int idade = 0;
   List<String> tipoIdade = ['Anos', 'Meses'];
   int peso = 0;
-  List<String> _tipos = ['falciparum', 'malariae', 'mista', 'vivax_ovale'];
+  List<String> _tipos = ['falciparum', 'malariae', 'mista', 'vivax_ovale', 'vivax_recorrencia_60dias'];
   List<String> vivax_ovale = ['Opção 1', 'Opção 2'];
+  List<String> vivax_recorrencia_60dias = ['Opção 1', 'Opção 2'];
   List<String> falciparum = ['Opção 1', 'Opção 2'];
   List<String> mista = ['Opção 1', 'Opção 2'];
   List<String> malarae = ['Opção 1'];
@@ -131,6 +132,11 @@ class _UserTratamento extends State<UserTratamento> {
                             value: opcao,
                           );
                         }).toList():_selectedTipos == 'mista'?mista.map((opcao) {
+                          return DropdownMenuItem(
+                            child: new Text(opcao),
+                            value: opcao,
+                          );
+                        }).toList():_selectedTipos == 'vivax_recorrencia_60dias'?vivax_recorrencia_60dias.map((opcao) {
                           return DropdownMenuItem(
                             child: new Text(opcao),
                             value: opcao,
@@ -244,6 +250,33 @@ class _UserTratamento extends State<UserTratamento> {
                                   "tipo_idade": anomes,
                                 }): tipo == 'malariae'? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_MALARAE,
+                                arguments: {
+                                  "tipo": tipo,
+                                  "tratamento": opcao,
+                                  "idade": idade,
+                                  "peso": peso,
+                                  "gestante": checkboxValue,
+                                  "tipo_idade": anomes,
+                                }): tipo == 'falciparum' && checkboxValue == false? Navigator.of(context).pushNamed(
+                                AppRoutes.TRAT_FALCIPARUM,
+                                arguments: {
+                                  "tipo": tipo,
+                                  "tratamento": opcao,
+                                  "idade": idade,
+                                  "peso": peso,
+                                  "gestante": checkboxValue,
+                                  "tipo_idade": anomes,
+                                }): tipo == 'falciparum' && checkboxValue == true? Navigator.of(context).pushNamed(
+                                AppRoutes.TRAT_FALCIPARUM_GESTANTE,
+                                arguments: {
+                                  "tipo": tipo,
+                                  "tratamento": opcao,
+                                  "idade": idade,
+                                  "peso": peso,
+                                  "gestante": checkboxValue,
+                                  "tipo_idade": anomes,
+                                }): tipo == 'vivax_recorrencia_60dias'? Navigator.of(context).pushNamed(
+                                AppRoutes.TRAT_RECORRENCIA60_VIVAX,
                                 arguments: {
                                   "tipo": tipo,
                                   "tratamento": opcao,

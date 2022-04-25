@@ -6,8 +6,10 @@ import 'package:flutter_crud_1/views/documents.dart';
 import 'package:flutter_crud_1/views/login_page.dart';
 import 'package:flutter_crud_1/views/sign_up_page.dart';
 import 'package:flutter_crud_1/views/trat_falciparum.dart';
+import 'package:flutter_crud_1/views/trat_falciparum_gestante.dart';
 import 'package:flutter_crud_1/views/trat_malarae.dart';
 import 'package:flutter_crud_1/views/trat_mista.dart';
+import 'package:flutter_crud_1/views/trat_recorrencia60_vivax.dart';
 import 'package:flutter_crud_1/views/trat_registro.dart';
 import 'package:flutter_crud_1/views/trat_vivax_ovale.dart';
 import 'package:flutter_crud_1/views/trat_vivax_ovale_gestante.dart';
@@ -110,9 +112,11 @@ class MyApp extends StatelessWidget {
                     AppRoutes.TRAT_VIVAX_OVALE_GESTANTE: (_) => VivaxOvaleGestante(),
                     AppRoutes.TRAT_MALARAE: (_) => Malarae(),
                     AppRoutes.TRAT_FALCIPARUM: (_) => Falciparum(),
+                    AppRoutes.TRAT_FALCIPARUM_GESTANTE: (_) => FalciparumGestante(),
                     AppRoutes.TRAT_MISTA: (_) => Mista(),
                     AppRoutes.DOCUMENTS: (_) => Relatorio(),
                     AppRoutes.CLOCK: (_) => Clock(),
+                    AppRoutes.TRAT_RECORRENCIA60_VIVAX: (_) => VivaxOvaleRecorrencia(),
                   },
                 );
               } else {
