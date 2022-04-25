@@ -28,7 +28,7 @@ class _UserTratamento extends State<UserTratamento> {
   int idade = 0;
   List<String> tipoIdade = ['Anos', 'Meses'];
   int peso = 0;
-  List<String> _tipos = ['falciparum', 'malariae', 'mista', 'vivax_ovale', 'vivax_recorrencia_60dias'];
+  List<String> _tipos = ['falciparum', 'malariae', 'mista', 'vivax_ovale', 'vivax_recorrencia_60dias', 'vivax_deficiencia_G6PD'];
   List<String> vivax_ovale = ['Opção 1', 'Opção 2'];
   List<String> vivax_recorrencia_60dias = ['Opção 1', 'Opção 2'];
   List<String> falciparum = ['Opção 1', 'Opção 2'];
@@ -141,6 +141,11 @@ class _UserTratamento extends State<UserTratamento> {
                             child: new Text(opcao),
                             value: opcao,
                           );
+                        }).toList():_selectedTipos == 'vivax_deficiencia_G6PD'?vivax_recorrencia_60dias.map((opcao) {
+                          return DropdownMenuItem(
+                            child: new Text(opcao),
+                            value: opcao,
+                          );
                         }).toList():vivax_ovale.map((opcao) {
                           return DropdownMenuItem(
                             child: new Text(opcao),
@@ -206,21 +211,6 @@ class _UserTratamento extends State<UserTratamento> {
                         activeColor: Colors.cyan,
                       ),
                       ElevatedButton.icon(
-
-                        /*onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          'Sending Data to Cloud Firestore'),
-                                    ),);
-                                  usuario.add({'nome': nome}).then((value) =>
-                                      print('User added')).catchError((error) =>
-                                      print('Falied to add user: $error'));
-                                  Navigator.of(context).pushNamed(
-                                    AppRoutes.USER_RESIDENCIA,);
-                                }
-                              }*/
                           onPressed: () async{
                             await user_tratamento.add({
                               'tipo': tipo,
@@ -277,6 +267,15 @@ class _UserTratamento extends State<UserTratamento> {
                                   "tipo_idade": anomes,
                                 }): tipo == 'vivax_recorrencia_60dias'? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_RECORRENCIA60_VIVAX,
+                                arguments: {
+                                  "tipo": tipo,
+                                  "tratamento": opcao,
+                                  "idade": idade,
+                                  "peso": peso,
+                                  "gestante": checkboxValue,
+                                  "tipo_idade": anomes,
+                                }): tipo == 'vivax_deficiencia_G6PD'? Navigator.of(context).pushNamed(
+                                AppRoutes.TRAT_VIVAX_DEFICIENCIA_G6PD,
                                 arguments: {
                                   "tipo": tipo,
                                   "tratamento": opcao,

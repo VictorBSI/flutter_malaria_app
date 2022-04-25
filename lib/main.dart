@@ -11,6 +11,7 @@ import 'package:flutter_crud_1/views/trat_malarae.dart';
 import 'package:flutter_crud_1/views/trat_mista.dart';
 import 'package:flutter_crud_1/views/trat_recorrencia60_vivax.dart';
 import 'package:flutter_crud_1/views/trat_registro.dart';
+import 'package:flutter_crud_1/views/trat_vivax_deficiencia_g6pd.dart';
 import 'package:flutter_crud_1/views/trat_vivax_ovale.dart';
 import 'package:flutter_crud_1/views/trat_vivax_ovale_gestante.dart';
 import 'package:flutter_crud_1/views/user_agentes.dart';
@@ -117,6 +118,7 @@ class MyApp extends StatelessWidget {
                     AppRoutes.DOCUMENTS: (_) => Relatorio(),
                     AppRoutes.CLOCK: (_) => Clock(),
                     AppRoutes.TRAT_RECORRENCIA60_VIVAX: (_) => VivaxOvaleRecorrencia(),
+                    AppRoutes.TRAT_VIVAX_DEFICIENCIA_G6PD: (_) => VivaxDeficienciaG6pd(),
                   },
                 );
               } else {
