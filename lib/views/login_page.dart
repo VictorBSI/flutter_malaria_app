@@ -23,14 +23,15 @@ class _LoginPageState extends State<LoginPage> {
         height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          color: Colors.cyan.shade50
+          /*gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
               Colors.white,
               Colors.cyan,
             ],
-          ),
+          ),*/
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -71,24 +72,24 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       controller: _mailInputController,
                       autofocus: true,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.black54),
                       decoration: InputDecoration(
                         labelText: "E-mail",
                         labelStyle: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         prefixIcon: Icon(
                           Icons.mail_outline,
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                       ),
@@ -102,24 +103,24 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       obscureText: _obscurePassword,
                       controller: _passwordInputController,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.black54),
                       decoration: InputDecoration(
                         labelText: "Senha",
                         labelStyle: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         prefixIcon: Icon(
                           Icons.vpn_key_sharp,
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                       ),
@@ -135,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text(
                   "Esqueceu a senha?",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black54,
                     fontSize: 12,
                   ),
                   textAlign: TextAlign.right,
@@ -150,34 +151,44 @@ class _LoginPageState extends State<LoginPage> {
                         this._obscurePassword = newValue!;
                       });
                     },
-                    activeColor: Colors.cyan,
+                    activeColor: Colors.black54,
                   ),
                   Text(
                     "Mostrar senha",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black54,
                     ),
                   )
                 ],
               ),
-              ElevatedButton(
-                onPressed: () {
-                  _doLogin();
-                  Navigator.of(context).pushNamed(AppRoutes.USER_HOME,);
-                },
-                child: Text(
-                  "Login",
-                  style: TextStyle(
-                    color: Colors.white,
+              SizedBox(
+                width: double.infinity,
+                height: 75,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _doLogin();
+                    //Navigator.of(context).pushNamed(AppRoutes.USER_HOME,);
+                  },
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25
+                    ),
                   ),
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    Colors.cyan,
-                  ),
-                  shape: MaterialStateProperty.all<OutlinedBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      Colors.white,
+                    ),
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+
+                    ),
+                    shadowColor: MaterialStateProperty.all<Color>(
+                        Colors.black,
                     ),
                   ),
                 ),
@@ -196,19 +207,29 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 // ignore: deprecated_member_use
-                child: RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignUpPage(),
-                      ),
-                    );
-                  },
-                  child: Text("Cadastre-se", style: TextStyle(color: Colors.white)),
-                  color: Colors.cyan,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 75,
+                  child: RaisedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignUpPage(),
+                        ),
+                      );
+                    },
+                    child: Text("Cadastre-se",
+                        style: TextStyle(
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25
+                        )
+                    ),
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    ),
                   ),
                 ),
               ),
@@ -223,6 +244,7 @@ class _LoginPageState extends State<LoginPage> {
     if (_formKey.currentState!.validate()) {
       LoginService()
           .login(_mailInputController.text, _passwordInputController.text);
+      Navigator.of(context).pushNamed(AppRoutes.USER_HOME,);
     } else {
       print("invalido");
     }

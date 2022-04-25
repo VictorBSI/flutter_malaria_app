@@ -45,7 +45,7 @@ class _UserTratamento extends State<UserTratamento> {
   Widget build(BuildContext context){
     //final TestText text = new TestText();
     return MultiProvider(
-      key: _formKey,
+      //key: _formKey,
       providers: [
         ChangeNotifierProvider(create: (ctx) => Users(),),
       ],
@@ -56,7 +56,9 @@ class _UserTratamento extends State<UserTratamento> {
             print('You have an error! ${snapshot.error.toString()}');
             return Text('Something went wrong!');
           } else if (snapshot.hasData) {
-            return Scaffold(
+            return Form(
+              key: _formKey,
+              child: Scaffold(
 
               appBar: AppBar(
                 title: Text('Dados Iniciais'),
@@ -69,7 +71,7 @@ class _UserTratamento extends State<UserTratamento> {
                   child: ListView(
                     children: <Widget>[
                       Text('Tipo de Malária', maxLines: 2,),
-                      DropdownButton<String>(
+                      DropdownButtonFormField<String>(
                           hint: Text(_selectedTipos),
                           onChanged: (newValue){
                             setState(() {
@@ -84,35 +86,15 @@ class _UserTratamento extends State<UserTratamento> {
                             value: tipo,
                           );
                         }).toList(),
-                          /*items: <String>['falciparum', 'malarae', 'mista', 'vivax_ovale'].map((String value){
-                            return DropdownMenuItem(
-                              value: value,
-                              child: Text(value),);
-                          }).toList(),*/
-                      ),
-                      /*
-                      TextFormField(
-                        decoration: InputDecoration(labelText: 'Tipo de Malária'),
-                        onChanged: (value) {
-                          nome = value;
-                        },
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Digite algo';
+                          validator: (value){
+                            if(value == null){
+                              return "Selecione o tipo de Malária";
+                            }
                           }
-                          return null;
-                        },
-                      ),*/
-                     /* TextFormField(
-                        decoration: InputDecoration(
-                            labelText: 'Tratamento'),
-                        onChanged: (value){
-                          tratamento = value;
-                        },
-                      ),*/
+                      ),
                       Text('Tratamento', maxLines: 2,),
 
-                      DropdownButton<String>(
+                      DropdownButtonFormField<String>(
                         hint: Text(_selectedTrat),
                         onChanged: (newValue){
                           setState(() {
@@ -151,26 +133,37 @@ class _UserTratamento extends State<UserTratamento> {
                             child: new Text(opcao),
                             value: opcao,
                           );
-                        }).toList()
+                        }).toList(),
+                        validator: (value){
+                          if(value == null){
+                            return "Selecione o tratamento";
+                          }
+                        }
                       ),
                       Row(
                         children:[
                                 Expanded(
-                                    child: TextField(
-                                      decoration: InputDecoration(labelText: 'Idade'),
-                                      keyboardType: TextInputType.number,
-                                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                                      onChanged: (value){
-                                        int v = int.parse(value);
-                                        idade = v;
-                                      },
-                                    )
+                                      child: TextFormField(
+                                        decoration: InputDecoration(labelText: 'Idade'),
+                                        keyboardType: TextInputType.number,
+                                        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                                        onChanged: (value){
+                                          int v = int.parse(value);
+                                          idade = v;
+                                        },
+                                        validator: (value){
+                                          if(value!.isEmpty || value == null){
+                                            return "Coloque a sua idade";
+                                          }
+                                          return null;
+                                        },
+                                      ),
                                 ),
                                 SizedBox(
                                   width: 20,
                                 ),
                                 Expanded(
-                                    child:DropdownButton<String>(
+                                    child:DropdownButtonFormField<String>(
                                         hint: Text(_selectedIdade),
                                         onChanged: (newValue){
                                           setState(() {
@@ -185,11 +178,18 @@ class _UserTratamento extends State<UserTratamento> {
                                             value: anomes,
                                           );
                                         }).toList(),
+                                        validator: (value){
+                                          if(value == null){
+                                            return "Selecione a métrica";
+                                          } else if (value == "Meses" && idade > 12){
+                                            return "Métrica não corresponde";
+                                          }
+                                        },
                                     ),
                                 )
                         ]
                       ),
-                      TextField(
+                      TextFormField(
                         decoration: InputDecoration(labelText: 'Peso'),
                         keyboardType: TextInputType.number,
                         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -197,6 +197,12 @@ class _UserTratamento extends State<UserTratamento> {
                           int v = int.parse(value);
                           peso = v;
                         },
+                        validator: (value){
+                          if(value!.isEmpty || value == null){
+                            return "Coloque o seu peso";
+                          }
+                          return null;
+                        }
                       ),
                       CheckboxListTile(
                         value: checkboxValue,
@@ -212,6 +218,7 @@ class _UserTratamento extends State<UserTratamento> {
                       ),
                       ElevatedButton.icon(
                           onPressed: () async{
+                            if (_formKey.currentState!.validate()) {
                             await user_tratamento.add({
                               'tipo': tipo,
                               'tratamento': tratamento,
@@ -284,7 +291,7 @@ class _UserTratamento extends State<UserTratamento> {
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
                                 }): Navigator.of(context).pushNamed(AppRoutes.LOGIN);
-                          }, //AppRoutes.USER_RESIDENCIA
+                          }; },//AppRoutes.USER_RESIDENCIA
                           icon: Icon(Icons.arrow_forward),
                           label: Text('Próximo'),
                           style: ElevatedButton.styleFrom(primary: Colors.cyan)),
@@ -293,7 +300,7 @@ class _UserTratamento extends State<UserTratamento> {
                   ),
                 ),
               ),
-            );
+            ));
           } else {
             return Center(
               child: CircularProgressIndicator(),
@@ -307,32 +314,3 @@ class _UserTratamento extends State<UserTratamento> {
     );
   }
 }
-
-/*
-class TestText extends StatefulWidget {
-
-  final _TestTextState state = new _TestTextState();
-
-  void update() {
-    state.change();
-  }
-
-  @override
-  _TestTextState createState() => state;
-}
-
-class _TestTextState extends State<TestText> {
-
-  String text = "Selecione";
-
-  void change() {
-    setState(() {
-      this.text = this.text == "falciparum" ? "falciparum" : "original";
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Text(this.text);
-  }
-}*/
