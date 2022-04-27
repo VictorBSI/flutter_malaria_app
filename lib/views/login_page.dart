@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/provider/login_service.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:flutter_crud_1/views/sign_up_page.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -160,13 +161,18 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   )
                 ],
+                
               ),
               SizedBox(
                 width: double.infinity,
                 height: 75,
                 child: ElevatedButton(
                   onPressed: () {
-                    _doLogin();
+                    //_doLogin();
+                    context.read<LoginService>().login(
+                      email: _mailInputController.text.trim(),
+                      password: _passwordInputController.text.trim(),
+                    ).then((value) => (value != null)? Navigator.of(context).pushNamed(AppRoutes.USER_HOME,):"Error");
                     //Navigator.of(context).pushNamed(AppRoutes.USER_HOME,);
                   },
                   child: Text(
@@ -239,7 +245,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
+/*
   void _doLogin() async {
     if (_formKey.currentState!.validate()) {
       LoginService()
@@ -248,7 +254,7 @@ class _LoginPageState extends State<LoginPage> {
     } else {
       print("invalido");
     }
-  }
+  }*/
 
 // Future<LoginModel> _getSavedUser() async {
 //   SharedPreferences prefs = await SharedPreferences.getInstance();
