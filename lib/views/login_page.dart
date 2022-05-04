@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/provider/login_service.dart';
@@ -11,6 +13,25 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  Future<FirebaseApp> _initializeFirebase() async{
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    return firebaseApp;
+  }
+
+  static Future<User?> loginUsingEmailPassword({required String email, required String password, required BuildContext context}) async{
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    try{
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(email: email, password: password);
+      user = userCredential.user;
+    } on FirebaseAuthException catch (e){
+      if(e.code == "user-not-found"){
+        print("No User found for that email");
+      }
+    }
+    return user;
+  }
+
   TextEditingController _mailInputController = TextEditingController();
   TextEditingController _passwordInputController = TextEditingController();
   bool _obscurePassword = true;
@@ -20,231 +41,248 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
-        decoration: BoxDecoration(
-          color: Colors.cyan.shade50
-          /*gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.white,
-              Colors.cyan,
-            ],
-          ),*/
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  bottom: 15,
-                  top: 100,
-                ),
-                /*child: Image.asset(
-                  "assets/dumbbell.png",
-                  height: 125,
-                ),*/
-              ),
-              Text(
-                "Entrar",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.grey.shade700,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      validator: (value) {
-                        if (value!.length < 5) {
-                          return "Esse e-mail parece curto demais";
-                        } else if (!value.contains("@")) {
-                          return "Esse e-mail está meio estranho, não?";
-                        }
-                        return null;
-                      },
-                      controller: _mailInputController,
-                      autofocus: true,
-                      style: TextStyle(color: Colors.black54),
-                      decoration: InputDecoration(
-                        labelText: "E-mail",
-                        labelStyle: TextStyle(
-                          color: Colors.black54,
-                        ),
-                        prefixIcon: Icon(
-                          Icons.mail_outline,
-                          color: Colors.black54,
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black54,
-                          ),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ),
-                    ),
-                    TextFormField(
-                      validator: (value) {
-                        if (value!.length < 6) {
-                          return "A senha deve ter pelo menos 6 caracteres";
-                        }
-                        return null;
-                      },
-                      obscureText: _obscurePassword,
-                      controller: _passwordInputController,
-                      style: TextStyle(color: Colors.black54),
-                      decoration: InputDecoration(
-                        labelText: "Senha",
-                        labelStyle: TextStyle(
-                          color: Colors.black54,
-                        ),
-                        prefixIcon: Icon(
-                          Icons.vpn_key_sharp,
-                          color: Colors.black54,
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black54,
-                          ),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 10),
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: Text(
-                  "Esqueceu a senha?",
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 12,
-                  ),
-                  textAlign: TextAlign.right,
-                ),
-              ),
-              Row(
+      body: FutureBuilder(
+        future: _initializeFirebase(),
+        builder: (context, snapshot) {
+          if(snapshot.connectionState == ConnectionState.done){
+          return Container(
+            height: MediaQuery.of(context).size.height,
+            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+            decoration: BoxDecoration(
+              color: Colors.cyan.shade50
+              /*gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.white,
+                  Colors.cyan,
+                ],
+              ),*/
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Checkbox(
-                    value: this._obscurePassword,
-                    onChanged: (bool? newValue) {
-                      setState(() {
-                        this._obscurePassword = newValue!;
-                      });
-                    },
-                    activeColor: Colors.black54,
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: 15,
+                      top: 100,
+                    ),
+                    /*child: Image.asset(
+                      "assets/dumbbell.png",
+                      height: 125,
+                    ),*/
                   ),
                   Text(
-                    "Mostrar senha",
+                    "Entrar",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.black54,
-                    ),
-                  )
-                ],
-                
-              ),
-              SizedBox(
-                width: double.infinity,
-                height: 75,
-                child: ElevatedButton(
-                  onPressed: () {
-                    //_doLogin();
-                    context.read<LoginService>().login(
-                      email: _mailInputController.text.trim(),
-                      password: _passwordInputController.text.trim(),
-                    ).then((value) => (value != null)? Navigator.of(context).pushNamed(AppRoutes.USER_HOME,):"Error");
-                    //Navigator.of(context).pushNamed(AppRoutes.USER_HOME,);
-                  },
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.black54,
+                      color: Colors.grey.shade700,
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25
                     ),
                   ),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      Colors.white,
-                    ),
-                    shape: MaterialStateProperty.all<OutlinedBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0),
-                      ),
-
-                    ),
-                    shadowColor: MaterialStateProperty.all<Color>(
-                        Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: Divider(
-                  color: Colors.black,
-                ),
-              ),
-              Text(
-                "Ainda não tem uma conta?",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 11),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                // ignore: deprecated_member_use
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 75,
-                  child: RaisedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUpPage(),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.length < 5) {
+                              return "Esse e-mail parece curto demais";
+                            } else if (!value.contains("@")) {
+                              return "Esse e-mail está meio estranho, não?";
+                            }
+                            return null;
+                          },
+                          controller: _mailInputController,
+                          autofocus: true,
+                          style: TextStyle(color: Colors.black54),
+                          decoration: InputDecoration(
+                            labelText: "E-mail",
+                            labelStyle: TextStyle(
+                              color: Colors.black54,
+                            ),
+                            prefixIcon: Icon(
+                              Icons.mail_outline,
+                              color: Colors.black54,
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.black54,
+                              ),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ),
                         ),
-                      );
-                    },
-                    child: Text("Cadastre-se",
-                        style: TextStyle(
-                            color: Colors.black54,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.length < 6) {
+                              return "A senha deve ter pelo menos 6 caracteres";
+                            }
+                            return null;
+                          },
+                          obscureText: _obscurePassword,
+                          controller: _passwordInputController,
+                          style: TextStyle(color: Colors.black54),
+                          decoration: InputDecoration(
+                            labelText: "Senha",
+                            labelStyle: TextStyle(
+                              color: Colors.black54,
+                            ),
+                            prefixIcon: Icon(
+                              Icons.vpn_key_sharp,
+                              color: Colors.black54,
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.black54,
+                              ),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ),
                         )
-                    ),
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(0),
+                      ],
                     ),
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      "Esqueceu a senha?",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 12,
+                      ),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: this._obscurePassword,
+                        onChanged: (bool? newValue) {
+                          setState(() {
+                            this._obscurePassword = newValue!;
+                          });
+                        },
+                        activeColor: Colors.black54,
+                      ),
+                      Text(
+                        "Mostrar senha",
+                        style: TextStyle(
+                          color: Colors.black54,
+                        ),
+                      )
+                    ],
+
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 75,
+                    child: ElevatedButton(
+                      onPressed: () async{
+                        //_doLogin();
+                        /*await LoginService.login(
+                          email: _mailInputController.text.trim(),
+                          password: _passwordInputController.text.trim(), context: context,
+                        ).then((value) => (value != null)? Navigator.of(context).pushNamed(AppRoutes.USER_HOME,):"Error");*/
+                        //Navigator.of(context).pushNamed(AppRoutes.USER_HOME,);
+                        User? user = await loginUsingEmailPassword(email: _mailInputController.text.trim(), password: _passwordInputController.text.trim(), context: context);
+                        if(user != null){
+                          Navigator.of(context).pushNamed(AppRoutes.USER_HOME,);
+                        }
+                      },
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25
+                        ),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Colors.white,
+                        ),
+                        shape: MaterialStateProperty.all<OutlinedBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(0),
+                          ),
+
+                        ),
+                        shadowColor: MaterialStateProperty.all<Color>(
+                            Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Divider(
+                      color: Colors.black,
+                    ),
+                  ),
+                  Text(
+                    "Ainda não tem uma conta?",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 11),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    // ignore: deprecated_member_use
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 75,
+                      child: RaisedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUpPage(),
+                            ),
+                          );
+                        },
+                        child: Text("Cadastre-se",
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25
+                            )
+                        ),
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(0),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
+            ),
+          );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
       ),
     );
   }
+
+
 /*
   void _doLogin() async {
     if (_formKey.currentState!.validate()) {

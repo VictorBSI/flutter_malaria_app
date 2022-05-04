@@ -148,7 +148,7 @@ class _UserTratamento extends State<UserTratamento> {
                                         keyboardType: TextInputType.number,
                                         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                         onChanged: (value){
-                                          int v = int.parse(value);
+                                          int v = int.tryParse(value) ?? -1;
                                           idade = v;
                                         },
                                         validator: (value){
@@ -194,7 +194,7 @@ class _UserTratamento extends State<UserTratamento> {
                         keyboardType: TextInputType.number,
                         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                         onChanged: (value){
-                          int v = int.parse(value);
+                          int v = int.tryParse(value) ?? -1;
                           peso = v;
                         },
                         validator: (value){

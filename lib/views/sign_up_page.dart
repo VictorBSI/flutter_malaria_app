@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/provider/sign_up_service.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
@@ -8,6 +10,25 @@ class SignUpPage extends StatefulWidget{
 }
 
 class _SignUpPageState extends State<SignUpPage>{
+
+  Future<FirebaseApp> _initializeFirebase() async{
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    return firebaseApp;
+  }
+
+  static Future<User?> creatingUserUsingEmailPassword({required String email, required String password, required BuildContext context}) async{
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    try{
+      UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: email, password: password);
+      user = userCredential.user;
+    } on FirebaseAuthException catch (e){
+        print(e.message);
+
+    }
+    return user;
+  }
+
   TextEditingController _nameInputController = TextEditingController();
   TextEditingController _mailInputController = TextEditingController();
   TextEditingController _passwordInputController = TextEditingController();
@@ -28,14 +49,15 @@ class _SignUpPageState extends State<SignUpPage>{
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          color: Colors.cyan.shade50,
+          /*gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
               Colors.white,
               Colors.cyan,
             ],
-          ),
+          ),*/
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -45,7 +67,7 @@ class _SignUpPageState extends State<SignUpPage>{
                 "Cadastro",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.cyan,
+                  color: Colors.grey.shade700,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
@@ -66,24 +88,24 @@ class _SignUpPageState extends State<SignUpPage>{
                       },
                       controller: _nameInputController,
                       autofocus: true,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.black54),
                       decoration: InputDecoration(
                         labelText: "Nome Completo",
                         labelStyle: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         prefixIcon: Icon(
                           Icons.person,
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                       ),
@@ -99,33 +121,33 @@ class _SignUpPageState extends State<SignUpPage>{
                       },
                       controller: _mailInputController,
                       autofocus: true,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.black54),
                       decoration: InputDecoration(
                         labelText: "E-mail",
                         labelStyle: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         prefixIcon: Icon(
                           Icons.mail_outline,
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                       ),
                     ),
-                    Padding(
+                    /*Padding(
                       padding: EdgeInsets.only(
-                        bottom: 15,
+                        bottom: 10,
                       ),
-                    ),
+                    ),*/
                     TextFormField(
                       validator: (value) {
                         if (value!.length < 6) {
@@ -135,24 +157,24 @@ class _SignUpPageState extends State<SignUpPage>{
                       },
                       controller: _passwordInputController,
                       obscureText: (this.showPassword == true) ? false : true,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.black54),
                       decoration: InputDecoration(
                         labelText: "Senha",
                         labelStyle: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         prefixIcon: Icon(
                           Icons.vpn_key_sharp,
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                       ),
@@ -167,24 +189,24 @@ class _SignUpPageState extends State<SignUpPage>{
                       },
                       controller: _confirmInputController,
                       obscureText: true,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.black54),
                       decoration: InputDecoration(
                         labelText: "Confirme a Senha",
                         labelStyle: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         prefixIcon: Icon(
                           Icons.vpn_key_sharp,
-                          color: Colors.white,
+                          color: Colors.black54,
                         ),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         ),
                       ),
@@ -199,12 +221,12 @@ class _SignUpPageState extends State<SignUpPage>{
                               this.showPassword = newValue!;
                             });
                           },
-                          activeColor: Colors.cyan,
+                          activeColor: Colors.black54,
                         ),
                         Text(
                           "Mostrar senha",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black54,
                           ),
                         )
                       ],
@@ -212,18 +234,42 @@ class _SignUpPageState extends State<SignUpPage>{
                   ],
                 ),
               ),
-              // ignore: deprecated_member_use
-              RaisedButton(
-                onPressed: () {
-                  _doSignUp();
-                  Navigator.of(context).pushNamed(AppRoutes.LOGIN);
-                },
-                child: Text("Casdastrar", style: TextStyle(color: Colors.white),),
-                //color: CustomColors().getActiveSecondaryButton(),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Divider(
+                  color: Colors.black,
                 ),
-                color: Colors.cyan,
+              ),
+              // ignore: deprecated_member_use
+              SizedBox(
+                width: double.infinity,
+                height: 75,
+                child: ElevatedButton(
+                  onPressed: () async{
+                    //_doSignUp();
+                    User? user = await creatingUserUsingEmailPassword(email: _mailInputController.text.trim(), password: _passwordInputController.text.trim(), context: context);
+                    if(user != null){
+                      Navigator.of(context).pushNamed(AppRoutes.LOGIN);
+                    }
+
+                  },
+                  child: Text("Cadastrar", style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 25),),
+                  //color: CustomColors().getActiveSecondaryButton(),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      Colors.white,
+                    ),
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+
+                    ),
+                    shadowColor: MaterialStateProperty.all<Color>(
+                      Colors.black,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
