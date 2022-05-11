@@ -5,19 +5,40 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_crud_1/database.dart';
+import 'package:flutter_crud_1/models/data_models/alarm_data_model.dart';
+import 'package:flutter_crud_1/provider/alarm_provider.dart';
 import 'package:flutter_crud_1/provider/users.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_crud_1/views/user_residencia.dart';
 import 'package:provider/provider.dart';
 
+class ModifyAlarmScreenArg {
+  final AlarmDataModel alarm;
+  final int index;
+
+  ModifyAlarmScreenArg(this.alarm, this.index);
+}
+
 class UserTratamento extends StatefulWidget {
+  final ModifyAlarmScreenArg? arg;
+  const UserTratamento({
+    Key? key,
+    this.arg,
+  }) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _UserTratamento();
 }
 
 
 class _UserTratamento extends State<UserTratamento> {
+  late AlarmDataModel alarm = widget.arg?.alarm ??
+      AlarmDataModel(
+        time: DateTime.now(),
+        weekdays: [],
+      );
+  bool get _editing => widget.arg?.alarm != null;
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 
   CollectionReference user_tratamento = FirebaseFirestore.instance.collection('usuario/tratamento/user_tratamento/');
@@ -216,6 +237,10 @@ class _UserTratamento extends State<UserTratamento> {
                         controlAffinity: ListTileControlAffinity.leading,
                         activeColor: Colors.cyan,
                       ),
+                      ElevatedButton.icon(onPressed: () async{
+                        final model = context.read<AlarmModel>();
+                        await model.addAlarm(alarm);
+                      }, icon: Icon(Icons.alarm), label: Text("")),
                       ElevatedButton.icon(
                           onPressed: () async{
                             if (_formKey.currentState!.validate()) {
