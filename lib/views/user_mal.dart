@@ -193,7 +193,7 @@ class UserMal extends StatelessWidget{
                             "resposta": 'Sempre',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
                           title: Text('Sempre', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),minVerticalPadding: 20,

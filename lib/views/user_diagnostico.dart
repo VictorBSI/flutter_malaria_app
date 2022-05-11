@@ -1,9 +1,97 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 
-class UserDiagnostico extends StatelessWidget{
+
+class UserDiagnostico extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _UserDiagnostico();
+}
+
+class _UserDiagnostico extends State<UserDiagnostico>{
+  bool servicestatus = false;
+  bool haspermission = false;
+  late LocationPermission permission;
+  late Position position;
+  String long = "", lat = "";
+  late StreamSubscription<Position> positionStream;
+
+  @override
+  void initState() {
+    checkGps();
+    super.initState();
+  }
+
+  checkGps() async {
+    servicestatus = await Geolocator.isLocationServiceEnabled();
+    if(servicestatus){
+      permission = await Geolocator.checkPermission();
+
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          print('Location permissions are denied');
+        }else if(permission == LocationPermission.deniedForever){
+          print("'Location permissions are permanently denied");
+        }else{
+          haspermission = true;
+        }
+      }else{
+        haspermission = true;
+      }
+
+      if(haspermission){
+        setState(() {
+          //refresh the UI
+        });
+
+        getLocation();
+      }
+    }else{
+      print("GPS Service is not enabled, turn on GPS location");
+    }
+
+    setState(() {
+      //refresh the UI
+    });
+  }
+
+  getLocation() async {
+    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print(position.longitude); //Output: 80.24599079
+    print(position.latitude); //Output: 29.6593457
+
+    long = position.longitude.toString();
+    lat = position.latitude.toString();
+
+    setState(() {
+      //refresh UI
+    });
+
+    LocationSettings locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.high, //accuracy of the location data
+      distanceFilter: 100, //minimum distance (measured in meters) a
+      //device must move horizontally before an update event is generated;
+    );
+
+    StreamSubscription<Position> positionStream = Geolocator.getPositionStream(
+        locationSettings: locationSettings).listen((Position position) {
+      print(position.longitude); //Output: 80.24599079
+      print(position.latitude); //Output: 29.6593457
+
+      long = position.longitude.toString();
+      lat = position.latitude.toString();
+
+      setState(() {
+        //refresh UI on update
+      });
+    });
+  }
+
   DataBase dado = new DataBase();
   @override
   Widget build(BuildContext context){
@@ -196,11 +284,18 @@ class UserDiagnostico extends StatelessWidget{
                             "resposta": 'Desconheco',
                             "usuario": rcvdData['codigo'].toString(),
                           });
+                          await http.post(Uri.parse("http://$fonte/malaria/addLocalizacao.php"), body: {
+                            "usuario": rcvdData['codigo'].toString(),
+                            "latitude": "$lat",
+                            "longitude": "$long",
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_ORIENTACOES, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
                           title: Text('Desconheço', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
-                        )),),
+                        )
+                    ),
+                  ),
                   Container(
                     margin: const EdgeInsets.all(10),
                     height: 50,
