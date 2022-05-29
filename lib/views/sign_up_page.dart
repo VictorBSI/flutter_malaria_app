@@ -1,8 +1,14 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/provider/sign_up_service.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+
+import '../database.dart';
 
 class SignUpPage extends StatefulWidget{
   @override
@@ -10,7 +16,7 @@ class SignUpPage extends StatefulWidget{
 }
 
 class _SignUpPageState extends State<SignUpPage>{
-
+  DataBase dado = new DataBase();
   Future<FirebaseApp> _initializeFirebase() async{
     FirebaseApp firebaseApp = await Firebase.initializeApp();
     return firebaseApp;
@@ -29,6 +35,8 @@ class _SignUpPageState extends State<SignUpPage>{
     return user;
   }
 
+
+
   TextEditingController _nameInputController = TextEditingController();
   TextEditingController _mailInputController = TextEditingController();
   TextEditingController _passwordInputController = TextEditingController();
@@ -40,6 +48,7 @@ class _SignUpPageState extends State<SignUpPage>{
 
   @override
   Widget build(BuildContext context) {
+    String fonte = dado.getDataBase;
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(
@@ -247,10 +256,11 @@ class _SignUpPageState extends State<SignUpPage>{
                 child: ElevatedButton(
                   onPressed: () async{
                     //_doSignUp();
-                    User? user = await creatingUserUsingEmailPassword(email: _mailInputController.text.trim(), password: _passwordInputController.text.trim(), context: context);
-                    if(user != null){
+                    //User? user = await creatingUserUsingEmailPassword(email: _mailInputController.text.trim(), password: _passwordInputController.text.trim(), context: context);
+                    resgisterUser(context);
+                   /* if(user != null){
                       Navigator.of(context).pushNamed(AppRoutes.LOGIN);
-                    }
+                    }*/
 
                   },
                   child: Text("Cadastrar", style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 25),),
@@ -276,6 +286,28 @@ class _SignUpPageState extends State<SignUpPage>{
         ),
       ),
     );
+  }
+
+  void resgisterUser(var ctx) async{
+    var url = "http://10.0.0.47/malaria/logincode.php";
+    var data = {
+      "email": _mailInputController.text,
+      "pass": _passwordInputController.text,
+    };
+
+    var res = await http.post(Uri.parse(url), body:data);
+
+    if(jsonDecode(jsonEncode(res.body)) == "account already exists"){
+      Fluttertoast.showToast(msg: "account exists, Please login", toastLength: Toast.LENGTH_SHORT);
+    }else{
+
+      if(jsonDecode(jsonEncode(res.body)) == "true"){
+        Fluttertoast.showToast(msg: "account created",toastLength: Toast.LENGTH_SHORT);
+        Navigator.of(ctx).pushNamed(AppRoutes.LOGIN);
+      }else{
+        Fluttertoast.showToast(msg: "error",toastLength: Toast.LENGTH_SHORT);
+      }
+    }
   }
 
   void _doSignUp() {

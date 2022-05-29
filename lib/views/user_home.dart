@@ -183,14 +183,14 @@ class UserHome extends StatelessWidget{
                           Navigator.of(context).pushNamed(AppRoutes.USER_TRAT);
                         },
                         child: ListTile(
-                          title: Text('Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 20)),
+                          title: Text('Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
                         )),),
-                  Container(
+                  /*Container(
                     margin: const EdgeInsets.all(10),
                     height: 60,
                     decoration: BoxDecoration(
-                      /*color: Colors.cyan,
-                      borderRadius: BorderRadius.circular(30.0),*/
+                      *//*color: Colors.cyan,
+                      borderRadius: BorderRadius.circular(30.0),*//*
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black12,
@@ -220,8 +220,8 @@ class UserHome extends StatelessWidget{
                     margin: const EdgeInsets.all(10),
                     height: 60,
                     decoration: BoxDecoration(
-                      /*color: Colors.cyan,
-                      borderRadius: BorderRadius.circular(30.0),*/
+                      *//*color: Colors.cyan,
+                      borderRadius: BorderRadius.circular(30.0),*//*
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black12,
@@ -246,7 +246,7 @@ class UserHome extends StatelessWidget{
                         },
                         child: ListTile(
                           title: Text('Alarme', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
-                        )),),
+                        )),),*/
                   Container(
                     child: Text(aux),
                   )
