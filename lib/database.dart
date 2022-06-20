@@ -1,7 +1,7 @@
 class DataBase {
 
   String get getDataBase{
-    return '10.0.0.47';
+    return '10.10.50.11';
   }
 }
 /*import 'dart:ffi';

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/routes/app_routes.dart';
+import 'package:get/get.dart';
 
 // To-Do: Trocar imagens 27/02/2022
 class Falciparum extends StatelessWidget {
@@ -2052,6 +2054,15 @@ class Falciparum extends StatelessWidget {
               ),
             ),
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            final name = rcvdData['tipo'].toString().obs;
+            void tipoMalaria() => name.value;
+            Navigator.of(context).pushNamed(AppRoutes.CALENDAR, arguments: {"tipo": rcvdData['tipo'], "tratamento": rcvdData['tratamento']});
+          },
+          backgroundColor: Colors.green,
+          child: const Icon(Icons.calendar_today),
         ),
       ),
     );
