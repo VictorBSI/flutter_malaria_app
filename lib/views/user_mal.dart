@@ -57,7 +57,7 @@ class UserMal extends StatelessWidget{
                             "resposta": 'Nunca',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
                           },
                         child: ListTile(
                           title: Text('Nunca', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),minVerticalPadding: 20,
@@ -91,7 +91,7 @@ class UserMal extends StatelessWidget{
                             "resposta": 'Raramente',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
                           title: Text('Raramente', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),minVerticalPadding: 20,
@@ -125,7 +125,7 @@ class UserMal extends StatelessWidget{
                             "resposta": 'Às vezes',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
                           title: Text('Às vezes', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),minVerticalPadding: 20,
@@ -159,7 +159,7 @@ class UserMal extends StatelessWidget{
                             "resposta": 'Frequentemente',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_HOME, arguments: {"codigo": rcvdData['codigo'].toString()});
                         },
                         child: ListTile(
                           title: Text('Frequentemente', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),minVerticalPadding: 20,

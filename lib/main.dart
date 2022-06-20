@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/provider/users.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
+import 'package:flutter_crud_1/views/calendar.dart';
 import 'package:flutter_crud_1/views/clock.dart';
 import 'package:flutter_crud_1/views/documents.dart';
 import 'package:flutter_crud_1/views/login_page.dart';
@@ -119,6 +120,7 @@ class MyApp extends StatelessWidget {
                     AppRoutes.CLOCK: (_) => Clock(),
                     AppRoutes.TRAT_RECORRENCIA60_VIVAX: (_) => VivaxOvaleRecorrencia(),
                     AppRoutes.TRAT_VIVAX_DEFICIENCIA_G6PD: (_) => VivaxDeficienciaG6pd(),
+                    AppRoutes.CALENDAR: (_) => Calendar(),
                   },
                 );
               } else {

@@ -39,4 +39,5 @@ class AppRoutes {
   static const CLOCK = '/clock';
   static const TRAT_RECORRENCIA60_VIVAX = '/trat_recorrencia60_vivax';
   static const TRAT_VIVAX_DEFICIENCIA_G6PD = '/trat_vivax_deficiencia_g6pd';
+  static const CALENDAR = '/calendar';
 }

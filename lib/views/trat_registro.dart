@@ -219,14 +219,14 @@ class _UserTratamento extends State<UserTratamento> {
                       ElevatedButton.icon(
                           onPressed: () async{
                             if (_formKey.currentState!.validate()) {
-                            await user_tratamento.add({
+                            await /*user_tratamento.add({
                               'tipo': tipo,
                               'tratamento': tratamento,
                               'idade': idade,
                               'peso': peso,
                               'gestante': checkboxValue? 'gestante': 'não gestante',
                             }
-                            ).then((value) => print(opcao));
+                            ).then((value) => print(opcao));*/
                             tipo == 'vivax_ovale' && checkboxValue == false? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_VIVAX_OVALE,
                                 arguments: {
