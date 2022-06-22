@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 import 'package:flutter_crud_1/views/trat_falciparum.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:get/get.dart';
@@ -23,7 +24,8 @@ class _CalendarState extends State<Calendar> {
     addResourceDetails();
     addAppointments();
     addSpecialRegions();
-    _events = MeetingDataSource(_shiftCollection, _employeeCalendarResource);
+    //_events = MeetingDataSource(_shiftCollection, _employeeCalendarResource);
+    MeetingDataSource(_shiftCollection, _employeeCalendarResource);
     super.initState();
   }
 
@@ -42,13 +44,15 @@ class _CalendarState extends State<Calendar> {
           firstDayOfWeek: 6,
           timeSlotViewSettings:
           TimeSlotViewSettings(startHour: 9, endHour: 20),
-          dataSource: _events,
+          dataSource: MeetingDataSource(_shiftCollection, _employeeCalendarResource),//_events,
           specialRegions: _specialTimeRegions
       ),
     );
+
   }
 
     void addAppointments() {
+
       var subjectCollection = [
         'General Meeting',
         'Plan Execution',
@@ -117,6 +121,7 @@ class _CalendarState extends State<Calendar> {
     }
 
     void addResourceDetails() {
+
       var nameCollection = ['Cloroquina', 'Primaquina'];
 
       var userImages = [
@@ -135,7 +140,7 @@ class _CalendarState extends State<Calendar> {
       ];
 
       _employeeCalendarResource = <CalendarResource>[];
-      /*for (var i = 0; i < nameCollection.length; i++) {
+     /* for (var i = 0; i < nameCollection.length; i++) {
       _employeeCalendarResource.add(CalendarResource(
           id: '000' + i.toString(),
           displayName: nameCollection[i],
@@ -153,6 +158,11 @@ class _CalendarState extends State<Calendar> {
                 Random().nextInt(255), 1),
             image: ExactAssetImage('assets/images/Al-1.png')));
         //i < userImages.length ? ExactAssetImage('assets/images/Al-1.png') : null));
+      }
+      if(DateTime.now().hour >= 12 && DateTime.now().hour < 18) {
+        FlutterAlarmClock.createAlarm(18, 00);
+      } else {
+        FlutterAlarmClock.createAlarm(12, 00);
       }
     }
 

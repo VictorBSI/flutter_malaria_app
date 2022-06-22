@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/provider/login_service.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:flutter_crud_1/views/sign_up_page.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
@@ -288,7 +288,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void userSignIn(var ctx) async{
-    var url = "http://10.10.50.11/malaria/login_malaria.php";
+    var url = "http://10.0.0.47/malaria/login_malaria.php";
     var data = {
       "email":_mailInputController.text,
       "pass":_passwordInputController.text,
@@ -297,11 +297,11 @@ class _LoginPageState extends State<LoginPage> {
     var res = await http.post(Uri.parse(url),body:data);
 
     if(jsonDecode(jsonEncode(res.body)) == "\"dont have an account\""){
-      Fluttertoast.showToast(msg: "dont have an account,Create an account",toastLength: Toast.LENGTH_SHORT);
+      //Fluttertoast.showToast(msg: "dont have an account,Create an account",toastLength: Toast.LENGTH_SHORT);
       //Navigator.of(ctx).pushNamed(AppRoutes.LOGIN,);
     } else{
       if(jsonDecode(jsonEncode(res.body)) == "false"){
-        Fluttertoast.showToast(msg: "incorrect password",toastLength: Toast.LENGTH_SHORT);
+        //Fluttertoast.showToast(msg: "incorrect password",toastLength: Toast.LENGTH_SHORT);
       } else{
         print(jsonDecode(jsonEncode(res.body)));
         Navigator.of(ctx).pushNamed(AppRoutes.USER_HOME,);

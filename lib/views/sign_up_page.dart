@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/provider/sign_up_service.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 import '../database.dart';
@@ -298,14 +298,14 @@ class _SignUpPageState extends State<SignUpPage>{
     var res = await http.post(Uri.parse(url), body:data);
 
     if(jsonDecode(jsonEncode(res.body)) == "account already exists"){
-      Fluttertoast.showToast(msg: "account exists, Please login", toastLength: Toast.LENGTH_SHORT);
+      //Fluttertoast.showToast(msg: "account exists, Please login", toastLength: Toast.LENGTH_SHORT);
     }else{
 
       if(jsonDecode(jsonEncode(res.body)) == "true"){
-        Fluttertoast.showToast(msg: "account created",toastLength: Toast.LENGTH_SHORT);
+        //Fluttertoast.showToast(msg: "account created",toastLength: Toast.LENGTH_SHORT);
         Navigator.of(ctx).pushNamed(AppRoutes.LOGIN);
       }else{
-        Fluttertoast.showToast(msg: "error",toastLength: Toast.LENGTH_SHORT);
+        //Fluttertoast.showToast(msg: "error",toastLength: Toast.LENGTH_SHORT);
       }
     }
   }
