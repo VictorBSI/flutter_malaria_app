@@ -1,10 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/provider/notificationservice.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:get/get.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+FlutterLocalNotificationsPlugin();
 
 // To-Do: Trocar imagens 27/02/2022
-class Falciparum extends StatelessWidget {
+class Falciparum extends StatefulWidget {
+  @override
+  State<Falciparum> createState() => _FalciparumState();
+}
+
+class _FalciparumState extends State<Falciparum> {
+  @override
+  void initState(){
+    super.initState();
+    var initializationSettingsAndroid =
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettingsIOS = IOSInitializationSettings();
+    var initializationSettings = InitializationSettings(
+        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+    flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+    );
+
+    tz.initializeTimeZones();
+  }
   @override
   Widget build(BuildContext context) {
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -886,7 +912,7 @@ class Falciparum extends StatelessWidget {
                               color: Colors.cyan
                           ),
                         ),
-                        
+
                       ],
                     ):int.parse(rcvdData['peso'].toString()) > 89 && int.parse(rcvdData['peso'].toString()) < 121?
                     ListView(  // 90-120 Kg
@@ -1235,7 +1261,7 @@ class Falciparum extends StatelessWidget {
                               color: Colors.cyan
                           ),
                         ),
-                        
+
                       ],
                     ):((int.parse(rcvdData['idade'].toString()) > 0 && int.parse(rcvdData['idade'].toString()) < 4)  && rcvdData['tipo_idade'].toString() == 'Anos' || (int.parse(rcvdData['peso'].toString()) > 9 && int.parse(rcvdData['peso'].toString()) < 15)) && int.parse(rcvdData['peso'].toString()) < 121?
                     ListView(  // Idade 1-3 anos && 10-14 Kg
@@ -1347,7 +1373,7 @@ class Falciparum extends StatelessWidget {
                               color: Colors.cyan
                           ),
                         ),
-                        
+
                       ],
                     ):((int.parse(rcvdData['idade'].toString()) > 3 && int.parse(rcvdData['idade'].toString()) < 9)  && rcvdData['tipo_idade'].toString() == 'Anos' || (int.parse(rcvdData['peso'].toString()) > 14 && int.parse(rcvdData['peso'].toString()) < 25)) && int.parse(rcvdData['peso'].toString()) < 121?
                     ListView(  // Idade 4-8 anos && 15-24 Kg
@@ -1903,7 +1929,7 @@ class Falciparum extends StatelessWidget {
                               color: Colors.cyan
                           ),
                         ),
-                        
+
                       ],
                     ):int.parse(rcvdData['peso'].toString()) > 89 && int.parse(rcvdData['peso'].toString()) < 121?
                     ListView(  // 90-120 Kg
@@ -2015,7 +2041,7 @@ class Falciparum extends StatelessWidget {
                               color: Colors.cyan
                           ),
                         ),
-                        
+
                       ],
                     ):ListView(  // 120+ Kg
                       children: <Widget>[
@@ -2056,9 +2082,22 @@ class Falciparum extends StatelessWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: (){
-            final name = rcvdData['tipo'].toString().obs;
-            void tipoMalaria() => name.value;
+          onPressed: () async{
+            await flutterLocalNotificationsPlugin.zonedSchedule(
+                0,
+                'scheduled title',
+                'scheduled body',
+                tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+                const NotificationDetails(
+                    android: AndroidNotificationDetails(
+                        'full screen channel id', 'full screen channel name',
+                        channelDescription: 'full screen channel description',
+                        priority: Priority.high,
+                        importance: Importance.high,
+                        fullScreenIntent: true)),
+                androidAllowWhileIdle: true,
+                uiLocalNotificationDateInterpretation:
+                UILocalNotificationDateInterpretation.absoluteTime);
             Navigator.of(context).pushNamed(AppRoutes.CALENDAR, arguments: {"tipo": rcvdData['tipo'], "tratamento": rcvdData['tratamento']});
           },
           backgroundColor: Colors.green,
