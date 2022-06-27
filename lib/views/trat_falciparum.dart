@@ -2,10 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/provider/notificationservice.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
+import 'package:flutter_crud_1/views/user_home.dart';
 import 'package:get/get.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey(debugLabel: "Main Navigator");
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
@@ -27,14 +30,20 @@ class _FalciparumState extends State<Falciparum> {
         android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
     flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
+
     );
 
     tz.initializeTimeZones();
+    final String timeZoneName = 'America/Belem';
+    tz.setLocalLocation(tz.getLocation(timeZoneName));
   }
+
+
   @override
   Widget build(BuildContext context) {
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return MaterialApp(
+      navigatorKey: navigatorKey,
       home: Scaffold(
         appBar: AppBar(title: rcvdData['tratamento'] == 'Opção 1'? const Text('P.falciparum - Opção 1'): const Text('P.falciparum - Opção 2'), backgroundColor: Colors.cyan,),
         body: SafeArea(
@@ -2085,9 +2094,9 @@ class _FalciparumState extends State<Falciparum> {
           onPressed: () async{
             await flutterLocalNotificationsPlugin.zonedSchedule(
                 0,
-                'scheduled title',
-                'scheduled body',
-                tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+                'Hora de tomar medicação',
+                'Acesse o App Malária Amazônia para contabilizar',
+                tz.TZDateTime.now(tz.local).hour > 12 && tz.TZDateTime.now(tz.local).hour <= 18 ? _jantar() : _almoco(),//tz.TZDateTime.now(tz.local).add(const Duration(seconds: 10)),
                 const NotificationDetails(
                     android: AndroidNotificationDetails(
                         'full screen channel id', 'full screen channel name',
@@ -2106,4 +2115,26 @@ class _FalciparumState extends State<Falciparum> {
       ),
     );
   }
+}
+
+tz.TZDateTime _almoco() {
+  final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
+  int startHour = 12;
+  tz.TZDateTime scheduledDate =
+  tz.TZDateTime(tz.local, now.year, now.month, now.day, startHour);
+  if (scheduledDate.isBefore(now)) {
+    scheduledDate = scheduledDate.add(const Duration(days: 1));
+  }
+  return scheduledDate;
+}
+
+tz.TZDateTime _jantar(){
+  final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
+  int startHour = 18;
+  tz.TZDateTime scheduledDate =
+  tz.TZDateTime(tz.local, now.year, now.month, now.day, startHour);
+  if (scheduledDate.isBefore(now)) {
+    scheduledDate = scheduledDate.add(const Duration(days: 0));
+  }
+  return scheduledDate;
 }

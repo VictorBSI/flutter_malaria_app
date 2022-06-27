@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
@@ -28,25 +29,59 @@ class _CalendarState extends State<Calendar> {
     MeetingDataSource(_shiftCollection, _employeeCalendarResource);
     super.initState();
   }
-
+  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SfCalendar(
-        /*view: CalendarView.week,
-        firstDayOfWeek: 6,
-        //initialDisplayDate: DateTime(2022, 06, 16, 09, 00),
-        //initialSelectedDate: DateTime(2022, 06, 16, 09, 00),
-        dataSource: MeetingDataSource(getAppointments()),*/
-          initialDisplayDate: DateTime.now(),
-          //DateTime(2022, 06, 18, 09, 00),
-          view: CalendarView.timelineWeek,
-          firstDayOfWeek: 6,
-          timeSlotViewSettings:
-          TimeSlotViewSettings(startHour: 9, endHour: 20),
-          dataSource: MeetingDataSource(_shiftCollection, _employeeCalendarResource),//_events,
-          specialRegions: _specialTimeRegions
-      ),
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.blue;
+      }
+      return Colors.red;
+    }
+    return MaterialApp(
+      home: Scaffold(
+        body: Stack(
+          children: [
+            SfCalendar(
+            /*view: CalendarView.week,
+            firstDayOfWeek: 6,
+            //initialDisplayDate: DateTime(2022, 06, 16, 09, 00),
+            //initialSelectedDate: DateTime(2022, 06, 16, 09, 00),
+            dataSource: MeetingDataSource(getAppointments()),*/
+              initialDisplayDate: DateTime.now(),
+              //DateTime(2022, 06, 18, 09, 00),
+              view: CalendarView.timelineWeek,
+              firstDayOfWeek: 6,
+              timeSlotViewSettings:
+              TimeSlotViewSettings(startHour: 9, endHour: 20),
+              dataSource: MeetingDataSource(_shiftCollection, _employeeCalendarResource),//_events,
+              specialRegions: _specialTimeRegions
+            ),
+            Checkbox(
+              checkColor: Colors.white,
+              fillColor: MaterialStateProperty.resolveWith(getColor),
+              value: isChecked,
+              onChanged: (bool? value) {
+                setState(() {
+                  isChecked = value!;
+                });
+              },
+            )
+        ]
+    ),
+    floatingActionButton: FloatingActionButton(
+    onPressed: (){},
+    backgroundColor: Colors.blue,
+    child: const Icon(Icons.add_box_rounded),
+    ),
+
+
+    )
     );
 
   }
@@ -86,8 +121,8 @@ class _CalendarState extends State<Calendar> {
         //for (int k = 0; k < 3; k++) {
         final DateTime date = DateTime.now(); //.add(Duration(days: 3));
         int startHour = 12; //9 + Random().nextInt(6) ;
-        startHour =
-        startHour >= 13 && startHour <= 14 ? startHour + 1 : startHour;
+        //startHour =
+        //startHour >= 13 && startHour <= 14 ? startHour + 1 : startHour;
         final DateTime _shiftStartTime =
         DateTime(date.year, date.month, date.day, startHour, 0, 0);
         _shiftCollection.add(Appointment(
@@ -175,7 +210,7 @@ class _CalendarState extends State<Calendar> {
             text: 'Almoço',
             resourceIds: _employeeCalendarResource.map((e) => e.id).toList(),
             recurrenceRule: 'FREQ=DAILY;INTERVAL=1',
-            enablePointerInteraction: false),
+            enablePointerInteraction: false,),
         TimeRegion(
             startTime: DateTime(date.year, date.month, date.day, 19, 0, 0),
             endTime: DateTime(date.year, date.month, date.day, 20, 0, 0),
