@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 import 'package:flutter_crud_1/views/trat_falciparum.dart';
+import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,7 @@ class _CalendarState extends State<Calendar> {
 
   @override
   void initState() {
+
     addResourceDetails();
     addAppointments();
     addSpecialRegions();
@@ -30,6 +32,13 @@ class _CalendarState extends State<Calendar> {
     super.initState();
   }
   bool isChecked = false;
+
+  String? _subjectText = '',
+      _startTimeText = '',
+      _endTimeText = '',
+      _dateText = '',
+      _timeDetails = '';
+  Color? _headerColor, _viewHeaderColor, _calendarColor;
   @override
   Widget build(BuildContext context) {
     Color getColor(Set<MaterialState> states) {
@@ -60,9 +69,34 @@ class _CalendarState extends State<Calendar> {
               timeSlotViewSettings:
               TimeSlotViewSettings(startHour: 9, endHour: 20),
               dataSource: MeetingDataSource(_shiftCollection, _employeeCalendarResource),//_events,
-              specialRegions: _specialTimeRegions
+              specialRegions: _specialTimeRegions,
+              onTap: calendarTapped,
+              /*appointmentBuilder: (BuildContext context, CalendarAppointmentDetails calendarAppointmentDetails){
+                final Appointment appointment = calendarAppointmentDetails.appointments.first;
+                return Column(
+                  children: [
+                    Container(
+                      child: Center(
+                          child: Column(
+                              children: [
+                                Checkbox(
+                                  checkColor: Colors.white,
+                                  fillColor: MaterialStateProperty.resolveWith(getColor),
+                                  value: isChecked,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isChecked = value!;
+                                    });
+                                  },
+                                )
+                              ])
+                      ),
+                    )
+                  ],
+                );
+              },*/
             ),
-            Checkbox(
+            /*Checkbox(
               checkColor: Colors.white,
               fillColor: MaterialStateProperty.resolveWith(getColor),
               value: isChecked,
@@ -71,20 +105,86 @@ class _CalendarState extends State<Calendar> {
                   isChecked = value!;
                 });
               },
-            )
+            )*/
         ]
     ),
-    floatingActionButton: FloatingActionButton(
+    /*floatingActionButton: FloatingActionButton(
     onPressed: (){},
     backgroundColor: Colors.blue,
     child: const Icon(Icons.add_box_rounded),
-    ),
+    ),*/
 
 
     )
     );
 
   }
+
+  void calendarTapped(CalendarTapDetails details) {
+    if (details.targetElement == CalendarElement.appointment ||
+        details.targetElement == CalendarElement.agenda) {
+      final Appointment appointmentDetails = details.appointments![0];
+      _subjectText = appointmentDetails.subject;
+      _dateText = DateFormat('MMMM dd, yyyy')
+          .format(appointmentDetails.startTime)
+          .toString();
+      _startTimeText =
+          DateFormat('hh:mm a').format(appointmentDetails.startTime).toString();
+      _endTimeText =
+          DateFormat('hh:mm a').format(appointmentDetails.endTime).toString();
+      if (appointmentDetails.isAllDay) {
+        _timeDetails = 'All day';
+      } else {
+        _timeDetails = '$_startTimeText - $_endTimeText';
+      }
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Container(child: new Text('$_subjectText')),
+              content: Container(
+                height: 80,
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          '$_dateText',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(''),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(_timeDetails!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 15)),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                new TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: new Text('close'))
+              ],
+            );
+          });
+    }
+  }
+
+
 
     void addAppointments() {
 
@@ -134,8 +234,8 @@ class _CalendarState extends State<Calendar> {
             startTimeZone: '',
             endTimeZone: '',
             recurrenceRule: 'FREQ=DAILY;COUNT=3',
-            resourceIds: employeeIds
-        ));
+            resourceIds: employeeIds,
+        ), );
         int jantarStartHour = 18;
         final DateTime _jantarStartTime =
         DateTime(date.year, date.month, date.day, jantarStartHour, 0, 0);
