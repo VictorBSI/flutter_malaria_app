@@ -8,7 +8,10 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey(debugLabel: "Main Navigator");
+//final GlobalKey<NavigatorState> navigatorKey = GlobalKey(debugLabel: "Main Navigator");
+
+final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
+
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
@@ -2107,7 +2110,8 @@ class _FalciparumState extends State<Falciparum> {
                 androidAllowWhileIdle: true,
                 uiLocalNotificationDateInterpretation:
                 UILocalNotificationDateInterpretation.absoluteTime);
-            Navigator.of(context).pushNamed(AppRoutes.CALENDAR, arguments: {"tipo": rcvdData['tipo'], "tratamento": rcvdData['tratamento']});
+            Navigator.of(context).pushNamed(AppRoutes.CALENDAR, arguments: {"tipo": rcvdData['tipo'].toString(), "tratamento": rcvdData['tratamento'].toString()});
+            //navigatorKey.currentState?.pushNamed(AppRoutes.CALENDAR, arguments: {"tipo": rcvdData['tipo'].toString(), "tratamento": rcvdData['tratamento'].toString()});
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.calendar_today),
@@ -2120,10 +2124,12 @@ class _FalciparumState extends State<Falciparum> {
 tz.TZDateTime _almoco() {
   final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
   int startHour = 12;
+  int day = 0;
+  day = now.hour < startHour ? 0 : 1;
   tz.TZDateTime scheduledDate =
   tz.TZDateTime(tz.local, now.year, now.month, now.day, startHour);
   if (scheduledDate.isBefore(now)) {
-    scheduledDate = scheduledDate.add(const Duration(days: 1));
+    scheduledDate = scheduledDate.add(Duration(days: day));
   }
   return scheduledDate;
 }
@@ -2131,10 +2137,12 @@ tz.TZDateTime _almoco() {
 tz.TZDateTime _jantar(){
   final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
   int startHour = 18;
+  int day = 0;
+  day = now.hour < startHour ? 0 : 1;
   tz.TZDateTime scheduledDate =
   tz.TZDateTime(tz.local, now.year, now.month, now.day, startHour);
   if (scheduledDate.isBefore(now)) {
-    scheduledDate = scheduledDate.add(const Duration(days: 0));
+    scheduledDate = scheduledDate.add(Duration(days: day));
   }
   return scheduledDate;
 }

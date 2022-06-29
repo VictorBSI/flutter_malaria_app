@@ -288,7 +288,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void userSignIn(var ctx) async{
-    var url = "http://10.10.50.11/malaria/login_malaria.php";
+    var url = "http://10.0.0.47/malaria/login_malaria.php";
     var data = {
       "email":_mailInputController.text,
       "pass":_passwordInputController.text,

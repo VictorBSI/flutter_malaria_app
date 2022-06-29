@@ -20,13 +20,14 @@ class _CalendarState extends State<Calendar> {
 
   late List<CalendarResource> _employeeCalendarResource;
   late List<TimeRegion> _specialTimeRegions;
+  //var nameCollection = [];
 
   @override
   void initState() {
-
     addResourceDetails();
     addAppointments();
     addSpecialRegions();
+
     //_events = MeetingDataSource(_shiftCollection, _employeeCalendarResource);
     MeetingDataSource(_shiftCollection, _employeeCalendarResource);
     super.initState();
@@ -37,10 +38,38 @@ class _CalendarState extends State<Calendar> {
       _startTimeText = '',
       _endTimeText = '',
       _dateText = '',
-      _timeDetails = '';
+      _timeDetails = '',
+      _calendar = '';
   Color? _headerColor, _viewHeaderColor, _calendarColor;
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Stack(
+          children: [
+            SfCalendar(
+              initialDisplayDate: DateTime.now(),
+              //DateTime(2022, 06, 18, 09, 00),
+              view: CalendarView.timelineWeek,
+              firstDayOfWeek: 6,
+              timeSlotViewSettings:
+              TimeSlotViewSettings(startHour: 9, endHour: 20),
+              dataSource: MeetingDataSource(_shiftCollection, _employeeCalendarResource),//_events,
+              specialRegions: _specialTimeRegions,
+              onTap: calendarTapped,
+            ),
+        ]
+    ),
+
+    )
+    );
+
+
+
+  }
+
+  void calendarTapped(CalendarTapDetails details) {
+    bool isChecked = false;
     Color getColor(Set<MaterialState> states) {
       const Set<MaterialState> interactiveStates = <MaterialState>{
         MaterialState.pressed,
@@ -52,79 +81,13 @@ class _CalendarState extends State<Calendar> {
       }
       return Colors.red;
     }
-    return MaterialApp(
-      home: Scaffold(
-        body: Stack(
-          children: [
-            SfCalendar(
-            /*view: CalendarView.week,
-            firstDayOfWeek: 6,
-            //initialDisplayDate: DateTime(2022, 06, 16, 09, 00),
-            //initialSelectedDate: DateTime(2022, 06, 16, 09, 00),
-            dataSource: MeetingDataSource(getAppointments()),*/
-              initialDisplayDate: DateTime.now(),
-              //DateTime(2022, 06, 18, 09, 00),
-              view: CalendarView.timelineWeek,
-              firstDayOfWeek: 6,
-              timeSlotViewSettings:
-              TimeSlotViewSettings(startHour: 9, endHour: 20),
-              dataSource: MeetingDataSource(_shiftCollection, _employeeCalendarResource),//_events,
-              specialRegions: _specialTimeRegions,
-              onTap: calendarTapped,
-              /*appointmentBuilder: (BuildContext context, CalendarAppointmentDetails calendarAppointmentDetails){
-                final Appointment appointment = calendarAppointmentDetails.appointments.first;
-                return Column(
-                  children: [
-                    Container(
-                      child: Center(
-                          child: Column(
-                              children: [
-                                Checkbox(
-                                  checkColor: Colors.white,
-                                  fillColor: MaterialStateProperty.resolveWith(getColor),
-                                  value: isChecked,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      isChecked = value!;
-                                    });
-                                  },
-                                )
-                              ])
-                      ),
-                    )
-                  ],
-                );
-              },*/
-            ),
-            /*Checkbox(
-              checkColor: Colors.white,
-              fillColor: MaterialStateProperty.resolveWith(getColor),
-              value: isChecked,
-              onChanged: (bool? value) {
-                setState(() {
-                  isChecked = value!;
-                });
-              },
-            )*/
-        ]
-    ),
-    /*floatingActionButton: FloatingActionButton(
-    onPressed: (){},
-    backgroundColor: Colors.blue,
-    child: const Icon(Icons.add_box_rounded),
-    ),*/
 
-
-    )
-    );
-
-  }
-
-  void calendarTapped(CalendarTapDetails details) {
     if (details.targetElement == CalendarElement.appointment ||
         details.targetElement == CalendarElement.agenda) {
       final Appointment appointmentDetails = details.appointments![0];
+      final CalendarResource calendarDetails = details.resource!;
       _subjectText = appointmentDetails.subject;
+      _calendar = calendarDetails.displayName;
       _dateText = DateFormat('MMMM dd, yyyy')
           .format(appointmentDetails.startTime)
           .toString();
@@ -149,24 +112,62 @@ class _CalendarState extends State<Calendar> {
                     Row(
                       children: <Widget>[
                         Text(
-                          '$_dateText',
+                          'Você tomou ' + '$_calendar',
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 20,
                           ),
                         ),
+
+                        /*ListView(
+                          children: [
+                            Checkbox(
+                              checkColor: Colors.white,
+                              fillColor: MaterialStateProperty.resolveWith(getColor),
+                              value: isChecked,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  isChecked = value!;
+                                });
+                              },
+                            )
+                          ],
+                        ),*/
+
                       ],
                     ),
                     Row(
+                      children: <Widget>[
+                        Text('')
+                        /*Text(
+                          '$_dateText',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20,
+                          ),
+                        ),*/
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(DateFormat('hh:mm a').format(DateTime.now().toLocal()).toString(),//_timeDetails!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 15)),
+                      ],
+                    ),
+                    /*Row(
                       children: <Widget>[
                         Text(''),
                       ],
-                    ),
+                    ),*/
                     Row(
                       children: <Widget>[
-                        Text(_timeDetails!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 15)),
+                        Container(
+                          height: 10,
+                          width: 10,
+                          padding: EdgeInsets.only(left: 200,),
+                          child: Icon(Icons.alarm_on_outlined)
+                        )
                       ],
                     )
                   ],
