@@ -39,5 +39,12 @@ class AppRoutes {
   static const CLOCK = '/clock';
   static const TRAT_RECORRENCIA60_VIVAX = '/trat_recorrencia60_vivax';
   static const TRAT_VIVAX_DEFICIENCIA_G6PD = '/trat_vivax_deficiencia_g6pd';
-  static const CALENDAR = '/calendar';
+  static const CALENDAR_FALCIPARUM = '/calendar_falciparum';
+  static const CALENDAR_FALCIPARUM_GESTANTE = '/calendar_falciparum_gestante';
+  static const CALENDAR_MALARIAE = '/calendar_malariae';
+  static const CALENDAR_MISTA = '/calendar_mista';
+  static const CALENDAR_OVALE = '/calendar_ovale';
+  static const CALENDAR_OVALE_GESTANTE = '/calendar_ovale_gestante';
+  static const CALENDAR_VIVAX_G6PD = '/calendar_vivax_g6pd';
+  static const CALENDAR_RECORRENCIA60_VIVAX = '/calendar_recorrencia60_vivax';
 }

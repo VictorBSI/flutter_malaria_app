@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_1/provider/users.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-import 'package:flutter_crud_1/views/calendar.dart';
+import 'package:flutter_crud_1/views/calendar_falciparum.dart';
+import 'package:flutter_crud_1/views/calendar_falciparum_gentante.dart';
+import 'package:flutter_crud_1/views/calendar_malariae.dart';
+import 'package:flutter_crud_1/views/calendar_mista.dart';
+import 'package:flutter_crud_1/views/calendar_ovale.dart';
+import 'package:flutter_crud_1/views/calendar_ovale_gestante.dart';
+import 'package:flutter_crud_1/views/calendar_recorrencia60_vivax.dart';
+import 'package:flutter_crud_1/views/calendar_vivax_g6pd.dart';
 import 'package:flutter_crud_1/views/clock.dart';
 import 'package:flutter_crud_1/views/documents.dart';
 import 'package:flutter_crud_1/views/login_page.dart';
@@ -120,7 +127,14 @@ class MyApp extends StatelessWidget {
                     AppRoutes.CLOCK: (_) => Clock(),
                     AppRoutes.TRAT_RECORRENCIA60_VIVAX: (_) => VivaxOvaleRecorrencia(),
                     AppRoutes.TRAT_VIVAX_DEFICIENCIA_G6PD: (_) => VivaxDeficienciaG6pd(),
-                    AppRoutes.CALENDAR: (_) => Calendar(),
+                    AppRoutes.CALENDAR_FALCIPARUM: (_) => CalendarFalciparum(),
+                    AppRoutes.CALENDAR_FALCIPARUM_GESTANTE: (_) => CalendarFalciparumGestante(),
+                    AppRoutes.CALENDAR_MALARIAE: (_) => CalendarMalariae(),
+                    AppRoutes.CALENDAR_MISTA: (_) => CalendarMista(),
+                    AppRoutes.CALENDAR_OVALE: (_) => CalendarOvale(),
+                    AppRoutes.CALENDAR_OVALE_GESTANTE: (_) => CalendarOvaleGestante(),
+                    AppRoutes.CALENDAR_VIVAX_G6PD: (_) => CalendarVivaxG6PD(),
+                    AppRoutes.CALENDAR_RECORRENCIA60_VIVAX: (_) => CalendarRecorrencia60Vivax(),
                   },
                 );
               } else {

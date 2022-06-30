@@ -290,6 +290,15 @@ class _UserTratamento extends State<UserTratamento> {
                                   "peso": peso,
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
+                                }): tipo == 'mista'? Navigator.of(context).pushNamed(
+                                AppRoutes.TRAT_MISTA,
+                                arguments: {
+                                  "tipo": tipo,
+                                  "tratamento": opcao,
+                                  "idade": idade,
+                                  "peso": peso,
+                                  "gestante": checkboxValue,
+                                  "tipo_idade": anomes,
                                 }): Navigator.of(context).pushNamed(AppRoutes.LOGIN);
                           }; },//AppRoutes.USER_RESIDENCIA
                           icon: Icon(Icons.arrow_forward),

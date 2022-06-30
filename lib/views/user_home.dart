@@ -211,7 +211,7 @@ class UserHome extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: (){
-                          Navigator.of(context).pushNamed(AppRoutes.CALENDAR);
+                          Navigator.of(context).pushNamed(AppRoutes.CALENDAR_FALCIPARUM);
                         },
                         child: ListTile(
                           title: Text('Calendário', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),

@@ -9,12 +9,12 @@ import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:get/get.dart';
 
-class Calendar extends StatefulWidget{
+class CalendarMista extends StatefulWidget{
   @override
-  State<Calendar> createState() => _CalendarState();
+  State<CalendarMista> createState() => _CalendarState();
 }
 
-class _CalendarState extends State<Calendar> {
+class _CalendarState extends State<CalendarMista> {
   late MeetingDataSource _events;
   late List<Appointment> _shiftCollection;
 

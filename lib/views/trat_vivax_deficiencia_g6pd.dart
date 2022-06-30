@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_crud_1/routes/app_routes.dart';
+import 'package:flutter_crud_1/views/trat_falciparum.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
 
 class VivaxDeficienciaG6pd extends StatelessWidget {
   @override
@@ -1945,7 +1949,56 @@ class VivaxDeficienciaG6pd extends StatelessWidget {
             ),
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async{
+            await flutterLocalNotificationsPlugin.zonedSchedule(
+                0,
+                'Hora de tomar medicação',
+                'Acesse o App Malária Amazônia para contabilizar',
+                tz.TZDateTime.now(tz.local).hour > 12 && tz.TZDateTime.now(tz.local).hour <= 18 ? _jantar() : _almoco(),//tz.TZDateTime.now(tz.local).add(const Duration(seconds: 10)),
+                const NotificationDetails(
+                    android: AndroidNotificationDetails(
+                        'full screen channel id', 'full screen channel name',
+                        channelDescription: 'full screen channel description',
+                        priority: Priority.high,
+                        importance: Importance.high,
+                        fullScreenIntent: true)),
+                androidAllowWhileIdle: true,
+                uiLocalNotificationDateInterpretation:
+                UILocalNotificationDateInterpretation.absoluteTime);
+            Navigator.of(context).pushNamed(AppRoutes.CALENDAR_VIVAX_G6PD, arguments: {"tipo": rcvdData['tipo'].toString(), "tratamento": rcvdData['tratamento'].toString()});
+            //navigatorKey.currentState?.pushNamed(AppRoutes.CALENDAR, arguments: {"tipo": rcvdData['tipo'].toString(), "tratamento": rcvdData['tratamento'].toString()});
+          },
+          backgroundColor: Colors.green,
+          child: const Icon(Icons.calendar_today),
+        ),
       ),
     );
   }
+}
+
+tz.TZDateTime _almoco() {
+  final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
+  int startHour = 12;
+  int day = 0;
+  day = now.hour < startHour ? 0 : 1;
+  tz.TZDateTime scheduledDate =
+  tz.TZDateTime(tz.local, now.year, now.month, now.day, startHour);
+  if (scheduledDate.isBefore(now)) {
+    scheduledDate = scheduledDate.add(Duration(days: day));
+  }
+  return scheduledDate;
+}
+
+tz.TZDateTime _jantar(){
+  final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
+  int startHour = 18;
+  int day = 0;
+  day = now.hour < startHour ? 0 : 1;
+  tz.TZDateTime scheduledDate =
+  tz.TZDateTime(tz.local, now.year, now.month, now.day, startHour);
+  if (scheduledDate.isBefore(now)) {
+    scheduledDate = scheduledDate.add(Duration(days: day));
+  }
+  return scheduledDate;
 }
