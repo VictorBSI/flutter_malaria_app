@@ -6,7 +6,30 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
-class VivaxOvaleGestante extends StatelessWidget {
+class VivaxOvaleGestante extends StatefulWidget {
+  @override
+  State<VivaxOvaleGestante> createState() => _VivaxOvaleGestanteState();
+}
+
+class _VivaxOvaleGestanteState extends State<VivaxOvaleGestante> {
+  @override
+  void initState(){
+    super.initState();
+    var initializationSettingsAndroid =
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettingsIOS = IOSInitializationSettings();
+    var initializationSettings = InitializationSettings(
+        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+    flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+
+    );
+
+    tz.initializeTimeZones();
+    final String timeZoneName = 'America/Belem';
+    tz.setLocalLocation(tz.getLocation(timeZoneName));
+  }
+
   @override
   Widget build(BuildContext context) {
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
@@ -47,7 +70,7 @@ class VivaxOvaleGestante extends StatelessWidget {
                                           child: Text('Cloroquina 150 mg', textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
                                       )
                                   ),
-                                  
+
                                 ],
                               ),
                               color: Colors.cyan

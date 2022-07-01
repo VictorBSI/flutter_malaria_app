@@ -6,7 +6,30 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
-class VivaxOvaleRecorrencia extends StatelessWidget {
+class VivaxOvaleRecorrencia extends StatefulWidget {
+  @override
+  State<VivaxOvaleRecorrencia> createState() => _VivaxOvaleRecorrenciaState();
+}
+
+class _VivaxOvaleRecorrenciaState extends State<VivaxOvaleRecorrencia> {
+  @override
+  void initState(){
+    super.initState();
+    var initializationSettingsAndroid =
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettingsIOS = IOSInitializationSettings();
+    var initializationSettings = InitializationSettings(
+        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+    flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+
+    );
+
+    tz.initializeTimeZones();
+    final String timeZoneName = 'America/Belem';
+    tz.setLocalLocation(tz.getLocation(timeZoneName));
+  }
+
   @override
   Widget build(BuildContext context) {
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;

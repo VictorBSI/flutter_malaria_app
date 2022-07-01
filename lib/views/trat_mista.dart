@@ -7,7 +7,30 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
 //To-Do: Trocar imagens 27/02/2022
-class Mista extends StatelessWidget {
+class Mista extends StatefulWidget {
+  @override
+  State<Mista> createState() => _MistaState();
+}
+
+class _MistaState extends State<Mista> {
+  @override
+  void initState(){
+    super.initState();
+    var initializationSettingsAndroid =
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettingsIOS = IOSInitializationSettings();
+    var initializationSettings = InitializationSettings(
+        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+    flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+
+    );
+
+    tz.initializeTimeZones();
+    final String timeZoneName = 'America/Belem';
+    tz.setLocalLocation(tz.getLocation(timeZoneName));
+  }
+
   @override
   Widget build(BuildContext context) {
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;

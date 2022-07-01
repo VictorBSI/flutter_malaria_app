@@ -151,7 +151,7 @@ class _CalendarState extends State<CalendarMalariae> {
                     ),
                     Row(
                       children: <Widget>[
-                        Text(DateFormat('hh:mm a').format(DateTime.now().toLocal()).toString(),//_timeDetails!,
+                        Text('Às ' + DateFormat('hh:mm a').format(DateTime.now().toLocal()).toString(),//_timeDetails!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w400, fontSize: 15)),
                       ],
@@ -179,7 +179,7 @@ class _CalendarState extends State<CalendarMalariae> {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: new Text('close'))
+                    child: new Text('Fechar'))
               ],
             );
           });
@@ -235,7 +235,7 @@ class _CalendarState extends State<CalendarMalariae> {
             color: colorCollection[Random().nextInt(8)],
             startTimeZone: '',
             endTimeZone: '',
-            recurrenceRule: 'FREQ=DAILY;COUNT=3',
+            recurrenceRule: 'FREQ=DAILY;COUNT=7',
             resourceIds: employeeIds,
         ), );
         int jantarStartHour = 18;
@@ -249,7 +249,7 @@ class _CalendarState extends State<CalendarMalariae> {
             color: colorCollection[Random().nextInt(8)],
             startTimeZone: '',
             endTimeZone: '',
-            recurrenceRule: 'FREQ=DAILY;COUNT=3',
+            recurrenceRule: 'FREQ=DAILY;COUNT=7',
             resourceIds: employeeIds
         ));
         // }
@@ -259,7 +259,7 @@ class _CalendarState extends State<CalendarMalariae> {
 
     void addResourceDetails() {
 
-      var nameCollection = ['Cloroquina'];
+      var nameCollection = ['Medicação'];
 
       var userImages = [
         'images/People_Circle5.png',
@@ -293,7 +293,7 @@ class _CalendarState extends State<CalendarMalariae> {
             displayName: nameCollection[i],
             color: Color.fromRGBO(Random().nextInt(255), Random().nextInt(255),
                 Random().nextInt(255), 1),
-            image: ExactAssetImage('assets/images/Al-1.png')));
+            image: ExactAssetImage('assets/images/pill.png')));
         //i < userImages.length ? ExactAssetImage('assets/images/Al-1.png') : null));
       }
       if(DateTime.now().hour >= 12 && DateTime.now().hour < 18) {
