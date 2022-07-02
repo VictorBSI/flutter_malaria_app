@@ -56,7 +56,7 @@ class UserAgentes extends StatelessWidget{
                             "resposta": 'Em jejum',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_EVITAR, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_EVITAR, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Em jejum', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),
@@ -91,7 +91,7 @@ class UserAgentes extends StatelessWidget{
                             "resposta": 'Principais refeições',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_EVITAR, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_EVITAR, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Principais refeições', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -126,7 +126,7 @@ class UserAgentes extends StatelessWidget{
                             "resposta": 'Não recebi orientações/recomendações',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_EVITAR, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_EVITAR, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Não recebi orientações/recomendações', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24,),),
@@ -163,7 +163,7 @@ class UserAgentes extends StatelessWidget{
                             "resposta": 'Prefiro não responder',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_EVITAR, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_EVITAR, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Prefiro não responder', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),

@@ -60,7 +60,7 @@ class UserPessoas extends StatelessWidget{
                             "resposta": 'Moro sozinho',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_RENDA, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_RENDA, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Moro sozinho', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -93,7 +93,7 @@ class UserPessoas extends StatelessWidget{
                             "resposta": 'Uma a três',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_RENDA, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_RENDA, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Uma a três', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -126,7 +126,7 @@ class UserPessoas extends StatelessWidget{
                             "resposta": 'Quatro a sete',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_RENDA, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_RENDA, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Quatro a sete', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -159,7 +159,7 @@ class UserPessoas extends StatelessWidget{
                             "resposta": 'Oito a dez',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_RENDA, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_RENDA, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Oito a dez', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -192,7 +192,7 @@ class UserPessoas extends StatelessWidget{
                             "resposta": 'Mais de dez',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_RENDA, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_RENDA, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Mais de dez', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),

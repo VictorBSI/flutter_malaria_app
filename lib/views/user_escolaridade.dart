@@ -60,7 +60,7 @@ class UserEscolaridade extends StatelessWidget{
                             "resposta": 'Fundamental',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Fundamental', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),
@@ -94,7 +94,7 @@ class UserEscolaridade extends StatelessWidget{
                             "resposta": 'Médio',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Médio', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -128,7 +128,7 @@ class UserEscolaridade extends StatelessWidget{
                             "resposta": 'Superior',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Superior', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -162,7 +162,7 @@ class UserEscolaridade extends StatelessWidget{
                             "resposta": 'Pós-graduação',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Pós-graduação', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -196,7 +196,7 @@ class UserEscolaridade extends StatelessWidget{
                             "resposta": 'Não estudou',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Não estudou', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -230,7 +230,7 @@ class UserEscolaridade extends StatelessWidget{
                             "resposta": 'Não sabe informar',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Não sabe informar', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),

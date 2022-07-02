@@ -158,7 +158,7 @@ class _UserTempo extends State<UserTempo>{
                       "usuario": rcvdData['codigo'].toString(),
                       "quem": quem
                     });
-                    Navigator.of(context).pushNamed(AppRoutes.USER_COMPRIMIDOS, arguments: {"codigo": rcvdData['codigo'].toString()});
+                    Navigator.of(context).pushNamed(AppRoutes.USER_COMPRIMIDOS, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                     },
                   icon: Icon(Icons.arrow_forward),
                   label: Text('Próximo'),

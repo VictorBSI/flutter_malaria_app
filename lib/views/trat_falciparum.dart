@@ -2110,8 +2110,8 @@ class _FalciparumState extends State<Falciparum> {
                 androidAllowWhileIdle: true,
                 uiLocalNotificationDateInterpretation:
                 UILocalNotificationDateInterpretation.absoluteTime);
-            Navigator.of(context).pushNamed(AppRoutes.CALENDAR_FALCIPARUM, arguments: {"tipo": rcvdData['tipo'].toString(), "tratamento": rcvdData['tratamento'].toString()});
-            //navigatorKey.currentState?.pushNamed(AppRoutes.CALENDAR, arguments: {"tipo": rcvdData['tipo'].toString(), "tratamento": rcvdData['tratamento'].toString()});
+            Navigator.of(context).pushNamed(AppRoutes.CALENDAR_FALCIPARUM, arguments: {"tipo": rcvdData['tipo'].toString(), "tratamento": rcvdData['tratamento'].toString(), "codigo": rcvdData['codigo'].toString()});
+            //navigatorKey.currentState?.pushNamed(AppRoutes.CALENDAR_FALCIPARUM, arguments: {"tipo": rcvdData['tipo'].toString(), "tratamento": rcvdData['tratamento'].toString()});
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.calendar_today),

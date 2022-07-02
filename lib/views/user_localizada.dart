@@ -60,7 +60,7 @@ class UserLocalizada extends StatelessWidget{
                             "resposta": 'Zona rural',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Zona rural', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -94,7 +94,7 @@ class UserLocalizada extends StatelessWidget{
                             "resposta": 'Zona urbana',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Zona urbana', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -128,7 +128,7 @@ class UserLocalizada extends StatelessWidget{
                             "resposta": 'Comunidade indígena',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Comunidade indígena', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -162,7 +162,7 @@ class UserLocalizada extends StatelessWidget{
                             "resposta": 'Comunidade quilombola',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Comunidade quilombola', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -196,7 +196,7 @@ class UserLocalizada extends StatelessWidget{
                             "resposta": 'Área de garimpo',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Área de garimpo', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -230,7 +230,7 @@ class UserLocalizada extends StatelessWidget{
                             "resposta": 'Assentamento',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Assentamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
@@ -264,7 +264,7 @@ class UserLocalizada extends StatelessWidget{
                             "resposta": 'Fronteiras intermunicipais',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_OCUPACAO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Fronteiras intermunicipais', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),

@@ -48,7 +48,7 @@ class UserOrientacoes extends StatelessWidget{
                                 "resposta": resposta,
                                 "usuario": rcvdData['codigo'].toString(),
                               });
-                              Navigator.of(context).pushNamed(AppRoutes.USER_AGENTES, arguments: {"codigo": rcvdData['codigo'].toString()});
+                              Navigator.of(context).pushNamed(AppRoutes.USER_AGENTES, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                               },
                             icon: Icon(Icons.arrow_forward),
                             label: Text('Próximo'),

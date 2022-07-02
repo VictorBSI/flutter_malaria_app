@@ -8,6 +8,9 @@ import 'package:flutter_crud_1/views/trat_falciparum.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import '../database.dart';
+
 
 class CalendarFalciparum extends StatefulWidget{
   @override
@@ -27,7 +30,6 @@ class _CalendarState extends State<CalendarFalciparum> {
     addResourceDetails();
     addAppointments();
     addSpecialRegions();
-
     //_events = MeetingDataSource(_shiftCollection, _employeeCalendarResource);
     MeetingDataSource(_shiftCollection, _employeeCalendarResource);
     super.initState();
@@ -39,10 +41,14 @@ class _CalendarState extends State<CalendarFalciparum> {
       _endTimeText = '',
       _dateText = '',
       _timeDetails = '',
-      _calendar = '';
+      _calendar = '',
+      _codigo = '',
+      _tipoMalaria = '';
   Color? _headerColor, _viewHeaderColor, _calendarColor;
   @override
   Widget build(BuildContext context) {
+    final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
+    _codigo = rcvdData['codigo'].toString();
     return MaterialApp(
       home: Scaffold(
         body: Stack(
@@ -69,6 +75,7 @@ class _CalendarState extends State<CalendarFalciparum> {
   }
 
   void calendarTapped(CalendarTapDetails details) {
+    DataBase dado = new DataBase();
     bool isChecked = false;
     Color getColor(Set<MaterialState> states) {
       const Set<MaterialState> interactiveStates = <MaterialState>{
@@ -81,6 +88,7 @@ class _CalendarState extends State<CalendarFalciparum> {
       }
       return Colors.red;
     }
+
 
     if (details.targetElement == CalendarElement.appointment ||
         details.targetElement == CalendarElement.agenda) {
@@ -103,6 +111,9 @@ class _CalendarState extends State<CalendarFalciparum> {
       showDialog(
           context: context,
           builder: (BuildContext context) {
+
+            String fonte = dado.getDataBase;
+
             return AlertDialog(
               title: Container(child: new Text('$_subjectText')),
               content: Container(
@@ -175,7 +186,12 @@ class _CalendarState extends State<CalendarFalciparum> {
               ),
               actions: <Widget>[
                 new TextButton(
-                    onPressed: () {
+                    onPressed: () async{
+                      http.post(Uri.parse("http://$fonte/malaria/addAcompanhamento.php"), body: {
+                        "tipo_malaria": 'falciparum',
+                        "usuario": _codigo,
+                        "hora_remedio": DateTime.now().toLocal().toString()
+                      });
                       Navigator.of(context).pop();
                     },
                     child: new Text('Fechar'))
@@ -234,7 +250,7 @@ class _CalendarState extends State<CalendarFalciparum> {
             color: colorCollection[Random().nextInt(8)],
             startTimeZone: '',
             endTimeZone: '',
-            recurrenceRule: 'FREQ=DAILY;COUNT=7',
+            recurrenceRule: 'FREQ=DAILY;COUNT=3',
             resourceIds: employeeIds,
         ), );
         int jantarStartHour = 18;
@@ -248,7 +264,7 @@ class _CalendarState extends State<CalendarFalciparum> {
             color: colorCollection[Random().nextInt(8)],
             startTimeZone: '',
             endTimeZone: '',
-            recurrenceRule: 'FREQ=DAILY;COUNT=7',
+            recurrenceRule: 'FREQ=DAILY;COUNT=3',
             resourceIds: employeeIds
         ));
         // }
@@ -259,6 +275,7 @@ class _CalendarState extends State<CalendarFalciparum> {
     void addResourceDetails() {
 
       var nameCollection = ['Medicação'];
+
 
       var userImages = [
         'images/People_Circle5.png',

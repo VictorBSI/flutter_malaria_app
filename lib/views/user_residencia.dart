@@ -70,7 +70,7 @@ class UserResidencia extends StatelessWidget{
                             'resposta': 'De 0 a 2',
                             'usuario': rcvdData['codigo'],
                           }).then((value) => print(value.id));*/
-                          Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: Center(
                           child: ListTile(
@@ -116,7 +116,7 @@ class UserResidencia extends StatelessWidget{
                             'resposta': 'De 3 a 7',
                             'usuario': rcvdData['codigo'],
                           });*/
-                          Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: Center(
                             child: ListTile(
@@ -159,7 +159,7 @@ class UserResidencia extends StatelessWidget{
                             'resposta': 'De 8 a 10',
                             'usuario': rcvdData['codigo'],
                           });*/
-                          Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child:
                           Center(
@@ -202,7 +202,7 @@ class UserResidencia extends StatelessWidget{
                             'resposta': 'Mais de 10',
                             'usuario': rcvdData['codigo'],
                           });*/
-                          Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_PESSOAS, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child:
                           Center(

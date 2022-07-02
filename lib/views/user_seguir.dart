@@ -58,7 +58,7 @@ class UserSeguir extends StatelessWidget{
                             "resposta": 'Orientações sobre comprimidos',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_NAOSEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_NAOSEGUIR, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Orientações sobre comprimidos', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24))/*,minVerticalPadding: 20*/,
@@ -92,7 +92,7 @@ class UserSeguir extends StatelessWidget{
                             "resposta": 'Sobre mudança de hábitos',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_NAOSEGUIR, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_NAOSEGUIR, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                         },
                         child: ListTile(
                           title: Text('Sobre mudança de hábitos', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),minVerticalPadding: 20,

@@ -234,7 +234,7 @@ class _CalendarState extends State<CalendarVivaxG6PD> {
             color: colorCollection[Random().nextInt(8)],
             startTimeZone: '',
             endTimeZone: '',
-            recurrenceRule: 'FREQ=DAILY;COUNT=7',
+            recurrenceRule: 'FREQ=WEEKLY;COUNT=8',
             resourceIds: employeeIds,
         ), );
         int jantarStartHour = 18;
@@ -248,7 +248,7 @@ class _CalendarState extends State<CalendarVivaxG6PD> {
             color: colorCollection[Random().nextInt(8)],
             startTimeZone: '',
             endTimeZone: '',
-            recurrenceRule: 'FREQ=DAILY;COUNT=7',
+            recurrenceRule: 'FREQ=WEEKLY;COUNT=8',
             resourceIds: employeeIds
         ));
         // }

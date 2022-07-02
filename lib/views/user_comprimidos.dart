@@ -93,7 +93,7 @@ class _UserComprimidos extends State<UserComprimidos>{
                       "usuario": rcvdData['codigo'].toString(),
                       "explique": explique
                     });
-                    Navigator.of(context).pushNamed(AppRoutes.USER_MOTIVO, arguments: {"codigo": rcvdData['codigo'].toString()});
+                    Navigator.of(context).pushNamed(AppRoutes.USER_MOTIVO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                     },
                   icon: Icon(Icons.arrow_forward),
                   label: Text('Próximo'),

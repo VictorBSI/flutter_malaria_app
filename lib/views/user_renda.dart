@@ -59,7 +59,7 @@ class UserRenda extends StatelessWidget{
                             "resposta": r'Até 1 salário mínimo (até R$1.100,00)',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text(r'Até 1 salário mínimo (até R$1.100,00)', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),contentPadding: EdgeInsets.only(top: 5),
@@ -94,7 +94,7 @@ class UserRenda extends StatelessWidget{
                             "resposta": r'1 a 3 salários mínimos (R$ 1.100,00 a 3.300,00)',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text(r'1 a 3 salários mínimos (R$ 1.100,00 a 3.300,00)', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),contentPadding: EdgeInsets.only(top: 5)
@@ -129,7 +129,7 @@ class UserRenda extends StatelessWidget{
                             "resposta": r'3 a 6 salários mínimos (R$ 3.300,00 a 6.600,00)',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text(r'3 a 6 salários mínimos (R$ 3.300,00 a 6.600,00)', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),contentPadding: EdgeInsets.only(top: 5)
@@ -164,7 +164,7 @@ class UserRenda extends StatelessWidget{
                             "resposta": r'Mais de 6 salários mínimos (mais de 6.600,00)',
                             "usuario": rcvdData['codigo'].toString(),
                           });
-                          Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString()});
+                          Navigator.of(context).pushNamed(AppRoutes.USER_CASA, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text(r'Mais de 6 salários mínimos (mais de 6.600,00)', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),contentPadding: EdgeInsets.only(top: 5)

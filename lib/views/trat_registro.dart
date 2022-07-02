@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_crud_1/views/user_residencia.dart';
 import 'package:provider/provider.dart';
+import 'package:age_calculator/age_calculator.dart';
 
 class UserTratamento extends StatefulWidget {
   @override
@@ -40,10 +42,14 @@ class _UserTratamento extends State<UserTratamento> {
   String anomes = '';
   String opcao = '';
   bool checkboxValue = false;
+  Map<String, Object> aux = new HashMap();
 
   @override
   Widget build(BuildContext context){
-    //final TestText text = new TestText();
+    final Map<String, Object> rcvdData = ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
+    DateTime birthday = rcvdData['data_nascimento'] as DateTime;
+    DateDuration duration;
+    duration = AgeCalculator.age(birthday);
     return MultiProvider(
       //key: _formKey,
       providers: [
@@ -147,6 +153,7 @@ class _UserTratamento extends State<UserTratamento> {
                                         decoration: InputDecoration(labelText: 'Idade'),
                                         keyboardType: TextInputType.number,
                                         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                                        initialValue: duration == null ? null : duration.years.toString(),
                                         onChanged: (value){
                                           int v = int.tryParse(value) ?? -1;
                                           idade = v;
@@ -263,6 +270,7 @@ class _UserTratamento extends State<UserTratamento> {
                                   "peso": peso,
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
+                                  "codigo": rcvdData['codigo'].toString()
                                 }): tipo == 'falciparum' && checkboxValue == true? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_FALCIPARUM_GESTANTE,
                                 arguments: {

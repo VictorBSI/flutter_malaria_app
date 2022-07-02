@@ -169,7 +169,7 @@ class _UserRegistro extends State<UserRegistro> {
                                   //Ipify.ipv4().then((value) => print(value));
 
                                 Navigator.of(context).pushNamed(
-                                  AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo, "UId": UId});
+                                  AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo, "UId": UId, "data_nascimento": data_nascimento.toUtc()});
                               }, //AppRoutes.USER_RESIDENCIA
                               icon: Icon(Icons.arrow_forward),
                               label: Text('Próximo',),
