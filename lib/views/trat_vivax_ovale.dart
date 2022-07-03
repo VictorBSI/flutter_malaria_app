@@ -4335,7 +4335,9 @@ class _VivaxOvaleState extends State<VivaxOvale> {
             ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: Visibility(
+          visible: rcvdData['codigo'].toString() != ''?  true : false,
+          child: FloatingActionButton(
           onPressed: () async{
             await flutterLocalNotificationsPlugin.zonedSchedule(
                 0,
@@ -4357,7 +4359,7 @@ class _VivaxOvaleState extends State<VivaxOvale> {
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.calendar_today),
-        ),
+        ),)
       ),
     );
   }

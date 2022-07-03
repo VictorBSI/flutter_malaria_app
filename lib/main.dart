@@ -13,12 +13,14 @@ import 'package:flutter_crud_1/views/clock.dart';
 import 'package:flutter_crud_1/views/documents.dart';
 import 'package:flutter_crud_1/views/login_page.dart';
 import 'package:flutter_crud_1/views/sign_up_page.dart';
+import 'package:flutter_crud_1/views/splash.dart';
 import 'package:flutter_crud_1/views/trat_falciparum.dart';
 import 'package:flutter_crud_1/views/trat_falciparum_gestante.dart';
 import 'package:flutter_crud_1/views/trat_malarae.dart';
 import 'package:flutter_crud_1/views/trat_mista.dart';
 import 'package:flutter_crud_1/views/trat_recorrencia60_vivax.dart';
 import 'package:flutter_crud_1/views/trat_registro.dart';
+import 'package:flutter_crud_1/views/trat_registro_agente.dart';
 import 'package:flutter_crud_1/views/trat_vivax_deficiencia_g6pd.dart';
 import 'package:flutter_crud_1/views/trat_vivax_ovale.dart';
 import 'package:flutter_crud_1/views/trat_vivax_ovale_gestante.dart';
@@ -87,7 +89,8 @@ class MyApp extends StatelessWidget {
                     visualDensity: VisualDensity.adaptivePlatformDensity,
                   ),
                   routes: {
-                    AppRoutes.HOME: (_) => LoginPage(),
+                    AppRoutes.HOME: (_) => SplashScreen(),//LoginPage(),
+                    AppRoutes.LOGIN: (_) => LoginPage(),
                     AppRoutes.USER_FORM: (_) => UserForm(),
                     AppRoutes.USER_RESIDENCIA: (_) => UserResidencia(),
                     AppRoutes.USER_REGISTRO: (_) => UserRegistro(),
@@ -135,6 +138,7 @@ class MyApp extends StatelessWidget {
                     AppRoutes.CALENDAR_OVALE_GESTANTE: (_) => CalendarOvaleGestante(),
                     AppRoutes.CALENDAR_VIVAX_G6PD: (_) => CalendarVivaxG6PD(),
                     AppRoutes.CALENDAR_RECORRENCIA60_VIVAX: (_) => CalendarRecorrencia60Vivax(),
+                    AppRoutes.USER_TRATAMENTO_AGENTE: (_) => UserTratamentoAgente(),
                   },
                 );
               } else {

@@ -3934,7 +3934,9 @@ class _MistaState extends State<Mista> {
             ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: Visibility(
+          visible: rcvdData['codigo'].toString() != ''?  true : false,
+          child: FloatingActionButton(
           onPressed: () async{
             await flutterLocalNotificationsPlugin.zonedSchedule(
                 0,
@@ -3956,7 +3958,7 @@ class _MistaState extends State<Mista> {
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.calendar_today),
-        ),
+        ),)
       ),
     );
   }

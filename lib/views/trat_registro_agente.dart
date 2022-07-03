@@ -13,16 +13,16 @@ import 'package:flutter_crud_1/views/user_residencia.dart';
 import 'package:provider/provider.dart';
 import 'package:age_calculator/age_calculator.dart';
 
-class UserTratamento extends StatefulWidget {
+class UserTratamentoAgente extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _UserTratamento();
 }
 
 
-class _UserTratamento extends State<UserTratamento> {
+class _UserTratamento extends State<UserTratamentoAgente> {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 
-  CollectionReference user_tratamento = FirebaseFirestore.instance.collection('usuario/tratamento/user_tratamento/');
+  //CollectionReference user_tratamento = FirebaseFirestore.instance.collection('usuario/tratamento/user_tratamento/');
   final _formKey = GlobalKey<FormState>();
   //UserTratamento({Key? key}) : super(key: key);
   String tratamento = '';
@@ -46,10 +46,10 @@ class _UserTratamento extends State<UserTratamento> {
 
   @override
   Widget build(BuildContext context){
-    final Map<String, Object> rcvdData = ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
-    DateTime birthday = rcvdData['data_nascimento'] as DateTime;
-    DateDuration duration;
-    duration = AgeCalculator.age(birthday);
+    //final Map<String, Object> rcvdData = ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
+    //DateTime birthday = rcvdData['data_nascimento'] as DateTime;
+   // DateDuration duration;
+    //duration = AgeCalculator.age(birthday);
     return MultiProvider(
       //key: _formKey,
       providers: [
@@ -153,7 +153,7 @@ class _UserTratamento extends State<UserTratamento> {
                                         decoration: InputDecoration(labelText: 'Idade'),
                                         keyboardType: TextInputType.number,
                                         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                                        initialValue: duration == null ? null : duration.years.toString(),
+                                        //initialValue: duration == null ? null : duration.years.toString(),
                                         onChanged: (value){
                                           int v = int.tryParse(value) ?? -1;
                                           idade = v;
@@ -243,7 +243,6 @@ class _UserTratamento extends State<UserTratamento> {
                                   "peso": peso,
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
-                                  "codigo": rcvdData['codigo'].toString()
                                 }): tipo == 'vivax_ovale' && checkboxValue == true? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_VIVAX_OVALE_GESTANTE,
                                 arguments: {
@@ -253,7 +252,6 @@ class _UserTratamento extends State<UserTratamento> {
                                   "peso": peso,
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
-                                  "codigo": rcvdData['codigo'].toString()
                                 }): tipo == 'malariae'? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_MALARAE,
                                 arguments: {
@@ -263,7 +261,6 @@ class _UserTratamento extends State<UserTratamento> {
                                   "peso": peso,
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
-                                  "codigo": rcvdData['codigo'].toString()
                                 }): tipo == 'falciparum' && checkboxValue == false? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_FALCIPARUM,
                                 arguments: {
@@ -273,7 +270,7 @@ class _UserTratamento extends State<UserTratamento> {
                                   "peso": peso,
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
-                                  "codigo": rcvdData['codigo'].toString()
+                                  //"codigo": rcvdData['codigo'].toString()
                                 }): tipo == 'falciparum' && checkboxValue == true? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_FALCIPARUM_GESTANTE,
                                 arguments: {
@@ -283,7 +280,6 @@ class _UserTratamento extends State<UserTratamento> {
                                   "peso": peso,
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
-                                  "codigo": rcvdData['codigo'].toString()
                                 }): tipo == 'vivax_recorrencia_60dias'? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_RECORRENCIA60_VIVAX,
                                 arguments: {
@@ -293,7 +289,6 @@ class _UserTratamento extends State<UserTratamento> {
                                   "peso": peso,
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
-                                  "codigo": rcvdData['codigo'].toString()
                                 }): tipo == 'vivax_deficiencia_G6PD'? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_VIVAX_DEFICIENCIA_G6PD,
                                 arguments: {
@@ -303,7 +298,6 @@ class _UserTratamento extends State<UserTratamento> {
                                   "peso": peso,
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
-                                  "codigo": rcvdData['codigo'].toString()
                                 }): tipo == 'mista'? Navigator.of(context).pushNamed(
                                 AppRoutes.TRAT_MISTA,
                                 arguments: {
@@ -313,7 +307,6 @@ class _UserTratamento extends State<UserTratamento> {
                                   "peso": peso,
                                   "gestante": checkboxValue,
                                   "tipo_idade": anomes,
-                                  "codigo": rcvdData['codigo'].toString()
                                 }): Navigator.of(context).pushNamed(AppRoutes.LOGIN);
                           }; },//AppRoutes.USER_RESIDENCIA
                           icon: Icon(Icons.arrow_forward),

@@ -2399,7 +2399,9 @@ class _VivaxOvaleRecorrenciaState extends State<VivaxOvaleRecorrencia> {
             ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: Visibility(
+          visible: rcvdData['codigo'].toString() != ''?  true : false,
+          child: FloatingActionButton(
           onPressed: () async{
             await flutterLocalNotificationsPlugin.zonedSchedule(
                 0,
@@ -2421,7 +2423,7 @@ class _VivaxOvaleRecorrenciaState extends State<VivaxOvaleRecorrencia> {
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.calendar_today),
-        ),
+        ),)
       ),
     );
   }

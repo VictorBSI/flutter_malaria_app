@@ -2093,7 +2093,10 @@ class _FalciparumState extends State<Falciparum> {
             ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
+        
+        floatingActionButton: Visibility(
+          visible: rcvdData['codigo'].toString() != ''?  true : false,
+          child: FloatingActionButton(
           onPressed: () async{
             await flutterLocalNotificationsPlugin.zonedSchedule(
                 0,
@@ -2115,6 +2118,7 @@ class _FalciparumState extends State<Falciparum> {
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.calendar_today),
+        ),
         ),
       ),
     );

@@ -735,7 +735,9 @@ class _MalaraeState extends State<Malarae> {
             ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: Visibility(
+          visible: rcvdData['codigo'].toString() != ''?  true : false,
+          child: FloatingActionButton(
           onPressed: () async{
             await flutterLocalNotificationsPlugin.zonedSchedule(
                 0,
@@ -757,7 +759,7 @@ class _MalaraeState extends State<Malarae> {
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.calendar_today),
-        ),
+        ),)
       ),
     );
   }

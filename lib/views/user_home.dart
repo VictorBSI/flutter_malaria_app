@@ -180,12 +180,12 @@ class UserHome extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: (){
-                          Navigator.of(context).pushNamed(AppRoutes.USER_TRAT);
+                          Navigator.of(context).pushNamed(AppRoutes.USER_TRATAMENTO_AGENTE);
                         },
                         child: ListTile(
-                          title: Text('Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
+                          title: Text('Guia de Tratamento', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
                         )),),
-                  Container(
+                 /* Container(
                     margin: const EdgeInsets.all(10),
                     height: 60,
                     decoration: BoxDecoration(
@@ -215,7 +215,9 @@ class UserHome extends StatelessWidget{
                         },
                         child: ListTile(
                           title: Text('Calendário', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
-                        )),),
+                        )
+                    ),
+                  ),*/
                   /*Container(
                     margin: const EdgeInsets.all(10),
                     height: 60,

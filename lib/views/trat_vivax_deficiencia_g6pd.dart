@@ -1972,7 +1972,9 @@ class _VivaxDeficienciaG6pdState extends State<VivaxDeficienciaG6pd> {
             ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: Visibility(
+          visible: rcvdData['codigo'].toString() != ''?  true : false,
+          child: FloatingActionButton(
           onPressed: () async{
             await flutterLocalNotificationsPlugin.zonedSchedule(
                 0,
@@ -1994,7 +1996,7 @@ class _VivaxDeficienciaG6pdState extends State<VivaxDeficienciaG6pd> {
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.calendar_today),
-        ),
+        ),)
       ),
     );
   }

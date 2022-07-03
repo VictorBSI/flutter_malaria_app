@@ -47,4 +47,6 @@ class AppRoutes {
   static const CALENDAR_OVALE_GESTANTE = '/calendar_ovale_gestante';
   static const CALENDAR_VIVAX_G6PD = '/calendar_vivax_g6pd';
   static const CALENDAR_RECORRENCIA60_VIVAX = '/calendar_recorrencia60_vivax';
+  static const USER_TRATAMENTO_AGENTE = '/user-tratamento-agente';
+  static const SPLASH = '/splash';
 }
