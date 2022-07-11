@@ -71,12 +71,20 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: EdgeInsets.only(
                       bottom: 15,
-                      top: 100,
+                      top: 25,
                     ),
                     /*child: Image.asset(
                       "assets/dumbbell.png",
                       height: 125,
                     ),*/
+                  ),
+                  Image.asset(
+                      "assets/images/logo.png",
+                      height: 75,
+                      width: 75,
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   Text(
                     "Entrar",
