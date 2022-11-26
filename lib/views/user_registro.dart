@@ -157,11 +157,6 @@ class _UserRegistro extends State<UserRegistro> {
                           ),
                           ElevatedButton.icon(
                               onPressed: () async{
-                                /*await db.getConnection().then((value) {
-                                    value.query('insert into malaria.usuario (codigo, nome, data_nascimento, endereco, sexo) values (?, ?, ?, ?, ?)',
-                                        [codigo, nome, data_nascimento.toUtc(), endereco, sexo]);
-                                  });*/
-
                                   await http.post(Uri.parse("http://$fonte/malaria/addRegistro.php"), body: {
                                     "codigo": codigo,
                                     "nome": nome,
@@ -169,10 +164,7 @@ class _UserRegistro extends State<UserRegistro> {
                                     "endereco": endereco,
                                     "sexo": sexo,
                                   });
-                                  //Ipify.ipv4().then((value) => print(value));
                                   userRegistro(context);
-                                /*Navigator.of(context).pushNamed(
-                                  AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo, "UId": UId, "data_nascimento": data_nascimento.toUtc()});*/
                               }, //AppRoutes.USER_RESIDENCIA
                               icon: Icon(Icons.arrow_forward),
                               label: Text('Próximo',),
@@ -196,7 +188,7 @@ class _UserRegistro extends State<UserRegistro> {
 
 }
   void userRegistro(var ctx) async{
-    var url = "http://10.0.0.47/malaria/getData.php";
+    var url = "http://192.168.100.8/malaria/getData.php";
     var data = {
       "codigo": codigo,
     };

@@ -1,14 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_1/provider/notificationservice.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
-import 'package:flutter_crud_1/views/user_home.dart';
-import 'package:get/get.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-//final GlobalKey<NavigatorState> navigatorKey = GlobalKey(debugLabel: "Main Navigator");
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 
@@ -16,7 +12,7 @@ final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
 
-// To-Do: Trocar imagens 27/02/2022
+
 class Falciparum extends StatefulWidget {
   @override
   State<Falciparum> createState() => _FalciparumState();
@@ -2102,7 +2098,7 @@ class _FalciparumState extends State<Falciparum> {
                 0,
                 'Hora de tomar medicação',
                 'Acesse o App Malária Amazônia para contabilizar',
-                tz.TZDateTime.now(tz.local).hour > 12 && tz.TZDateTime.now(tz.local).hour <= 18 ? _jantar() : _almoco(),//tz.TZDateTime.now(tz.local).add(const Duration(seconds: 10)),
+                tz.TZDateTime.now(tz.local).hour > 12 && tz.TZDateTime.now(tz.local).hour <= 18 ? _jantar() : _almoco(),
                 const NotificationDetails(
                     android: AndroidNotificationDetails(
                         'full screen channel id', 'full screen channel name',
@@ -2114,7 +2110,6 @@ class _FalciparumState extends State<Falciparum> {
                 uiLocalNotificationDateInterpretation:
                 UILocalNotificationDateInterpretation.absoluteTime);
             Navigator.of(context).pushNamed(AppRoutes.CALENDAR_FALCIPARUM, arguments: {"tipo": rcvdData['tipo'].toString(), "tratamento": rcvdData['tratamento'].toString(), "codigo": rcvdData['codigo'].toString()});
-            //navigatorKey.currentState?.pushNamed(AppRoutes.CALENDAR_FALCIPARUM, arguments: {"tipo": rcvdData['tipo'].toString(), "tratamento": rcvdData['tratamento'].toString()});
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.calendar_today),

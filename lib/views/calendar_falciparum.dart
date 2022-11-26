@@ -1,13 +1,11 @@
-import 'dart:ffi';
+
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
-import 'package:flutter_crud_1/views/trat_falciparum.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../database.dart';
 
@@ -23,7 +21,6 @@ class _CalendarState extends State<CalendarFalciparum> {
 
   late List<CalendarResource> _employeeCalendarResource;
   late List<TimeRegion> _specialTimeRegions;
-  //var nameCollection = [];
 
   @override
   void initState() {
@@ -42,8 +39,7 @@ class _CalendarState extends State<CalendarFalciparum> {
       _dateText = '',
       _timeDetails = '',
       _calendar = '',
-      _codigo = '',
-      _tipoMalaria = '';
+      _codigo = '';
   Color? _headerColor, _viewHeaderColor, _calendarColor;
   @override
   Widget build(BuildContext context) {
@@ -55,7 +51,6 @@ class _CalendarState extends State<CalendarFalciparum> {
           children: [
             SfCalendar(
               initialDisplayDate: DateTime.now(),
-              //DateTime(2022, 06, 18, 09, 00),
               view: CalendarView.timelineWeek,
               firstDayOfWeek: 6,
               timeSlotViewSettings:
@@ -130,33 +125,11 @@ class _CalendarState extends State<CalendarFalciparum> {
                           ),
                         ),
 
-                        /*ListView(
-                          children: [
-                            Checkbox(
-                              checkColor: Colors.white,
-                              fillColor: MaterialStateProperty.resolveWith(getColor),
-                              value: isChecked,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  isChecked = value!;
-                                });
-                              },
-                            )
-                          ],
-                        ),*/
-
                       ],
                     ),
                     Row(
                       children: <Widget>[
                         Text('')
-                        /*Text(
-                          '$_dateText',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20,
-                          ),
-                        ),*/
                       ],
                     ),
                     Row(
@@ -166,11 +139,6 @@ class _CalendarState extends State<CalendarFalciparum> {
                                 fontWeight: FontWeight.w400, fontSize: 15)),
                       ],
                     ),
-                    /*Row(
-                      children: <Widget>[
-                        Text(''),
-                      ],
-                    ),*/
                     Row(
                       children: <Widget>[
                         Container(
@@ -234,19 +202,14 @@ class _CalendarState extends State<CalendarFalciparum> {
       for (var calendarResource in _employeeCalendarResource) {
         var employeeIds = [calendarResource.id];
 
-        //for (int j = 0; j < 4; j++) {
-        //for (int k = 0; k < 3; k++) {
-        final DateTime date = DateTime.now(); //.add(Duration(days: 3));
-        int startHour = 12; //9 + Random().nextInt(6) ;
-        //startHour =
-        //startHour >= 13 && startHour <= 14 ? startHour + 1 : startHour;
+        final DateTime date = DateTime.now();
+        int startHour = 12;
         final DateTime _shiftStartTime =
         DateTime(date.year, date.month, date.day, startHour, 0, 0);
         _shiftCollection.add(Appointment(
             startTime: _shiftStartTime,
             endTime: _shiftStartTime.add(Duration(hours: 1)),
             subject: 'Tomar Medicação',
-            // subjectCollection[Random().nextInt(8)],
             color: colorCollection[Random().nextInt(8)],
             startTimeZone: '',
             endTimeZone: '',
@@ -260,7 +223,6 @@ class _CalendarState extends State<CalendarFalciparum> {
             startTime: _jantarStartTime,
             endTime: _jantarStartTime.add(Duration(hours: 1)),
             subject: 'Tomar Medicação',
-            // subjectCollection[Random().nextInt(8)],
             color: colorCollection[Random().nextInt(8)],
             startTimeZone: '',
             endTimeZone: '',
@@ -293,15 +255,6 @@ class _CalendarState extends State<CalendarFalciparum> {
       ];
 
       _employeeCalendarResource = <CalendarResource>[];
-     /* for (var i = 0; i < nameCollection.length; i++) {
-      _employeeCalendarResource.add(CalendarResource(
-          id: '000' + i.toString(),
-          displayName: nameCollection[i],
-          color: Color.fromRGBO(Random().nextInt(255), Random().nextInt(255),
-              Random().nextInt(255), 1),
-          image:
-          i < userImages.length ? ExactAssetImage('assets/images/Al-1.png') : null));
-    }*/
 
       for (var i = 0; i < nameCollection.length; i++) {
         _employeeCalendarResource.add(CalendarResource(
@@ -310,7 +263,6 @@ class _CalendarState extends State<CalendarFalciparum> {
             color: Color.fromRGBO(Random().nextInt(255), Random().nextInt(255),
                 Random().nextInt(255), 1),
             image: ExactAssetImage('assets/images/pill.png')));
-        //i < userImages.length ? ExactAssetImage('assets/images/Al-1.png') : null));
       }
       if(DateTime.now().hour >= 12 && DateTime.now().hour < 18) {
         FlutterAlarmClock.createAlarm(18, 00);
@@ -359,13 +311,6 @@ class _CalendarState extends State<CalendarFalciparum> {
     ));
     return meetings;
   }
-
-/*
-class MeetingDataSource extends CalendarDataSource{
-  MeetingDataSource(List<Appointment> source){
-    appointments = source;
-  }
-}*/
 
   class MeetingDataSource extends CalendarDataSource{
   MeetingDataSource(List<Appointment> shiftCollection,

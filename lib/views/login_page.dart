@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_1/AlertDialogs/DontHaveAccount.dart';
 import 'package:flutter_crud_1/provider/login_service.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:flutter_crud_1/views/sign_up_page.dart';
@@ -296,7 +297,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void userSignIn(var ctx) async{
-    var url = "http://10.0.0.47/malaria/login_malaria.php";
+    var url = "http://192.168.100.8/malaria/login_malaria.php";
     var data = {
       "email":_mailInputController.text,
       "pass":_passwordInputController.text,
@@ -307,9 +308,13 @@ class _LoginPageState extends State<LoginPage> {
     if(jsonDecode(jsonEncode(res.body)) == "\"dont have an account\""){
       //Fluttertoast.showToast(msg: "dont have an account,Create an account",toastLength: Toast.LENGTH_SHORT);
       //Navigator.of(ctx).pushNamed(AppRoutes.LOGIN,);
+      showAlertDialog1(ctx);
+      print(jsonDecode(jsonEncode(res.body)));
     } else{
       if(jsonDecode(jsonEncode(res.body)) == "false"){
         //Fluttertoast.showToast(msg: "incorrect password",toastLength: Toast.LENGTH_SHORT);
+        print(jsonDecode(jsonEncode(res.body)));
+        Navigator.of(ctx).pushNamed(AppRoutes.LOGIN,);
       } else{
         print(jsonDecode(jsonEncode(res.body)));
         Navigator.of(ctx).pushNamed(AppRoutes.USER_HOME,);

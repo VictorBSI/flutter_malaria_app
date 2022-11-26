@@ -148,6 +148,11 @@ class _UserDiagnostico extends State<UserDiagnostico>{
                             "resposta": 'P. vivax',
                             "usuario": rcvdData['codigo'].toString(),
                           });
+                          await http.post(Uri.parse("http://$fonte/malaria/addLocalizacao.php"), body: {
+                            "usuario": rcvdData['codigo'].toString(),
+                            "latitude": "$lat",
+                            "longitude": "$long",
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_ORIENTACOES, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
@@ -182,10 +187,16 @@ class _UserDiagnostico extends State<UserDiagnostico>{
                             "resposta": 'Plasmodium falciparum',
                             "usuario": rcvdData['codigo'].toString(),
                           });
+                          await http.post(Uri.parse("http://$fonte/malaria/addLocalizacao.php"), body: {
+                            "usuario": rcvdData['codigo'].toString(),
+                            "latitude": "$lat",
+                            "longitude": "$long",
+                          });
                           Navigator.of(context).pushNamed(AppRoutes.USER_ORIENTACOES, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
+
                         child: ListTile(
-                          title: Text('Plasmodium faliparum', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                          title: Text('Plasmodium falciparum', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),
@@ -215,6 +226,11 @@ class _UserDiagnostico extends State<UserDiagnostico>{
                           await http.post(Uri.parse("http://$fonte/malaria/addDiagnostico.php"), body: {
                             "resposta": 'P.malariae',
                             "usuario": rcvdData['codigo'].toString(),
+                          });
+                          await http.post(Uri.parse("http://$fonte/malaria/addLocalizacao.php"), body: {
+                            "usuario": rcvdData['codigo'].toString(),
+                            "latitude": "$lat",
+                            "longitude": "$long",
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_ORIENTACOES, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
@@ -249,6 +265,11 @@ class _UserDiagnostico extends State<UserDiagnostico>{
                           await http.post(Uri.parse("http://$fonte/malaria/addDiagnostico.php"), body: {
                             "resposta": 'Mista',
                             "usuario": rcvdData['codigo'].toString(),
+                          });
+                          await http.post(Uri.parse("http://$fonte/malaria/addLocalizacao.php"), body: {
+                            "usuario": rcvdData['codigo'].toString(),
+                            "latitude": "$lat",
+                            "longitude": "$long",
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_ORIENTACOES, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
@@ -324,6 +345,11 @@ class _UserDiagnostico extends State<UserDiagnostico>{
                           await http.post(Uri.parse("http://$fonte/malaria/addDiagnostico.php"), body: {
                             "resposta": 'Prefiro nao responder',
                             "usuario": rcvdData['codigo'].toString(),
+                          });
+                          await http.post(Uri.parse("http://$fonte/malaria/addLocalizacao.php"), body: {
+                            "usuario": rcvdData['codigo'].toString(),
+                            "latitude": "$lat",
+                            "longitude": "$long",
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_ORIENTACOES, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
