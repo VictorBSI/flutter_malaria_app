@@ -193,13 +193,13 @@ class UserTipo extends StatelessWidget{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addTipo.php"), body: {
-                            "resposta": 'Desconheco',
+                            "resposta": 'N_Sei',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_TEMPO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
-                          title: Text('Desconheço', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                          title: Text('Não Sei', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(10),

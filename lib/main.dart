@@ -25,16 +25,20 @@ import 'package:flutter_crud_1/views/trat_vivax_deficiencia_g6pd.dart';
 import 'package:flutter_crud_1/views/trat_vivax_ovale.dart';
 import 'package:flutter_crud_1/views/trat_vivax_ovale_gestante.dart';
 import 'package:flutter_crud_1/views/user_agentes.dart';
+import 'package:flutter_crud_1/views/user_auxilio.dart';
 import 'package:flutter_crud_1/views/user_bem.dart';
 import 'package:flutter_crud_1/views/user_casa.dart';
+import 'package:flutter_crud_1/views/user_chas.dart';
 import 'package:flutter_crud_1/views/user_comprimidos.dart';
 import 'package:flutter_crud_1/views/user_cura.dart';
 import 'package:flutter_crud_1/views/user_diagnostico.dart';
+import 'package:flutter_crud_1/views/user_entendeu.dart';
 import 'package:flutter_crud_1/views/user_escolaridade.dart';
 import 'package:flutter_crud_1/views/user_evitar.dart';
 import 'package:flutter_crud_1/views/user_form.dart';
 import 'package:flutter_crud_1/views/user_home.dart';
 import 'package:flutter_crud_1/views/user_list.dart';
+import 'package:flutter_crud_1/views/user_localidade.dart';
 import 'package:flutter_crud_1/views/user_localizada.dart';
 import 'package:flutter_crud_1/views/user_mal.dart';
 import 'package:flutter_crud_1/views/user_motivo.dart';
@@ -42,6 +46,7 @@ import 'package:flutter_crud_1/views/user_naoseguir.dart';
 import 'package:flutter_crud_1/views/user_ocupacao.dart';
 import 'package:flutter_crud_1/views/user_orientacoes.dart';
 import 'package:flutter_crud_1/views/user_pessoas.dart';
+import 'package:flutter_crud_1/views/user_reacoes.dart';
 import 'package:flutter_crud_1/views/user_registro.dart';
 import 'package:flutter_crud_1/views/user_remedio.dart';
 import 'package:flutter_crud_1/views/user_renda.dart';
@@ -83,6 +88,7 @@ class MyApp extends StatelessWidget {
                 return Text('Something went wrong!');
               } else if (snapshot.hasData){
                 return MaterialApp(
+                  debugShowCheckedModeBanner: false,
                   title: 'Flutter Demo',
                   theme: ThemeData(
                     primarySwatch: Colors.blue,
@@ -139,6 +145,11 @@ class MyApp extends StatelessWidget {
                     AppRoutes.CALENDAR_VIVAX_G6PD: (_) => CalendarVivaxG6PD(),
                     AppRoutes.CALENDAR_RECORRENCIA60_VIVAX: (_) => CalendarRecorrencia60Vivax(),
                     AppRoutes.USER_TRATAMENTO_AGENTE: (_) => UserTratamentoAgente(),
+                    AppRoutes.USER_LOCALIDADE: (_) => UserLocalidade(),
+                    AppRoutes.USER_ENTENDEU: (_) => UserEntendeu(),
+                    AppRoutes.USER_AUXILIO: (_) => UserAuxilio(),
+                    AppRoutes.USER_REACOES: (_) => UserReacoes(),
+                    AppRoutes.USER_CHAS: (_) => UserChas(),
                   },
                 );
               } else {

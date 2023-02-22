@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import '../database.dart';
 
 
-class UserResidencia extends StatelessWidget{
+class UserLocalidade extends StatelessWidget{
   DataBase dado = new DataBase();
 
   @override
@@ -24,7 +24,7 @@ class UserResidencia extends StatelessWidget{
                 children: [
                   Container(
                     child: Text(
-                      'Há quantos anos mora nesta residência?',
+                      'Há quantos anos mora nesta localidade?',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -61,7 +61,7 @@ class UserResidencia extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: () async{
-                          await http.post(Uri.parse("http://$fonte/malaria/addResidencia.php"), body: {
+                          await http.post(Uri.parse("http://$fonte/malaria/addLocalidade.php"), body: {
                             "resposta": 'De 0 a 2',
                             "usuario": rcvdData['codigo'].toString(),
                           });
@@ -107,7 +107,7 @@ class UserResidencia extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: () async{
-                          await http.post(Uri.parse("http://$fonte/malaria/addResidencia.php"), body: {
+                          await http.post(Uri.parse("http://$fonte/malaria/addLocalidade.php"), body: {
                             "resposta": 'De 3 a 7',
                             "usuario": rcvdData['codigo'].toString(),
                           });
@@ -150,7 +150,7 @@ class UserResidencia extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: () async{
-                          await http.post(Uri.parse("http://$fonte/malaria/addResidencia.php"), body: {
+                          await http.post(Uri.parse("http://$fonte/malaria/addLocalidade.php"), body: {
                             "resposta": 'De 8 a 10',
                             "usuario": rcvdData['codigo'].toString(),
                           });
@@ -194,7 +194,7 @@ class UserResidencia extends StatelessWidget{
                     ),
                     child: GestureDetector(
                         onTap: () async{
-                          await http.post(Uri.parse("http://$fonte/malaria/addResidencia.php"), body: {
+                          await http.post(Uri.parse("http://$fonte/malaria/addLocalidade.php"), body: {
                             "resposta": 'Mais de 10',
                             "usuario": rcvdData['codigo'].toString(),
                           });

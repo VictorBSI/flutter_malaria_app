@@ -13,10 +13,12 @@ class _UserTempo extends State<UserTempo>{
   DataBase dado = new DataBase();
   String informar = 'Sim';
   String momento = 'Sim';
+  String crise = 'Sim';
   String meses = '';
   String quem = '';
   int _value = 1;
   int _value1 = 1;
+  int _value2 = 1;
   @override
   Widget build(BuildContext context){
     String fonte = dado.getDataBase;
@@ -33,7 +35,7 @@ class _UserTempo extends State<UserTempo>{
           child: ListView(
             children: <Widget>[
               Container(
-                child: Text('Quanto tempo faz desde a última malária?', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                child: Text('Quanto tempo faz desde a última malária?', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
               ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'meses',
@@ -44,8 +46,58 @@ class _UserTempo extends State<UserTempo>{
               ),
               Container(
                 padding: EdgeInsets.only(top: 20),
+                child: Text('Já teve crise após o tratamento para malária por Plasmodium vivax?',
+                    style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
+              ),
+              Container(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Flexible(
+                            flex: 1,
+                            child: Row(
+                              children: [
+                                Radio(
+                                  value: 1,
+                                  groupValue: _value2,
+                                  onChanged: (value){
+                                    setState(() {
+                                      crise = 'Sim';
+                                      _value2 = int.parse(value.toString());
+                                    });
+                                  },),
+                                Expanded(child: Text('Sim', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black54)))
+                              ],
+                            )
+                        ),
+                        Padding(padding: EdgeInsets.only(right: 30),),
+                        Flexible(
+                            flex: 1,
+                            child: Row(
+                              children: [
+                                Radio(
+                                  value: 0,
+                                  groupValue: _value2,
+                                  onChanged: (value){
+                                    setState(() {
+                                      crise = 'Não';
+                                      _value2 = int.parse(value.toString());
+                                    });
+                                  },),
+                                Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black54)))
+                              ],
+                            )
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 20),
                 child: Text('Você costuma informar ao profissional de saúde quando alguém do seu convívio está com suspeita de malária?',
-                    style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24,), textAlign: TextAlign.justify,),
+                    style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20,), textAlign: TextAlign.justify,),
               ),
               Container(
                 child: Column(
@@ -95,7 +147,7 @@ class _UserTempo extends State<UserTempo>{
               Container(
                 padding: EdgeInsets.only(top: 20),
                 child: Text('Além de você, tem alguém com malária na sua família neste momento?',
-                    style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                    style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 20)),
               ),
               Container(
                 child: Column(
@@ -143,7 +195,7 @@ class _UserTempo extends State<UserTempo>{
                 ),
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Quem?',
+                decoration: InputDecoration(labelText: 'Quem? Qual a idade e ocupação deste familiar?',
                     contentPadding: new EdgeInsets.fromLTRB(0, 10, 10, 0),),
                 onChanged: (value)async{
                     quem= value;

@@ -49,4 +49,9 @@ class AppRoutes {
   static const CALENDAR_RECORRENCIA60_VIVAX = '/calendar_recorrencia60_vivax';
   static const USER_TRATAMENTO_AGENTE = '/user-tratamento-agente';
   static const SPLASH = '/splash';
+  static const USER_LOCALIDADE = 'user-localidade';
+  static const USER_ENTENDEU = 'user-entendeu';
+  static const USER_AUXILIO = 'user-auxilio';
+  static const USER_REACOES = 'user-reacoes';
+  static const USER_CHAS = 'user-chas';
 }

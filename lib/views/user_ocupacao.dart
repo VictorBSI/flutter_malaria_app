@@ -29,7 +29,7 @@ class UserOcupacao extends StatelessWidget{
                         fontSize: 30,
                         color: Colors.black54,)
                     ),
-                    padding: EdgeInsets.only(top: 15, bottom: 15),
+                    padding: EdgeInsets.only(top: 15, bottom: 5),
                   ),
                   Container(
                     margin: const EdgeInsets.all(5),
@@ -227,13 +227,47 @@ class UserOcupacao extends StatelessWidget{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addOcupacao.php"), body: {
-                            "resposta": 'Doméstico',
+                            "resposta": 'dona_de_casa',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_ESCOLARIDADE, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
-                          title: Text('Doméstico', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                          title: Text('Dona(o) de Casa', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                        )),),
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: const Offset(
+                            5.0,
+                            5.0,
+                          ),
+                          blurRadius: 10.0,
+                          spreadRadius: 2.0,
+                        ), //BoxShadow
+                        BoxShadow(
+                          color: Colors.white,
+                          offset: const Offset(0.0, 0.0),
+                          blurRadius: 0.0,
+                          spreadRadius: 0.0,
+                        ), //BoxShadow
+                      ],
+                    ),
+                    child: GestureDetector(
+                        onTap: ()async{
+                          await http.post(Uri.parse("http://$fonte/malaria/addOcupacao.php"), body: {
+                            "resposta": 'Estudante',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
+                          Navigator.of(context).pushNamed(AppRoutes.USER_ESCOLARIDADE, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
+                        },
+                        child: ListTile(
+                          title: Text('Estudante', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
                     margin: const EdgeInsets.all(5),

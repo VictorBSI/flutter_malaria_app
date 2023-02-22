@@ -29,10 +29,10 @@ class UserEscolaridade extends StatelessWidget{
                         fontSize: 30,
                         color: Colors.black54,),
                     ),
-                    padding: EdgeInsets.only(top: 25, bottom: 25),
+                    padding: EdgeInsets.only(top: 5, bottom: 5),
                   ),
                   Container(
-                    margin: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(5),
                     height: 50,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -57,16 +57,50 @@ class UserEscolaridade extends StatelessWidget{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addEscolaridade.php"), body: {
-                            "resposta": 'Fundamental',
+                            "resposta": 'Fundamental_Completo',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
-                          title: Text('Fundamental', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),
+                          title: Text('Fundamental Completo', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),
                         )),),
                   Container(
-                    margin: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(5),
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: const Offset(
+                            5.0,
+                            5.0,
+                          ),
+                          blurRadius: 10.0,
+                          spreadRadius: 2.0,
+                        ), //BoxShadow
+                        BoxShadow(
+                          color: Colors.white,
+                          offset: const Offset(0.0, 0.0),
+                          blurRadius: 0.0,
+                          spreadRadius: 0.0,
+                        ), //BoxShadow
+                      ],
+                    ),
+                    child: GestureDetector(
+                        onTap: ()async{
+                          await http.post(Uri.parse("http://$fonte/malaria/addEscolaridade.php"), body: {
+                            "resposta": 'Fundamental_Incompleto',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
+                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
+                        },
+                        child: ListTile(
+                          title: Text('Fundamental Incompleto', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),
+                        )),),
+                  Container(
+                    margin: const EdgeInsets.all(5),
                     height: 50,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -91,16 +125,50 @@ class UserEscolaridade extends StatelessWidget{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addEscolaridade.php"), body: {
-                            "resposta": 'Médio',
+                            "resposta": 'Medio_Completo',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
-                          title: Text('Médio', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                          title: Text('Médio Completo', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
-                    margin: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(5),
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: const Offset(
+                            5.0,
+                            5.0,
+                          ),
+                          blurRadius: 10.0,
+                          spreadRadius: 2.0,
+                        ), //BoxShadow
+                        BoxShadow(
+                          color: Colors.white,
+                          offset: const Offset(0.0, 0.0),
+                          blurRadius: 0.0,
+                          spreadRadius: 0.0,
+                        ), //BoxShadow
+                      ],
+                    ),
+                    child: GestureDetector(
+                        onTap: ()async{
+                          await http.post(Uri.parse("http://$fonte/malaria/addEscolaridade.php"), body: {
+                            "resposta": 'Medio_Incompleto',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
+                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
+                        },
+                        child: ListTile(
+                          title: Text('Médio Incompleto', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                        )),),
+                  Container(
+                    margin: const EdgeInsets.all(5),
                     height: 50,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -125,16 +193,50 @@ class UserEscolaridade extends StatelessWidget{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addEscolaridade.php"), body: {
-                            "resposta": 'Superior',
+                            "resposta": 'Superior_Completo',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
-                          title: Text('Superior', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                          title: Text('Superior Completo', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
-                    margin: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(5),
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: const Offset(
+                            5.0,
+                            5.0,
+                          ),
+                          blurRadius: 10.0,
+                          spreadRadius: 2.0,
+                        ), //BoxShadow
+                        BoxShadow(
+                          color: Colors.white,
+                          offset: const Offset(0.0, 0.0),
+                          blurRadius: 0.0,
+                          spreadRadius: 0.0,
+                        ), //BoxShadow
+                      ],
+                    ),
+                    child: GestureDetector(
+                        onTap: ()async{
+                          await http.post(Uri.parse("http://$fonte/malaria/addEscolaridade.php"), body: {
+                            "resposta": 'Superior_Incompleto',
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
+                          Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
+                        },
+                        child: ListTile(
+                          title: Text('Superior Incompleto', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                        )),),
+                  Container(
+                    margin: const EdgeInsets.all(5),
                     height: 50,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -159,7 +261,7 @@ class UserEscolaridade extends StatelessWidget{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addEscolaridade.php"), body: {
-                            "resposta": 'Pós-graduação',
+                            "resposta": 'Pos-graduação',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_DIAGNOSTICO, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
@@ -168,7 +270,7 @@ class UserEscolaridade extends StatelessWidget{
                           title: Text('Pós-graduação', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
-                    margin: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(5),
                     height: 50,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -202,7 +304,7 @@ class UserEscolaridade extends StatelessWidget{
                           title: Text('Não estudou', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )),),
                   Container(
-                    margin: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(5),
                     height: 50,
                     decoration: BoxDecoration(
                       color: Colors.white,

@@ -302,7 +302,7 @@ class _UserDiagnostico extends State<UserDiagnostico>{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addDiagnostico.php"), body: {
-                            "resposta": 'Desconheco',
+                            "resposta": 'N_sei',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           await http.post(Uri.parse("http://$fonte/malaria/addLocalizacao.php"), body: {
@@ -313,7 +313,7 @@ class _UserDiagnostico extends State<UserDiagnostico>{
                           Navigator.of(context).pushNamed(AppRoutes.USER_ORIENTACOES, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
-                          title: Text('Desconheço', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
+                          title: Text('Não Sei', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
                         )
                     ),
                   ),

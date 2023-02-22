@@ -166,7 +166,7 @@ class _UserCura extends State<UserCura>{
                       "data": data.toString(),
                       "usuario": rcvdData['codigo'].toString(),
                     });
-                    Navigator.of(context).pushNamed(AppRoutes.USER_VEZES, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
+                    Navigator.of(context).pushNamed(AppRoutes.USER_ENTENDEU, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                     },
                   icon: Icon(Icons.arrow_forward),
                   label: Text('Próximo'),

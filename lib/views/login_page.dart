@@ -12,6 +12,8 @@ import 'package:flutter_crud_1/views/sign_up_page.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
+import '../database.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -297,7 +299,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void userSignIn(var ctx) async{
-    var url = "http://192.168.100.8/malaria/login_malaria.php";
+    DataBase db = new DataBase();
+    var url = "http://malaria.iec.gov.br//malaria/login_malaria.php";
     var data = {
       "email":_mailInputController.text,
       "pass":_passwordInputController.text,

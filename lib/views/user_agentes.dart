@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 class UserAgentes extends StatelessWidget{
   DataBase dado = new DataBase();
+  var explique = '';
   @override
   Widget build(BuildContext context){
     String fonte = dado.getDataBase;
@@ -20,7 +21,7 @@ class UserAgentes extends StatelessWidget{
               padding: EdgeInsets.only(top: 30,),
               child: ListView(
                 children: [
-                  Text('Como o agente de saúde lhe recomendou tomar o remédio?',
+                  Text('Como o profissional de saúde lhe orientou tomar o remédio?',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontWeight: FontWeight.bold,
                       //height: 5,
@@ -29,7 +30,7 @@ class UserAgentes extends StatelessWidget{
                   ),
                   Container(
                     margin: const EdgeInsets.all(15),
-                    height: 80,
+                    height: 60,
                     decoration: BoxDecoration(
                       color: Colors.white,
                         boxShadow: [
@@ -60,11 +61,11 @@ class UserAgentes extends StatelessWidget{
                           },
                         child: ListTile(
                           title: Text('Em jejum', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24),),
-                            minVerticalPadding: 25
+                            minVerticalPadding: 5
                         )),),
                   Container(
                     margin: const EdgeInsets.all(15),
-                    height: 80,
+                    height: 60,
                     decoration: BoxDecoration(
                       color: Colors.white,
                         boxShadow: [
@@ -95,11 +96,11 @@ class UserAgentes extends StatelessWidget{
                           },
                         child: ListTile(
                           title: Text('Principais refeições', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
-                            minVerticalPadding: 25
+                            minVerticalPadding: 5
                         )),),
                   Container(
                     margin: const EdgeInsets.all(15),
-                    height: 80,
+                    height: 60,
                     decoration: BoxDecoration(
                       color: Colors.white,
                         boxShadow: [
@@ -123,20 +124,20 @@ class UserAgentes extends StatelessWidget{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addAgentes.php"), body: {
-                            "resposta": 'Não recebi orientações/recomendações',
+                            "resposta": 'N_Recebi_Orientacao',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_EVITAR, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
-                          title: Text('Não recebi orientações/recomendações', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24,),),
-                          minVerticalPadding: 10,
+                          title: Text('Não recebi orientação', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24,),),
+                          minVerticalPadding: 5,
                         )
                     ),
                   ),
                   Container(
                     margin: const EdgeInsets.all(15),
-                    height: 80,
+                    height: 60,
                     decoration: BoxDecoration(
                       color: Colors.white,
                         boxShadow: [
@@ -160,17 +161,37 @@ class UserAgentes extends StatelessWidget{
                     child: GestureDetector(
                         onTap: ()async{
                           await http.post(Uri.parse("http://$fonte/malaria/addAgentes.php"), body: {
-                            "resposta": 'Prefiro não responder',
+                            "resposta": 'Prefiro_N_Responder',
                             "usuario": rcvdData['codigo'].toString(),
                           });
                           Navigator.of(context).pushNamed(AppRoutes.USER_EVITAR, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                           },
                         child: ListTile(
                           title: Text('Prefiro não responder', textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 24)),
-                          minVerticalPadding: 25,
+                          minVerticalPadding: 5,
                         ),
                     ),
                   ),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: 'Outros: especifique'),
+                    onChanged: (value){
+                      explique = value;
+                    },
+                  ),
+                  Padding(padding: new EdgeInsets.only(top: 10, left: 10, right: 10),
+                    child: ElevatedButton.icon(
+                        onPressed: () async{
+                          await http.post(Uri.parse("http://$fonte/malaria/addAgentes.php"), body: {
+                            "resposta": explique,
+                            "usuario": rcvdData['codigo'].toString(),
+                          });
+                          Navigator.of(context).pushNamed(AppRoutes.USER_EVITAR, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
+                        },
+                        icon: Icon(Icons.arrow_forward),
+                        label: Text('Próximo'),
+                        style: ElevatedButton.styleFrom(primary: Colors.cyan)
+                    ),
+                  )
                 ],
               ),
             )

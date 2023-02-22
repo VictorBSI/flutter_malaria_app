@@ -4,12 +4,12 @@ import 'package:flutter_crud_1/database.dart';
 import 'package:flutter_crud_1/routes/app_routes.dart';
 import 'package:http/http.dart' as http;
 
-class UserEvitar extends StatefulWidget{
+class UserAuxilio extends StatefulWidget{
   @override
-  State<StatefulWidget> createState() => _UserEvitar();
+  State<StatefulWidget> createState() => _UserAuxilio();
 }
 
-class _UserEvitar extends State<UserEvitar>{
+class _UserAuxilio extends State<UserAuxilio>{
   DataBase dado = new DataBase();
   int _value = 1;
   int _value1 = 1;
@@ -21,7 +21,7 @@ class _UserEvitar extends State<UserEvitar>{
     final Map<String, Object> rcvdData = ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Orientações Terapêuticas'),
+        title: Text('Adesão ao tratamento'),
         centerTitle: true,
           backgroundColor: Colors.cyan,
       ),
@@ -32,7 +32,7 @@ class _UserEvitar extends State<UserEvitar>{
             children: <Widget>[
               Container(
                 padding: EdgeInsets.only(top: 20),
-                child: Text('Recebeu orientações para evitar o consumo de bebida alcoólica durante o tratamento?',
+                child: Text('Precisa do auxilio de outra pessoa para tomar os remédios?',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     //height: 5,
@@ -80,24 +80,6 @@ class _UserEvitar extends State<UserEvitar>{
                               ],
                             )
                         ),
-                        Padding(padding: EdgeInsets.all(10)),
-                        Flexible(
-                            flex: 1,
-                            child: Row(
-                              children: [
-                                Radio(
-                                  value: 0,
-                                  groupValue: _value,
-                                  onChanged: (value){
-                                    setState(() {
-                                      orientacoes= 'N_Se_Aplica';
-                                      _value = int.parse(value.toString());
-                                    });
-                                  },),
-                                Expanded(child: Text('Não Se Aplica', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black54)))
-                              ],
-                            )
-                        ),
                       ],
                     )
                   ],
@@ -106,7 +88,7 @@ class _UserEvitar extends State<UserEvitar>{
               Padding(padding: EdgeInsets.all(20)),
               Container(
                 padding: EdgeInsets.only(top: 20),
-                child: Text('Recebeu outras informações sobre a malária, além das orientações sobre o tratamento?',
+                child: Text('Ao tomar os comprimidos, teve alguma reação?',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     //height: 5,
@@ -154,24 +136,6 @@ class _UserEvitar extends State<UserEvitar>{
                               ],
                             )
                         ),
-                        Padding(padding: EdgeInsets.all(10)),
-                        Flexible(
-                            flex: 1,
-                            child: Row(
-                              children: [
-                                Radio(
-                                  value: 0,
-                                  groupValue: _value,
-                                  onChanged: (value){
-                                    setState(() {
-                                      orientacoes= 'N_Lembra';
-                                      _value = int.parse(value.toString());
-                                    });
-                                  },),
-                                Expanded(child: Text('Não Lembra', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black54)))
-                              ],
-                            )
-                        ),
                       ],
                     )
                   ],
@@ -180,12 +144,12 @@ class _UserEvitar extends State<UserEvitar>{
               Padding(padding: EdgeInsets.all(10)),
               ElevatedButton.icon(
                   onPressed: ()async{
-                    await http.post(Uri.parse("http://$fonte/malaria/addEvitar.php"), body: {
+                    /*await http.post(Uri.parse("http://$fonte/malaria/addEvitar.php"), body: {
                       "resposta_1": orientacoes,
                       "resposta_2": informacoes,
                       "usuario": rcvdData['codigo'].toString(),
-                    });
-                    Navigator.of(context).pushNamed(AppRoutes.USER_CURA, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
+                    });*/
+                    Navigator.of(context).pushNamed(AppRoutes.USER_REACOES, arguments: {"codigo": rcvdData['codigo'].toString(), "data_nascimento": rcvdData['data_nascimento']});
                     },
                   icon: Icon(Icons.arrow_forward),
                   label: Text('Próximo'),

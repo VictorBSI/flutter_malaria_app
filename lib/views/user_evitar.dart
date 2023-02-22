@@ -62,7 +62,7 @@ class _UserEvitar extends State<UserEvitar>{
                               ],
                             )
                         ),
-                        Padding(padding: EdgeInsets.all(40)),
+                        Padding(padding: EdgeInsets.all(10)),
                         Flexible(
                             flex: 1,
                             child: Row(
@@ -80,11 +80,30 @@ class _UserEvitar extends State<UserEvitar>{
                               ],
                             )
                         ),
+                        Padding(padding: EdgeInsets.all(10)),
+                        Flexible(
+                            flex: 1,
+                            child: Row(
+                              children: [
+                                Radio(
+                                  value: 0,
+                                  groupValue: _value,
+                                  onChanged: (value){
+                                    setState(() {
+                                      orientacoes= 'N_Se_Aplica';
+                                      _value = int.parse(value.toString());
+                                    });
+                                  },),
+                                Expanded(child: Text('Não Se Aplica', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black54)))
+                              ],
+                            )
+                        ),
                       ],
                     )
                   ],
                 ),
               ),
+              Padding(padding: EdgeInsets.all(20)),
               Container(
                 padding: EdgeInsets.only(top: 20),
                 child: Text('Recebeu outras informações sobre a malária, além das orientações sobre o tratamento?',
@@ -117,7 +136,7 @@ class _UserEvitar extends State<UserEvitar>{
                               ],
                             )
                         ),
-                        Padding(padding: EdgeInsets.all(40)),
+                        Padding(padding: EdgeInsets.all(10)),
                         Flexible(
                             flex: 1,
                             child: Row(
@@ -132,6 +151,24 @@ class _UserEvitar extends State<UserEvitar>{
                                     });
                                   },),
                                 Expanded(child: Text('Não', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black54)))
+                              ],
+                            )
+                        ),
+                        Padding(padding: EdgeInsets.all(10)),
+                        Flexible(
+                            flex: 1,
+                            child: Row(
+                              children: [
+                                Radio(
+                                  value: 0,
+                                  groupValue: _value,
+                                  onChanged: (value){
+                                    setState(() {
+                                      orientacoes= 'N_Lembra';
+                                      _value = int.parse(value.toString());
+                                    });
+                                  },),
+                                Expanded(child: Text('Não Lembra', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black54)))
                               ],
                             )
                         ),

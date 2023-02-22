@@ -130,6 +130,29 @@ class _UserRegistro extends State<UserRegistro> {
                                           ],
                                         )
                                     ),
+                                    Flexible(
+                                        flex: 1,
+                                        child: Row(
+                                          children: [
+                                            Radio(
+                                              value: 0,
+                                              groupValue: _value,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  sexo = 'Prefiro_N_Responder';
+                                                  _value = int.parse(value.toString());
+                                                });
+
+                                              },
+
+
+                                            ),
+                                            Expanded(
+                                                child: Text(
+                                                  'Prefiro Não Responder', maxLines: 2,))
+                                          ],
+                                        )
+                                    ),
                                   ],
                                 ),
                               ],
