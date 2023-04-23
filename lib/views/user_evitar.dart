@@ -86,7 +86,7 @@ class _UserEvitar extends State<UserEvitar>{
                             child: Row(
                               children: [
                                 Radio(
-                                  value: 0,
+                                  value: 3,
                                   groupValue: _value,
                                   onChanged: (value){
                                     setState(() {
@@ -160,12 +160,12 @@ class _UserEvitar extends State<UserEvitar>{
                             child: Row(
                               children: [
                                 Radio(
-                                  value: 0,
-                                  groupValue: _value,
+                                  value: 4,
+                                  groupValue: _value1,
                                   onChanged: (value){
                                     setState(() {
                                       orientacoes= 'N_Lembra';
-                                      _value = int.parse(value.toString());
+                                      _value1 = int.parse(value.toString());
                                     });
                                   },),
                                 Expanded(child: Text('Não Lembra', maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black54)))

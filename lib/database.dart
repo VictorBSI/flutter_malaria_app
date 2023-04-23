@@ -1,7 +1,7 @@
 class DataBase {
 
   String get getDataBase{
-    return 'malaria.iec.gov.br';
+    return '192.168.100.8';//'malaria.iec.gov.br';
   }
 }
 /*import 'dart:ffi';
