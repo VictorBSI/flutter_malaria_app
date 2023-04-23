@@ -215,7 +215,7 @@ class _UserRegistro extends State<UserRegistro> {
     var data = {
       "codigo": codigo,
     };
-    try {
+    /*try {
       var res = await http.post(Uri.parse(url), body: data);
       String text = jsonDecode(jsonEncode(res.body));
       var cod = text.jsonList((e) => Codigo.fromJson(e));
@@ -225,7 +225,9 @@ class _UserRegistro extends State<UserRegistro> {
       throw Navigator.of(context).pushNamed(
           AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo, "UId": UId, "data_nascimento": data_nascimento.toUtc()});
 
-    }
+    }*/
+    Navigator.of(context). pushNamed(
+        AppRoutes.USER_RESIDENCIA, arguments: {"codigo": codigo, "UId": UId, "data_nascimento": data_nascimento.toUtc()});
   }
 }
 

@@ -16,6 +16,17 @@ class UserResidencia extends StatelessWidget{
           title: Text('Dados Sociodemográficos',),
           centerTitle: true,
           backgroundColor: Colors.cyan,
+          actions: <Widget>[
+            IconButton(
+                onPressed: (){
+                  Navigator.of(context).pushNamed(AppRoutes.USER_HOME);
+                },
+                icon: Icon(
+                  Icons.home,
+                  color: Colors.white,
+                )
+            )
+          ],
         ),
         body: Center(
             child:Padding(
